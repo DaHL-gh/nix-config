@@ -1,5 +1,5 @@
 {
-  "ashen.nvim": { "branch": "main", "commit": "638fbfe0845068cd49a7d6e0c9c1a34e91f899cd" },
+  "ashen.nvim": { "branch": "main", "commit": "2b1db7a6e3b8ad3b550d7761fea3e19990b793c3" },
   "blink.cmp": { "branch": "main", "commit": "9bcb14b43852a6f2bfd5ac9ef29cb5cf09b1b39b" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gruber-darker.nvim": { "branch": "main", "commit": "a2dda61d9c1225e16951a51d6b89795b0ac35cd6" },

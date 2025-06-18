@@ -16,9 +16,8 @@
 			b550m = nixpkgs.lib.nixosSystem {
 				inherit system;
 				modules = [
-					./basic_config.nix
-					home-manager.nixosModules.home-manager
-				];
+					./devices/b550m/b550m.nix
+				] ++ import ./users/all.nix ;
 				specialArgs = {
 					inherit home-manager;
 				};
