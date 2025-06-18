@@ -2,6 +2,12 @@
 {
 	home.stateVersion = "25.05";
 	programs.neovim.enable = true;
+
+	home.file.".config/hypr/" = {
+		source = ./dotfiles/hyprland;
+		recursive = true;
+	};
+
 	programs.git = {
 		enable = true;
 		userName = "DaHL";
@@ -13,6 +19,7 @@
 	};
 
 	home.packages = with pkgs; [
+		kitty
 		lua-language-server
 		nil
 		neofetch
