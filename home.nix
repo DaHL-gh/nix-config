@@ -3,9 +3,17 @@
 	home.stateVersion = "25.05";
 	programs.neovim.enable = true;
 
-	home.file.".config/hypr/" = {
-		source = ./dotfiles/hyprland;
-		recursive = true;
+	home.file = {
+		".config/hypr/" = {
+			source = ./dotfiles/hyprland;
+			recursive = true;
+		};
+
+		".config/nvim/init.lua".source = ./dotfiles/neovim/init.lua;
+		".config/nvim/lua" = {
+			source = ./dotfiles/neovim/lua;
+			recursive = true;
+		};
 	};
 
 	programs.git = {
