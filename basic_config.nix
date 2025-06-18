@@ -1,11 +1,13 @@
 { config, lib, pkgs, home-manager, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware.nix
-      home-manager.nixosModules.home-manager
-    ];
+  system.stateVersion = "24.11";
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  imports = [ 
+  	home-manager.nixosModules.home-manager 
+  ];
 
   ##### NETWORKING
   networking.networkmanager.enable = true;
@@ -44,19 +46,10 @@
 
   networking.hostName = "dahl-b550m";
   time.timeZone = "Asia/Yekaterinburg";
-  users.users.dahl = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.fish;
-    packages = with pkgs; [
-    ];
-  };
 
   home-manager = {
 	useGlobalPkgs = true;
 	useUserPackages = true;
-
-	users.dahl = import ./home.nix;
   };
 
   environment.variables = {
@@ -78,34 +71,5 @@
     hiddify-app
     wl-clipboard
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  services.udev.extraRules = ''
-  # Disable wakeup for PCI device 0000:00:01.1
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{bus}=="pci", ATTR{address}=="0000:00:01.1", ATTR{power/wakeup}="disabled"
-  '';
-
-  # move somewhere else
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  ## DO NOT CHANGE
-  system.stateVersion = "24.11";
 }
 
