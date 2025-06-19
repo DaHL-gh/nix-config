@@ -22,6 +22,16 @@
 					inherit home-manager;
 				};
 			};
+
+			latitude = nixpkgs.lib.nixosSystem {
+				inherit system;
+				modules = [
+					./devices/latitude/latitude.nix
+				] ++ import ./users/all.nix ;
+				specialArgs = {
+					inherit home-manager;
+				};
+			};
 		};
 	};
 }
