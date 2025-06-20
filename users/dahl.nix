@@ -14,15 +14,18 @@
 	programs.neovim.enable = true;
 
 	home.file = {
+		# ".config/hypr/" = {
+			# source = ./../dotfiles/hyprland;
+			# recursive = true;
+		# };
+
 		".config/hypr/" = {
-			source = ./../dotfiles/hyprland;
+			source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/hyprland";
 			recursive = true;
 		};
 
-		".config/nvim/init.lua".source = ./../dotfiles/neovim/init.lua;
-		".config/nvim/lazy-lock.json".source = ./../dotfiles/neovim/lazy-lock.json;
-		".config/nvim/lua" = {
-			source = ./../dotfiles/neovim/lua;
+		".config/nvim/" = {
+			source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/neovim";
 			recursive = true;
 		};
 	};
