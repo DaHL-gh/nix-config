@@ -14,11 +14,6 @@
 	programs.neovim.enable = true;
 
 	home.file = {
-		# ".config/hypr/" = {
-			# source = ./../dotfiles/hyprland;
-			# recursive = true;
-		# };
-
 		".config/hypr/" = {
 			source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/hyprland";
 			recursive = true;
