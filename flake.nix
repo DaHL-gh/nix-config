@@ -10,28 +10,20 @@
 	outputs = { self, nixpkgs, home-manager, ... }: 
 	let
 		system = "x86_64-linux";
+		makeSystem = { deviceName }:
+			nixpkgs.lib.nixosSystem {
+				inherit system;
+				modules = [ 
+					./configuration.nix 
+					./users/dahl.nix
+				];
+				specialArgs = { inherit home-manager; inherit deviceName; };
+			};
 	in 
 	{
 		nixosConfigurations = {
-			b550m = nixpkgs.lib.nixosSystem {
-				inherit system;
-				modules = [
-					./devices/b550m/b550m.nix
-				] ++ import ./users/all.nix ;
-				specialArgs = {
-					inherit home-manager;
-				};
-			};
-
-			latitude = nixpkgs.lib.nixosSystem {
-				inherit system;
-				modules = [
-					./devices/latitude/latitude.nix
-				] ++ import ./users/all.nix ;
-				specialArgs = {
-					inherit home-manager;
-				};
-			};
+			b550m = makeSystem { deviceName = "b550m"; };
+			latitude = makeSystem { deviceName = "latitude"; };
 		};
 	};
 }

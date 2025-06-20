@@ -1,9 +1,11 @@
-{ config, lib, pkgs, home-manager, ... }:
+{ config, lib, pkgs, home-manager, deviceName, ... }:
 
 {
 	imports = [ 
 		home-manager.nixosModules.home-manager 
+		./hardware/${deviceName}.nix
 	];
+	networking.hostName = deviceName;
 
 	system.stateVersion = "24.11";
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -53,11 +55,11 @@
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
-	clang
-	spotify
-	telegram-desktop
-	hiddify-app
-	wl-clipboard
+		clang
+		spotify
+		telegram-desktop
+		hiddify-app
+		wl-clipboard
 	];
 }
 
