@@ -1,11 +1,6 @@
-{ config, lib, pkgs, home-manager, deviceName, ... }:
-
+{ config, pkgs, ... }:
 {
-	imports = [ 
-		home-manager.nixosModules.home-manager 
-		./hardware/${deviceName}.nix
-	];
-	networking.hostName = deviceName;
+	networking.hostName = config.deviceName;
 
 	system.stateVersion = "24.11";
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -38,6 +33,7 @@
 	home-manager = {
 		useGlobalPkgs = true;
 		useUserPackages = true;
+
 	};
 
 	# todo: move to user env
@@ -45,24 +41,12 @@
 		EDITOR = "nvim";
 	};
 
-	# todo: sort and move more to userspace
 	##### PROGRAMS #####
 	nixpkgs.config.allowUnfree = true; 
-	programs.firefox.enable = true;
-	programs.hyprland.enable = true;
+
 	programs.fish.enable = true;
+	programs.hyprland.enable = true;
 
-	# List packages installed in system profile. To search, run:
-	# $ nix search wget
-	environment.systemPackages = with pkgs; [
-		hyprsome
-
-		playerctl
-		clang
-		spotify
-		telegram-desktop
-		hiddify-app
-		wl-clipboard
-	];
+	environment.systemPackages = with pkgs; [];
 }
 

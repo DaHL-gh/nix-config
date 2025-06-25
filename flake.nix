@@ -10,14 +10,14 @@
 	outputs = { self, nixpkgs, home-manager, ... }: 
 	let
 		system = "x86_64-linux";
+
 		makeSystem = { deviceName }:
 			nixpkgs.lib.nixosSystem {
 				inherit system;
 				modules = [ 
-					./configuration.nix 
-					./users/dahl.nix
+					./configurations/${deviceName}/${deviceName}.nix
+					home-manager.nixosModules.home-manager 
 				];
-				specialArgs = { inherit home-manager; inherit deviceName; };
 			};
 	in 
 	{
