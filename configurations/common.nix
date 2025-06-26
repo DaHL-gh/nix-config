@@ -36,11 +36,6 @@
 
 	};
 
-	# todo: move to user env
-	environment.variables = {
-		EDITOR = "nvim";
-	};
-
 	##### PROGRAMS #####
 	nixpkgs.config.allowUnfree = true; 
 
