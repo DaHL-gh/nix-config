@@ -2,6 +2,8 @@
 {
 	home.packages = with pkgs; [ 
 		clang
+		ripgrep
+
 		lua-language-server 
 		nil
 	];
