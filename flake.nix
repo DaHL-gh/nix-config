@@ -15,7 +15,7 @@
 			nixpkgs.lib.nixosSystem {
 				inherit system;
 				modules = [ 
-					./configurations/${deviceName}/${deviceName}.nix
+					./configurations/${deviceName}/default.nix
 					home-manager.nixosModules.home-manager 
 				];
 			};
