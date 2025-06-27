@@ -19,11 +19,23 @@
 					home-manager.nixosModules.home-manager 
 				];
 			};
+
+		makeHome = username: deviceName: home-manager.lib.homeManagerConfiguration {
+			pkgs = nixpkgs.legacyPackages.${system};
+			modules = [ 
+				./home/${username}.nix 
+				({ config, ... }:{ config.deviceName = deviceName; })
+			];
+		};
 	in 
 	{
 		nixosConfigurations = {
 			b550m = makeSystem { deviceName = "b550m"; };
 			latitude = makeSystem { deviceName = "latitude"; };
+		};
+
+		homeConfigurations = {
+			"dahl@latitude" = makeHome "dahl" "latitude";
 		};
 	};
 }
