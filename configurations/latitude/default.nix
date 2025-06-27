@@ -3,8 +3,8 @@ let deviceName = "latitude";
 in {
 	imports = [
 		./hardware.nix
-		./../common.nix
-		./../../users/dahl.nix
+		../common.nix
+		../../users/dahl.nix
 	];
 
 	options.deviceName = lib.mkOption {
