@@ -13,7 +13,7 @@
 		fsType = "ext4";
 	};
 
-	fileSystems."/boot" = { 
+	fileSystems."/boot/efi" = { 
 		device = "/dev/sda1";
 		fsType = "vfat";
 	};
@@ -21,11 +21,13 @@
 	fileSystems."/mnt/arch" = { 
 		device = "/dev/sda5";
 		fsType = "ext4";
+		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/windows" = { 
 		device = "/dev/sda3";
 		fsType = "ntfs";
+		options = [ "defaults" "nofail" ];
 	};
 
 	swapDevices = [ ];
