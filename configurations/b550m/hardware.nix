@@ -21,26 +21,31 @@
 	fileSystems."/mnt/windows" = { 
 		device = "/dev/nvme0n1p3";
 		fsType = "ntfs";
+		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/nvme" = { 
 		device = "/dev/nvme0n1p5";
 		fsType = "ntfs";
+		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/arch" = { 
 		device = "/dev/nvme0n1p6";
 		fsType = "ext4";
+		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/ssd" = { 
-		device = "/dev/sdb3";
+		device = "/dev/sda3";
 		fsType = "ntfs";
+		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/hdd" = { 
-		device = "/dev/sda1";
+		device = "/dev/sdb1";
 		fsType = "ntfs";
+		options = [ "defaults" "nofail" ];
 	};
 
 	swapDevices = [ ];
