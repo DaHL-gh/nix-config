@@ -29,6 +29,8 @@
 		pulse.enable = true;
 	};
 
+	services.displayManager.ly.enable = true;
+
 	##### HOME MANAGER #####
 	home-manager = {
 		useGlobalPkgs = true;
