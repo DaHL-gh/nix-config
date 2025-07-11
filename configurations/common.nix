@@ -14,13 +14,15 @@
 
 	##### BOOT #####
 	boot.loader = {
-		efi.canTouchEfiVariables = false;
 		grub = {
 			enable = true;
 			efiSupport = true;
 			devices = [ "nodev" ]; # efi only
 		};
-		efi.efiSysMountPoint = "/boot/efi"; 
+		efi = {
+			canTouchEfiVariables = true;
+			efiSysMountPoint = "/boot/efi"; 
+		};
 	};
 
 	##### AUDIO #####
