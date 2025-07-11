@@ -35,6 +35,8 @@
 	# display manager
 	services.displayManager.ly.enable = true;
 
+	virtualisation.docker.enable = true;
+
 	##### HOME MANAGER #####
 	home-manager = {
 		useGlobalPkgs = true;
