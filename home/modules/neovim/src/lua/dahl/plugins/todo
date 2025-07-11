@@ -1,0 +1,12 @@
+fix reactive colors
+
+configure lualine
+
+configure git colors
+configure git keybindings
+
+configure chunks highlights
+
+configure vim-illuminate
+
+check what to configure in noice
