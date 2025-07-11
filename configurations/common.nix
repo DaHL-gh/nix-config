@@ -25,12 +25,14 @@
 		};
 	};
 
-	##### AUDIO #####
+	##### SERVICES #####
+	# audio
 	services.pipewire = {
 		enable = true;
 		pulse.enable = true;
 	};
 
+	# display manager
 	services.displayManager.ly.enable = true;
 
 	##### HOME MANAGER #####
