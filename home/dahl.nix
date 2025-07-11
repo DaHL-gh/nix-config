@@ -6,7 +6,7 @@
 	];
 
 	options = {
-		deviceName = lib.mkOption {
+		configurationName = lib.mkOption {
 			type = lib.types.str;
 		};
 	};

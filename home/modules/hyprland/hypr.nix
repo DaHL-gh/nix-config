@@ -10,6 +10,6 @@ in {
 
 	home.file = {
 		".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/hyprland.conf";
-		".config/hypr/monitors.conf".source = config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/monitors/${config.deviceName}.conf";
+		".config/hypr/monitors.conf".source = config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/monitors/${config.configurationName}.conf";
 	};
 }
