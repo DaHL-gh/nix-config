@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
-let deviceName = "latitude";
+let configurationName = "latitude";
 in {
 	imports = [
 		./hardware.nix
@@ -12,7 +12,7 @@ in {
 	};
 
 	config = {
-		inherit deviceName;
-		home-manager.users.dahl.deviceName = deviceName;
+		deviceName = "nix-book";
+		home-manager.users.dahl.configurationName = configurationName;
 	};
 }
