@@ -35,6 +35,14 @@
 	# display manager
 	services.displayManager.ly.enable = true;
 
+	# ssh
+	services.openssh = {
+		enable = true;
+		settings = {
+			GatewayPorts = "yes";
+		};
+	};
+
 	virtualisation.docker.enable = true;
 
 	##### HOME MANAGER #####
