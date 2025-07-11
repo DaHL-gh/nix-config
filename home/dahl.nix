@@ -41,7 +41,7 @@
 			bat
 			tree
 
-			uv
+			nix-search-cli
 
 			# Desktop apps
 			spotify
