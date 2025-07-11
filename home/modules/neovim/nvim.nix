@@ -4,8 +4,16 @@
 		clang
 		ripgrep
 
+		# lua
 		lua-language-server 
-		nil
+		# nix
+		nil 
+		#python
+		basedpyright
+		ruff
+		#docker
+		docker-language-server 
+		vscode-langservers-extracted
 	];
 
 	programs.neovim.enable = true;

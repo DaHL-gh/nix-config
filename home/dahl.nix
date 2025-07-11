@@ -41,6 +41,8 @@
 			bat
 			tree
 
+			uv
+
 			# Desktop apps
 			spotify
 			telegram-desktop
