@@ -3,6 +3,7 @@
 	imports = [
 		./modules/neovim/nvim.nix
 		./modules/hyprland/hypr.nix
+		./modules/fish/fish.nix
 	];
 
 	options = {
@@ -17,7 +18,6 @@
 		home.homeDirectory = "/home/dahl";
 		targets.genericLinux.enable = true;
 
-		programs.fish.enable = true;
 		programs.firefox.enable = true;
 
 		programs.git = {
@@ -28,10 +28,6 @@
 			extraConfig = {
 				init.defaultBranch = "main";
 			};
-		};
-
-		home.sessionVariables = {
-			EDITOR = "nvim";
 		};
 
 		home.packages = with pkgs; [
