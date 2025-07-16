@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let hyprModuleDir = "${config.home.homeDirectory}/nixos-config/home/modules/hyprland";
+let hyprModuleDir = "${config.home.homeDirectory}/nix-config/home/modules/hyprland";
 in {
 	home.packages = with pkgs; [
 		kitty
