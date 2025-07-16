@@ -53,6 +53,30 @@
 		};
 	};
 
+	services.keyd = {
+		enable = true;
+		keyboards.default = {
+			settings = {
+				main = {
+					capslock = "layer(control)"; 
+				};
+				altgr = { # right alt
+					h = "left";
+					j = "down";
+					k = "up";
+					l = "right";
+					u = "pageup";
+					d = "pagedown";
+					b = "home";
+					f = "end";
+				};
+				control = { # control
+					"[" = "esc";
+				};
+			};
+		};
+	};
+
 	virtualisation.docker.enable = true;
 
 	##### HOME MANAGER #####
