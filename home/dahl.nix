@@ -40,9 +40,12 @@
 			nix-search-cli
 
 			# Desktop apps
+			pwvucontrol
+			blueman
 			spotify
 			telegram-desktop
 			hiddify-app
+			mission-center
 		];
 	};
 }
