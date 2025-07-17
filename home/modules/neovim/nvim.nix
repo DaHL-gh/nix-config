@@ -13,7 +13,9 @@
 		ruff
 		#docker
 		docker-language-server 
+		#web
 		vscode-langservers-extracted
+		tailwindcss-language-server
 	];
 
 	programs.neovim.enable = true;
