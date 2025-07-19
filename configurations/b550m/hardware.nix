@@ -14,36 +14,36 @@
 	};
 
 	fileSystems."/boot/efi" = { 
-		device = "/dev/nvme0n1p1";
+		device = "/dev/disk/by-uuid/CE00-4ED0";
 		fsType = "vfat";
 	};
 
 	fileSystems."/mnt/windows" = { 
-		device = "/dev/nvme0n1p3";
+		device = "/dev/disk/by-uuid/C022D7B122D7AAA4";
 		fsType = "ntfs";
 		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/nvme" = { 
-		device = "/dev/nvme0n1p5";
+		device = "/dev/disk/by-uuid/08CAC260CAC249A0";
 		fsType = "ntfs";
 		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/arch" = { 
-		device = "/dev/nvme0n1p6";
+		device = "/dev/disk/by-uuid/e1344cb1-760a-4886-af76-fc281e3a726e";
 		fsType = "ext4";
 		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/ssd" = { 
-		device = "/dev/sda3";
+		device = "/dev/disk/by-uuid/AE3E3B8A3E3B4B1B";
 		fsType = "ntfs";
 		options = [ "defaults" "nofail" ];
 	};
 
 	fileSystems."/mnt/hdd" = { 
-		device = "/dev/sdb1";
+		device = "/dev/disk/by-uuid/C252CF0B52CF0361";
 		fsType = "ntfs";
 		options = [ "defaults" "nofail" ];
 	};
