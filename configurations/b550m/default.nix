@@ -12,7 +12,7 @@ in {
 	};
 
 	config = {
-		deviceName = "b550m";
+		deviceName = "nix-machine";
 		home-manager.users.dahl.configurationName = configurationName;
 	};
 }
