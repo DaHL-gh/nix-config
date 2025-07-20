@@ -5,9 +5,13 @@
 
 		home-manager.url = "github:nix-community/home-manager/release-25.05";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+		caelestia-shell = {
+			url = "github:DaHL-gh/caelestia-shell";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }: 
+	outputs = { self, nixpkgs, ... }@inputs: 
 	let
 		system = "x86_64-linux";
 
@@ -15,12 +19,13 @@
 			nixpkgs.lib.nixosSystem {
 				inherit system;
 				modules = [ 
+				    { _module.args = { inherit inputs; }; }
 					./configurations/${deviceName}/default.nix
-					home-manager.nixosModules.home-manager 
+					inputs.home-manager.nixosModules.home-manager 
 				];
 			};
 
-		makeHome = username: deviceName: home-manager.lib.homeManagerConfiguration {
+		makeHome = username: deviceName: inputs.home-manager.lib.homeManagerConfiguration {
 			pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
 			modules = [ 
 				./home/${username}.nix 

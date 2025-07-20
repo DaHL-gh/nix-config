@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
 
 	config = {
@@ -6,7 +6,9 @@
 			isNormalUser = true;
 			extraGroups = [ "wheel" "docker" "networkmanager" ]; # Enable ‘sudo’ for the user.
 			shell = pkgs.fish;
-			packages = with pkgs; [ ];
+			packages = [ 
+				inputs.caelestia-shell.packages.${pkgs.system}.default
+			];
 		};
 
 		home-manager.users.dahl = import ./../home/dahl.nix;
