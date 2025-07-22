@@ -28,7 +28,7 @@
 		makeHome = username: deviceName: inputs.home-manager.lib.homeManagerConfiguration {
 			pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
 			modules = [ 
-				./home/${username}.nix 
+				./home/dahl 
 				({ config, ... }:{ config.configurationName = deviceName; })
 			];
 		};
