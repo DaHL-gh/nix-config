@@ -29,7 +29,7 @@
 			pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
 			modules = [ 
 				./home/${username}.nix 
-				({ config, ... }:{ config.deviceName = deviceName; })
+				({ config, ... }:{ config.configurationName = deviceName; })
 			];
 		};
 	in 
@@ -39,8 +39,13 @@
 			latitude = makeSystem { deviceName = "latitude"; };
 		};
 
-		homeConfigurations = {
-			"dahl@latitude" = makeHome "dahl" "latitude";
-		};
+		homeConfigurations = builtins.listToAttrs (
+			builtins.concatMap (user:
+				builtins.map (device: {
+					name = "${user}@${device}";
+					value = makeHome user device;
+				}) [ "server" "b550m" "latitude" ]
+			) [ "dahl" ]
+		);
 	};
 }

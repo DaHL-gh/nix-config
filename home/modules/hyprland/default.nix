@@ -6,6 +6,10 @@ in {
 		hyprsome
 		playerctl
 		wl-clipboard
+
+		hyprshot
+
+		pwvucontrol
 	];
 
 	home.file = {
