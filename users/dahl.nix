@@ -11,6 +11,6 @@
 			];
 		};
 
-		home-manager.users.dahl = import ./../home/dahl.nix;
+		home-manager.users.dahl = import ./../home/dahl;
 	};
 }
