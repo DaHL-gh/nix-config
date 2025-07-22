@@ -20,6 +20,10 @@
 
 	programs.neovim.enable = true;
 
+	home.sessionVariables = { 
+		EDITOR = "nvim";
+	};
+
 	home.file.".config/nvim/" = {
 		source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/modules/neovim/src";
 		recursive = true;
