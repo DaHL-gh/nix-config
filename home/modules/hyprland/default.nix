@@ -9,6 +9,8 @@ in {
 
 		hyprshot
 
+		networkmanagerapplet
+		blueman
 		pwvucontrol
 	];
 
