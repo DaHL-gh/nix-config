@@ -35,48 +35,51 @@
 
 	##### SERVICES #####
 	# audio
-	services.pipewire = {
-		enable = true;
-		pulse.enable = true;
-		alsa.enable = true;
-		jack.enable = true;
-	};
-
-	# display manager
-	services.displayManager.ly.enable = true;
-
-	# ssh
-	services.openssh = {
-		enable = true;
-		settings = {
-			GatewayPorts = "yes";
+	services = {
+		pipewire = {
+			enable = true;
+			pulse.enable = true;
+			alsa.enable = true;
+			jack.enable = true;
 		};
-	};
 
-	services.keyd = {
-		enable = true;
-		keyboards.default = {
+		upower = {
+			enable = true;
+		};
+
+		displayManager.ly.enable = true;
+
+		openssh = {
+			enable = true;
 			settings = {
-				main = {
-					capslock = "layer(control)"; 
-				};
-				altgr = { # right alt
-					h = "left";
-					j = "down";
-					k = "up";
-					l = "right";
-					u = "pageup";
-					d = "pagedown";
-					b = "home";
-					f = "end";
-				};
-				control = { # control
-					"[" = "esc";
+				GatewayPorts = "yes";
+			};
+		};
+
+		keyd = {
+			enable = true;
+			keyboards.default = {
+				settings = {
+					main = {
+						capslock = "layer(control)"; 
+					};
+					altgr = { # right alt
+						h = "left";
+						j = "down";
+						k = "up";
+						l = "right";
+						u = "pageup";
+						d = "pagedown";
+						b = "home";
+						f = "end";
+					};
+					control = { # control
+						"[" = "esc";
+					};
 				};
 			};
 		};
 	};
-
 	virtualisation.docker.enable = true;
 
 	##### HOME MANAGER #####
