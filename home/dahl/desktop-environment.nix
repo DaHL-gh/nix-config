@@ -18,6 +18,7 @@ in {
 			btop
 			bat
 			tree
+			tmux
 
 			nix-search-cli
 
