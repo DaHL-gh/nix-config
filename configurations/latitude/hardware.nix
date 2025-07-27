@@ -9,6 +9,10 @@ let
 in {
 	imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+	environment.systemPackages = with pkgs; [
+		mergerfs
+	];
+
 	boot = {
 		initrd = {
 			availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -47,6 +51,12 @@ in {
 			options = ntfs_mounting_params;
 		};
 
+		"/home/dahl/projects" = {
+			device = "/home/dahl/Programing:/mnt/arch/home/dahl/Programing/:/mnt/windows/Programming/";
+			fsType = "fuse.mergerfs";
+			options = ["allow_other" "nofail" "category.create=mfs"]; 
+			# auto create where the most free space
+		};
 	};
 
 	swapDevices = [{
