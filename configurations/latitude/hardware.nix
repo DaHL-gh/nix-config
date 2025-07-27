@@ -1,5 +1,12 @@
 { config, lib, pkgs, modulesPath, ... }:
-{
+let
+	basic_mounting_params = ["defaults" "nofail"];
+	fs_mask = ["dmask=027" "fmask=137"];
+	user_mask = ["uid=1000" "gid=1000"];
+
+	ext4_mounting_params = basic_mounting_params;
+	ntfs_mounting_params = basic_mounting_params ++ fs_mask ++ user_mask;
+in {
 	imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
 	boot = {
@@ -17,26 +24,29 @@
 		];
 	};
 
-	fileSystems."/" = { 
-		device = "/dev/sda7";
-		fsType = "ext4";
-	};
+	fileSystems = {
+		"/" = { 
+			device = "/dev/sda7";
+			fsType = "ext4";
+		};
 
-	fileSystems."/boot/efi" = { 
-		device = "/dev/sda1";
-		fsType = "vfat";
-	};
+		"/boot/efi" = { 
+			device = "/dev/sda1";
+			fsType = "vfat";
+		};
 
-	fileSystems."/mnt/arch" = { 
-		device = "/dev/sda5";
-		fsType = "ext4";
-		options = [ "defaults" "nofail" ];
-	};
+		"/mnt/arch" = { 
+			device = "/dev/sda5";
+			fsType = "ext4";
+			options = ext4_mounting_params;
+		};
 
-	fileSystems."/mnt/windows" = { 
-		device = "/dev/sda3";
-		fsType = "ntfs";
-		options = [ "defaults" "nofail" ];
+		"/mnt/windows" = { 
+			device = "/dev/sda3";
+			fsType = "ntfs";
+			options = ntfs_mounting_params;
+		};
+
 	};
 
 	swapDevices = [{
