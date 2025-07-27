@@ -27,6 +27,7 @@ in {
 			telegram-desktop
 			hiddify-app
 			mission-center
+			obsidian
 		];
 	};
 }
