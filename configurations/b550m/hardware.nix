@@ -10,6 +10,10 @@ let
 in {
 	imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+	environment.systemPackages = with pkgs; [
+		mergerfs
+	];
+
 	boot = {
 		initrd = {
 			availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
@@ -71,10 +75,12 @@ in {
 			options = ntfs_mounting_params;
 		};
 
-	fileSystems."/mnt/hdd" = { 
-		device = "/dev/disk/by-uuid/C252CF0B52CF0361";
-		fsType = "ntfs";
-		options = [ "defaults" "nofail" ];
+		"/home/dahl/projects" = {
+			fsType = "fuse.mergerfs";
+			device = "/mnt/arch/home/DaHL/Programming:/mnt/hdd/Programming:/home/dahl/Documents/Programming/";
+			options = ["allow_other" "category.create=mfs"];
+			# options = ["cache.files=partial" "dropcacheonclose=true"];
+		};
 	};
 
 	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
