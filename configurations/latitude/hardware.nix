@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
 	basic_mounting_params = ["defaults" "nofail"];
-	fs_mask = ["dmask=027" "fmask=137"];
+	fs_mask = ["dmask=027" "fmask=027"];
 	user_mask = ["uid=1000" "gid=1000"];
 
 	ext4_mounting_params = basic_mounting_params;
