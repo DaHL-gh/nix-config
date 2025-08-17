@@ -1,32 +1,36 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
-	home.packages = with pkgs; [ 
-		clang
-		ripgrep
+	options.localModules.neovim.enable = lib.mkEnableOption "Neovim and all it deps";
 
-		# lua
-		lua-language-server 
-		# nix
-		nil 
-		#python
-		basedpyright
-		ruff
-		#docker
-		docker-language-server 
-		#web
-		vscode-langservers-extracted
-		tailwindcss-language-server
-	];
+	config = lib.mkIf config.localModules.neovim.enable {
+		home.packages = with pkgs; [ 
+			clang
+			ripgrep
 
-	programs.neovim.enable = true;
+			# lua
+			lua-language-server 
+			# nix
+			nil 
+			#python
+			basedpyright
+			ruff
+			#docker
+			docker-language-server 
+			#web
+			vscode-langservers-extracted
+			tailwindcss-language-server
+		];
 
-	home.sessionVariables = { 
-		EDITOR = "nvim";
-	};
+		programs.neovim.enable = true;
 
-	home.file.".config/nvim/" = {
-		source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/modules/neovim/src";
-		recursive = true;
+		home.sessionVariables = { 
+			EDITOR = "nvim";
+		};
+
+		home.file.".config/nvim/" = {
+			source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/modules/neovim/src";
+			recursive = true;
+		};
 	};
 }
 

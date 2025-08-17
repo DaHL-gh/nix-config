@@ -2,13 +2,13 @@
 let
 	ifServer = config.configurationName == "server";
 in {
-	imports = [ 
-		./../modules/fish
-		./../modules/neovim
-		./../modules/git
-	];
-
 	config = lib.mkIf ifServer {
+		localModules = {
+			fish.enable = true;
+			git.enable = true;
+			neovim.enable = true;
+		};
+
 		home.packages = with pkgs; [
 			fastfetch		
 			btop

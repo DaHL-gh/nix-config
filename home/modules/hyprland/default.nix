@@ -1,22 +1,27 @@
-{ config, pkgs, ... }:
-let hyprModuleDir = "${config.home.homeDirectory}/nix-config/home/modules/hyprland";
+{ config, lib, pkgs, ... }:
+let 
+	hyprModuleDir = "${config.home.homeDirectory}/nix-config/home/modules/hyprland";
 in {
-	home.packages = with pkgs; [
-		kitty
-		hyprsome
-		playerctl
-		wl-clipboard
-		xdg-desktop-portal-hyprland
+	options.localModules.hyprland.enable = lib.mkEnableOption "Enable configuration linking and programs heavily related to Hyprland WM";
 
-		hyprshot
+	config = lib.mkIf config.localModules.hyprland.enable {
+		home.packages = with pkgs; [
+			kitty
+			hyprsome
+			playerctl
+			wl-clipboard
+			xdg-desktop-portal-hyprland
 
-		networkmanagerapplet
-		blueman
-		pwvucontrol
-	];
+			hyprshot
 
-	home.file = {
-		".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/hyprland.conf";
-		".config/hypr/monitors.conf".source = config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/monitors/${config.configurationName}.conf";
+			networkmanagerapplet
+			blueman
+			pwvucontrol
+		];
+
+		home.file = {
+			".config/hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/hyprland.conf";
+			".config/hypr/monitors.conf".source = config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/monitors/${config.configurationName}.conf";
+		};
 	};
 }

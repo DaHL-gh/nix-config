@@ -3,6 +3,12 @@
 	imports = [
 		./server.nix
 		./desktop-environment.nix
+
+		./../modules/firefox
+		./../modules/fish
+		./../modules/git
+		./../modules/neovim
+		./../modules/hyprland
 	];
 
 	options = {
