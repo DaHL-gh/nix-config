@@ -3,15 +3,15 @@ let
 	isDesktop = config.configurationName == "latitude" || 
 		config.configurationName == "b550m";
 in {
-	imports = [
-		./../modules/firefox
-		./../modules/fish
-		./../modules/neovim
-		./../modules/hyprland
-		./../modules/git
-	];
-
 	config = lib.mkIf isDesktop {
+		localModules = {
+			firefox.enable = true;
+			fish.enable = true;
+			git.enable = true;
+			hyprland.enable = true;
+			neovim.enable = true;
+		};
+
 		home.packages = with pkgs; [
 			# Terminal utils
 			fastfetch		

@@ -1,6 +1,8 @@
 { config, pkgs, lib, ...}:
 {
-	config = {
+	options.localModules.git.enable = lib.mkEnableOption "Just git n else";
+
+	config = lib.mkIf config.localModules.git.enable {
 		programs.git = {
 			enable = true;
 			userName = "DaHL";
