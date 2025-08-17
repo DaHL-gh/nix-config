@@ -15,7 +15,7 @@ in {
 		home.packages = with pkgs; [
 			# Terminal utils
 			fastfetch		
-			btop
+			btop-rocm
 			bat
 			tree
 			tmux
@@ -28,6 +28,9 @@ in {
 			hiddify-app
 			mission-center
 			obsidian
+			libreoffice-qt6
+			gimp
+			vesktop
 		];
 	};
 }
