@@ -6,6 +6,7 @@ in {
 		hyprsome
 		playerctl
 		wl-clipboard
+		xdg-desktop-portal-hyprland
 
 		hyprshot
 
