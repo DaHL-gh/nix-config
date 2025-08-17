@@ -7,7 +7,7 @@
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
 		caelestia-shell = {
-			url = "github:DaHL-gh/caelestia-shell";
+			url = "github:caelestia-dots/shell";
 		};
 	};
 
