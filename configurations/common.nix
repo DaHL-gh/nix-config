@@ -43,6 +43,10 @@
 			jack.enable = true;
 		};
 
+		logind = {
+			lidSwitch = "ignore";
+		};
+
 		upower = {
 			enable = true;
 		};

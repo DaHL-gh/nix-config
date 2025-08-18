@@ -10,6 +10,7 @@ in {
 			hyprsome
 			playerctl
 			wl-clipboard
+			brightnessctl
 			xdg-desktop-portal-hyprland
 
 			hyprshot
