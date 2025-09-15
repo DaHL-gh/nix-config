@@ -7,6 +7,7 @@ in {
 			fish.enable = true;
 			git.enable = true;
 			neovim.enable = true;
+			tmux.enable = true;
 		};
 
 		home.packages = with pkgs; [
@@ -14,7 +15,6 @@ in {
 			btop
 			bat
 			tree
-			tmux
 
 			nix-search-cli
 		];

@@ -10,6 +10,7 @@ in {
 			git.enable = true;
 			hyprland.enable = true;
 			neovim.enable = true;
+			tmux.enable = true;
 		};
 
 		home.packages = with pkgs; [
@@ -18,7 +19,8 @@ in {
 			btop-rocm
 			bat
 			tree
-			tmux
+
+			gemini-cli
 
 			nix-search-cli
 
