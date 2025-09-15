@@ -9,6 +9,7 @@
 		./../modules/git
 		./../modules/neovim
 		./../modules/hyprland
+		./../modules/tmux
 	];
 
 	options = {
