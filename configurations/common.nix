@@ -97,6 +97,12 @@
 
 	programs.fish.enable = true;
 	programs.hyprland.enable = true;
+	programs.nix-ld = {
+		enable = true;
+		libraries = with pkgs; [
+			fuse
+		];
+	};
 
 	environment.systemPackages = with pkgs; [];
 }
