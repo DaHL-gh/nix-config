@@ -1,96 +1,92 @@
 { config, pkgs, lib, modulesPath, ... }:
 let
-	basic_mounting_params = ["defaults" "nofail"];
-	fs_mask = ["dmask=027" "fmask=027"];
-	user_mask = ["uid=1000" "gid=1000"];
+  basic_mounting_params = [ "defaults" "nofail" ];
+  fs_mask = [ "dmask=027" "fmask=027" ];
+  user_mask = [ "uid=1000" "gid=1000" ];
 
-
-	ext4_mounting_params = basic_mounting_params;
-	ntfs_mounting_params = basic_mounting_params ++ fs_mask ++ user_mask;
+  ext4_mounting_params = basic_mounting_params;
+  ntfs_mounting_params = basic_mounting_params ++ fs_mask ++ user_mask;
 in {
-	imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-	environment.systemPackages = with pkgs; [
-		mergerfs
-	];
+  environment.systemPackages = with pkgs; [ mergerfs ];
 
-	boot = {
-		initrd = {
-			availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-			kernelModules = [ ];
-		};
-		kernelModules = [ "kvm-amd" ];
-		extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules =
+        [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
 
-		resumeDevice = "/dev/nvme0n1p7";
-		kernelParams = [
-			"resume=/dev/sda7"
-			"resume_offset=24481792"
-		];
-	};
+    resumeDevice = "/dev/nvme0n1p7";
+    kernelParams = [ "resume=/dev/sda7" "resume_offset=24481792" ];
+  };
 
-	swapDevices = [{
-		device = "/swapfile";
-		size = 16384;
-	}];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 16384;
+  }];
 
-	fileSystems = {
-		"/" = { 
-			device = "/dev/disk/by-uuid/73fc163e-2810-4ffc-a977-4e9af4b0000e";
-			fsType = "ext4";
-		};
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/73fc163e-2810-4ffc-a977-4e9af4b0000e";
+      fsType = "ext4";
+    };
 
-		"/boot/efi" = { 
-			device = "/dev/disk/by-uuid/CE00-4ED0";
-			fsType = "vfat";
-		};
+    "/boot/efi" = {
+      device = "/dev/disk/by-uuid/CE00-4ED0";
+      fsType = "vfat";
+    };
 
-		"/mnt/windows" = { 
-			device = "/dev/disk/by-uuid/C022D7B122D7AAA4";
-			fsType = "ntfs";
-			options = ntfs_mounting_params;
-		};
+    "/mnt/windows" = {
+      device = "/dev/disk/by-uuid/C022D7B122D7AAA4";
+      fsType = "ntfs";
+      options = ntfs_mounting_params;
+    };
 
-		"/mnt/nvme" = { 
-			device = "/dev/disk/by-uuid/08CAC260CAC249A0";
-			fsType = "ntfs";
-			options = ntfs_mounting_params;
-		};
+    "/mnt/nvme" = {
+      device = "/dev/disk/by-uuid/08CAC260CAC249A0";
+      fsType = "ntfs";
+      options = ntfs_mounting_params;
+    };
 
-		"/mnt/arch" = { 
-			device = "/dev/disk/by-uuid/e1344cb1-760a-4886-af76-fc281e3a726e";
-			fsType = "ext4";
-			options = ext4_mounting_params;
-		};
+    "/mnt/arch" = {
+      device = "/dev/disk/by-uuid/e1344cb1-760a-4886-af76-fc281e3a726e";
+      fsType = "ext4";
+      options = ext4_mounting_params;
+    };
 
-		"/mnt/ssd" = { 
-			device = "/dev/disk/by-uuid/AE3E3B8A3E3B4B1B";
-			fsType = "ntfs";
-			options = ntfs_mounting_params;
-		};
+    "/mnt/ssd" = {
+      device = "/dev/disk/by-uuid/AE3E3B8A3E3B4B1B";
+      fsType = "ntfs";
+      options = ntfs_mounting_params;
+    };
 
-		"/mnt/hdd" = { 
-			device = "/dev/disk/by-uuid/C252CF0B52CF0361";
-			fsType = "ntfs";
-			options = ntfs_mounting_params;
-		};
-	};
+    "/mnt/hdd" = {
+      device = "/dev/disk/by-uuid/C252CF0B52CF0361";
+      fsType = "ntfs";
+      options = ntfs_mounting_params;
+    };
+  };
 
-	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-	# (the default) this is the recommended approach. When using systemd-networkd it's
-	# still possible to use this option, but it's recommended to use it in conjunction
-	# with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-	networking.useDHCP = lib.mkDefault true;
-	# networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
 
-	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-	hardware = {
-		cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware = {
+    cpu.amd.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-		amdgpu = {
-			opencl.enable = true;
-			# initrd.enable = true;
-			amdvlk.enable = true;
-		};
-	};
+    amdgpu = {
+      opencl.enable = true;
+      # initrd.enable = true;
+      amdvlk.enable = true;
+    };
+  };
 }

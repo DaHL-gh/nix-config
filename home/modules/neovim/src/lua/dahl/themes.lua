@@ -8,5 +8,5 @@ return {
 			toggle_style_key = "<leader>ts"
 		}
 	},
-	{"olimorris/onedarkpro.nvim"}
+	{ "olimorris/onedarkpro.nvim" }
 }

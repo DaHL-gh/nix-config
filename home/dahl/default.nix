@@ -1,28 +1,23 @@
-{ config, pkgs, lib, ... }:
-{
-	imports = [
-		./server.nix
-		./desktop-environment.nix
+{ config, pkgs, lib, ... }: {
+  imports = [
+    ./server.nix
+    ./desktop-environment.nix
 
-		./../modules/firefox
-		./../modules/fish
-		./../modules/git
-		./../modules/neovim
-		./../modules/hyprland
-		./../modules/tmux
-	];
+    ./../modules/firefox
+    ./../modules/fish
+    ./../modules/git
+    ./../modules/hyprland
+    ./../modules/neovim
+    ./../modules/tmux
+  ];
 
-	options = {
-		configurationName = lib.mkOption {
-			type = lib.types.str;
-		};
-	};
+  options = { configurationName = lib.mkOption { type = lib.types.str; }; };
 
-	config = {
-		home.stateVersion = "25.05";
-		home.username = "dahl";
-		home.homeDirectory = "/home/dahl";
-		targets.genericLinux.enable = true;
-	};
+  config = {
+    home.stateVersion = "25.05";
+    home.username = "dahl";
+    home.homeDirectory = "/home/dahl";
+    targets.genericLinux.enable = true;
+  };
 }
 
