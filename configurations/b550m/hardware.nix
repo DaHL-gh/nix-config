@@ -74,13 +74,6 @@ in {
 			fsType = "ntfs";
 			options = ntfs_mounting_params;
 		};
-
-		"/home/dahl/projects" = {
-			fsType = "fuse.mergerfs";
-			device = "/mnt/arch/home/DaHL/Programming:/mnt/hdd/Programming:/home/dahl/Documents/Programming/";
-			options = ["allow_other" "category.create=mfs"];
-			# options = ["cache.files=partial" "dropcacheonclose=true"];
-		};
 	};
 
 	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
