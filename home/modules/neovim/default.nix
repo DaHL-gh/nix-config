@@ -19,7 +19,8 @@
 			#web
 			vscode-langservers-extracted
 			tailwindcss-language-server
-		];
+      nixfmt
+    ];
 
 		programs.neovim.enable = true;
 
