@@ -11,12 +11,13 @@
       lua-language-server
       # nix
       nil
-      nixfmt
+      nixfmt-rfc-style
       #python
       basedpyright
       ruff
       #docker
       docker-language-server
+      docker-compose-language-service
       #web
       vscode-langservers-extracted
       tailwindcss-language-server
