@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   imports = [
     ./server.nix
     ./desktop-environment.nix
@@ -11,7 +17,9 @@
     ./../modules/tmux
   ];
 
-  options = { configurationName = lib.mkOption { type = lib.types.str; }; };
+  options = {
+    configurationName = lib.mkOption { type = lib.types.str; };
+  };
 
   config = {
     home.stateVersion = "25.05";
@@ -20,4 +28,3 @@
     targets.genericLinux.enable = true;
   };
 }
-
