@@ -29,6 +29,16 @@ local function map_cmd(mode, binding, command, opts)
 	vim.keymap.set(mode, binding, cmd_str, opts)
 end
 
+local function map_action(mode, binding, action, opts)
+	if opts then
+		opts = update_table(default_opts, opts)
+	else
+		opts = default_opts
+	end
+
+	vim.keymap.set(mode, binding, action, opts)
+end
+
 local function map(mode, binding, func, args, opts)
 	if opts then
 		opts = update_table(default_opts, opts)
@@ -46,8 +56,10 @@ end
 
 map_cmd("n", "<leader>o", { "update", "source" }, { desc = "update config?" })
 
-map_cmd({ "n", "v" }, "<leader>y", "\"+y", { desc = "buffer yoink" })
-map_cmd({ "n", "v" }, "<leader>d", "\"+d", { desc = "buffer yoink" })
+map_cmd({ "n", "v" }, "<C-q>", "q", { desc = "close window" })
+map_cmd({ "n", "v" }, "<leader>Q", "qa", { desc = "close all windows" })
+map_action({ "n", "v" }, "<leader>y", "\"+y", { desc = "buffer yoink" })
+map_action({ "n", "v" }, "<leader>d", "\"+d", { desc = "buffer yoink" })
 
 -- NeoTree
 map_cmd("n", "<leader><Tab>", "Neotree toggle", { desc = "neotree" })
@@ -68,9 +80,6 @@ map("n", "<leader>ci", vim.lsp.buf.incoming_calls, {}, { desc = "function calls"
 map("n", "<leader>co", vim.lsp.buf.outgoing_calls, {}, { desc = "in function calls" })
 map("n", "gt", vim.lsp.buf.type_definition, {}, { desc = "LSP type definition" })
 map("n", "<leader>ch", vim.lsp.buf.typehierarchy, {}, { desc = "type hierarchy" })
-
-map("n", "]d", vim.diagnostic.jump, { count = 1 }, { desc = "next diagnostic" })
-map("n", "[d", vim.diagnostic.jump, { count = -1 }, { desc = "prev diagnostic" })
 
 -- GIT
 map_cmd("n", "<leader>gb", "Gitsigns blame_line", { desc = "blame line" })
@@ -95,10 +104,10 @@ map_cmd("n", "<leader>tv", "Telescope git_bcommits", { desc = "file versions" })
 map_cmd("n", "<leader>tB", "Telescope git_branches", { desc = "branches" })
 map_cmd("n", "<leader>tc", "Telescope git_commits", { desc = "commits" })
 
--- Quickfix
-map_cmd("n", "<leader>qc", "cclose", { desc = "close" })
-map_cmd("n", "<leader>lc", "lclose", { desc = "close" })
-map("n", "<leader>qd", vim.diagnostic.setqflist, {}, { desc = "diagnostics" })
-map("n", "<leader>ld", vim.diagnostic.setloclist, {}, { desc = "diagnostics" })
-map_cmd("n", "<leader>qg", "Gitsigns setqflist", { desc = "git hunks" })
-map_cmd("n", "<leader>lg", "Gitsigns setloclist", { desc = "git hunks" })
+-- quickfix / loclist
+map_cmd("n", "<leader>qc", "cclose", { desc = "qflist close" })
+map_cmd("n", "<leader>lc", "lclose", { desc = "loclist close" })
+map("n", "<leader>qd", vim.diagnostic.setqflist, {}, { desc = "qflist diagnostics" })
+map("n", "<leader>ld", vim.diagnostic.setloclist, {}, { desc = "loclist diagnostics" })
+map_cmd("n", "<leader>qg", "Gitsigns setqflist", { desc = "qflist git hunks" })
+map_cmd("n", "<leader>lg", "Gitsigns setloclist", { desc = "loclist git hunks" })
