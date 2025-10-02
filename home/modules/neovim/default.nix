@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }: {
-  options.localModules.neovim.enable =
-    lib.mkEnableOption "Neovim and all it deps";
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.localModules.neovim.enable = lib.mkEnableOption "Neovim and all it deps";
 
   config = lib.mkIf config.localModules.neovim.enable {
     home.packages = with pkgs; [
@@ -25,15 +30,17 @@
 
     programs.neovim.enable = true;
 
-    home.sessionVariables = { EDITOR = "nvim"; };
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
 
-    home.shellAliases = { vi = "nvim"; };
+    home.shellAliases = {
+      vi = "nvim";
+    };
 
     home.file.".config/nvim/" = {
-      source = config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/nix-config/home/modules/neovim/src";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/modules/neovim/src";
       recursive = true;
     };
   };
 }
-

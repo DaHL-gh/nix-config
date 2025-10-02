@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   options.localModules.fish.enable = lib.mkEnableOption "Just fish";
 
   config = lib.mkIf config.localModules.fish.enable {

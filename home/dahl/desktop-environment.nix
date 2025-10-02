@@ -21,10 +21,12 @@ in {
       gemini-cli
       nix-search-cli
       tree
+      nftables
 
       # Desktop apps
       gimp
-      hiddify-app
+      google-chrome
+      hiddify
       libreoffice-qt6
       mission-center
       nemo

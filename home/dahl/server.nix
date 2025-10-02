@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }:
-let ifServer = config.configurationName == "server";
-in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  ifServer = config.configurationName == "server";
+in
+{
   config = lib.mkIf ifServer {
     localModules = {
       fish.enable = true;
@@ -9,6 +16,12 @@ in {
       tmux.enable = true;
     };
 
-    home.packages = with pkgs; [ bat btop fastfetch nix-search-cli tree ];
+    home.packages = with pkgs; [
+      bat
+      btop
+      fastfetch
+      nix-search-cli
+      tree
+    ];
   };
 }
