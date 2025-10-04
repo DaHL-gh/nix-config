@@ -33,6 +33,7 @@ in {
       obsidian
       spotify
       telegram-desktop
+      qalculate-qt
       vesktop
     ];
   };
