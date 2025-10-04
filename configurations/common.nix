@@ -45,6 +45,7 @@
     upower = { enable = true; };
 
     displayManager.ly.enable = true;
+    desktopManager.plasma6.enable = true;
 
     openssh = {
       enable = true;
@@ -89,6 +90,10 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [ fuse ];
+  };
+  programs.nekoray = {
+    enable = true;
+    tunMode.enable = true;
   };
 
   environment.systemPackages = with pkgs; [ ];
