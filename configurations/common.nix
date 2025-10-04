@@ -1,8 +1,16 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}:
+{
   networking.hostName = config.deviceName;
 
   system.stateVersion = "24.11";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   time.timeZone = "Asia/Yekaterinburg";
 
@@ -27,7 +35,9 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    settings = { General.Experimental = true; };
+    settings = {
+      General.Experimental = true;
+    };
   };
 
   ##### SERVICES #####
@@ -40,24 +50,35 @@
       jack.enable = true;
     };
 
-    logind = { lidSwitch = "ignore"; };
+    logind = {
+      lidSwitch = "ignore";
+    };
 
-    upower = { enable = true; };
+    upower = {
+      enable = true;
+
+    };
+
 
     displayManager.ly.enable = true;
     desktopManager.plasma6.enable = true;
 
     openssh = {
       enable = true;
-      settings = { GatewayPorts = "yes"; };
+      settings = {
+        GatewayPorts = "yes";
+      };
     };
 
     keyd = {
       enable = true;
       keyboards.default = {
         settings = {
-          main = { capslock = "layer(control)"; };
-          altgr = { # right alt
+          main = {
+            capslock = "layer(control)";
+          };
+          altgr = {
+            # right alt
             h = "left";
             j = "down";
             k = "up";
@@ -67,7 +88,7 @@
             b = "home";
             f = "end";
           };
-          control = { # control
+          control = {
             "[" = "esc";
           };
         };
@@ -85,12 +106,21 @@
   ##### PROGRAMS #####
   nixpkgs.config.allowUnfree = true;
 
-  programs.fish.enable = true;
-  programs.hyprland.enable = true;
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [ fuse ];
+  programs = {
+    fish.enable = true;
+    hyprland.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [ fuse ];
+    };
+    steam.enable = true;
   };
+
+  xdg.terminal-exec = {
+    enable = true;
+    settings.default = [ "kitty.desktop" ];
+  };
+
   programs.nekoray = {
     enable = true;
     tunMode.enable = true;
@@ -98,4 +128,3 @@
 
   environment.systemPackages = with pkgs; [ ];
 }
-
