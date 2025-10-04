@@ -26,7 +26,6 @@ in {
       # Desktop apps
       gimp
       google-chrome
-      hiddify
       libreoffice-qt6
       mission-center
       nemo

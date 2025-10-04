@@ -1,33 +1,60 @@
-{ config, pkgs, lib, modulesPath, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  modulesPath,
+  ...
+}:
 let
-  basic_mounting_params = [ "defaults" "nofail" ];
-  fs_mask = [ "dmask=027" "fmask=027" ];
-  user_mask = [ "uid=1000" "gid=1000" ];
+  basic_mounting_params = [
+    "defaults"
+    "nofail"
+  ];
+  fs_mask = [
+    "dmask=027"
+    "fmask=027"
+  ];
+  user_mask = [
+    "uid=1000"
+    "gid=1000"
+  ];
 
   ext4_mounting_params = basic_mounting_params;
   ntfs_mounting_params = basic_mounting_params ++ fs_mask ++ user_mask;
-in {
+in
+{
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   environment.systemPackages = with pkgs; [ mergerfs ];
 
   boot = {
     initrd = {
-      availableKernelModules =
-        [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
 
     resumeDevice = "/dev/nvme0n1p7";
-    kernelParams = [ "resume=/dev/sda7" "resume_offset=24481792" ];
+    kernelParams = [
+      "resume=/dev/sda7"
+      "resume_offset=24481792"
+    ];
   };
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 16384;
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16384;
+    }
+  ];
 
   fileSystems = {
     "/" = {
@@ -80,8 +107,7 @@ in {
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
-    cpu.amd.updateMicrocode =
-      lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     amdgpu = {
       opencl.enable = true;
