@@ -14,6 +14,7 @@ in
       fish.enable = true;
       git.enable = true;
       hyprland.enable = true;
+      kitty.enable = true;
       neovim.enable = true;
       tmux.enable = true;
     };

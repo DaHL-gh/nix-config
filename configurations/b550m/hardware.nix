@@ -112,7 +112,7 @@ in
     amdgpu = {
       opencl.enable = true;
       # initrd.enable = true;
-      amdvlk.enable = true;
+      # amdvlk.enable = true; -- it was replaced by mesa driver, should work out of box
     };
   };
 }
