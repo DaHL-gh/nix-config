@@ -12,6 +12,7 @@
     ./../modules/firefox
     ./../modules/fish
     ./../modules/git
+    ./../modules/kitty
     ./../modules/hyprland
     ./../modules/neovim
     ./../modules/tmux
