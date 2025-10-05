@@ -1,8 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  isDesktop = (config.configurationName == "latitude"
-    || config.configurationName == "b550m");
-in {
+  isDesktop = (config.configurationName == "latitude" || config.configurationName == "b550m");
+in
+{
   config = lib.mkIf isDesktop {
     localModules = {
       firefox.enable = true;
@@ -12,6 +17,8 @@ in {
       neovim.enable = true;
       tmux.enable = true;
     };
+
+    fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [
       # Terminal utils
