@@ -23,6 +23,9 @@ in
 
       networkmanagerapplet
       blueman
+
+      pulseaudio
+      alsa-utils
       pwvucontrol
     ];
 
