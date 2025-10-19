@@ -54,13 +54,11 @@ local function map(mode, binding, func, args, opts)
 end
 
 
+map_cmd("n", "-", "Oil", { desc = "go to file directory"})
 map_cmd("n", "<leader>o", { "update", "source" }, { desc = "update config?" })
 
 map_action({ "n", "v" }, "<leader>y", "\"+y", { desc = "buffer yoink" })
 map_action({ "n", "v" }, "<leader>d", "\"+d", { desc = "buffer yoink" })
-
--- NeoTree
-map_cmd("n", "<leader><Tab>", "Neotree toggle", { desc = "neotree" })
 
 -- Lazy
 map_cmd("n", "<leader>L", "Lazy", { desc = "Lazy" })
@@ -100,6 +98,7 @@ map("n", "<leader>fb", telescope.buffers, opts, { desc = "buffers" })
 map("n", "<leader>ff", telescope.find_files, opts, { desc = "find files" })
 map("n", "<leader>fl", telescope.live_grep, opts, { desc = "live grep" })
 map("n", "<leader>fh", telescope.help_tags, opts, { desc = "live grep" })
+map("n", "<leader>fs", telescope.colorscheme, opts, { desc = "file versions" })
 map("n", "<leader>fv", telescope.git_bcommits, opts, { desc = "file versions" })
 map("n", "<leader>fB", telescope.git_branches, opts, { desc = "branches" })
 map("n", "<leader>fc", telescope.git_commits, opts, { desc = "commits" })

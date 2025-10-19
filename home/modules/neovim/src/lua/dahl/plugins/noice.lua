@@ -1,4 +1,11 @@
 return {
 	"folke/noice.nvim",
-	opts = {}
+	opts = {
+		cmdline = {
+			enabled = false
+		},
+		messages = {
+			enabled = false
+		}
+	}
 }
