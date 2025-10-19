@@ -37,9 +37,9 @@ let
         # ==============================
         # Clear previous prompt line(s)
         # ==============================
-        echo -ne "\033[2K"  # clear line
-        echo -ne "\033[1A"  # move up 2 lines
-        echo -ne "\033[2K"  # clear line
+        # echo -ne "\033[2K"  # clear line
+        # echo -ne "\033[1A"  # move up 2 lines
+        # echo -ne "\033[2K"  # clear line
 
         # ==============================
         # Clear vi-mode prompt
