@@ -27,10 +27,14 @@ in
       btop-rocm
       fastfetch
       gemini-cli
+      nftables
+      nix-index
       nix-search-cli
       tree
-      nftables
 
+      wineWowPackages.waylandFull
+      winetricks
+      
       # Desktop apps
       gimp
       google-chrome
