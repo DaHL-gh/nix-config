@@ -16,6 +16,7 @@ return {
 				"heex",
 				"javascript",
 				"html",
+				"typst",
 			},
 			sync_install = false,
 			highlight = { enable = true },

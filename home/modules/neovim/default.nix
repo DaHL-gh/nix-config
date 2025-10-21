@@ -19,6 +19,8 @@
         clang
         ripgrep
 
+        # typst
+        tinymist
         # lua
         lua-language-server
         # nix
