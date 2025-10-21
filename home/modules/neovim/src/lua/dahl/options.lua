@@ -12,3 +12,16 @@ vim.opt.signcolumn = "yes"
 
 
 vim.opt.fillchars:append { diff = "╱" }
+
+vim.diagnostic.config({
+	virtual_text = {
+		source = "if_many",
+		severity = { min = vim.diagnostic.severity.WARN },
+		prefix = "x",
+		hl_mode = "blend",
+	},
+	-- virtual_lines = {
+	-- 	current_line = true,
+	-- },
+	severity_sort = true,
+})

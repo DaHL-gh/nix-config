@@ -74,7 +74,7 @@ let
 
         # Git
         type -q git
-        and set -l g (fish_git_prompt '%b%a|●%u✚%m…%c')
+        and set -l g (fish_git_prompt '%s')
         if test -n "$g"
             set_color $retc
             echo -n '- |'
