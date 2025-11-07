@@ -1,28 +1,37 @@
 #!/usr/bin/env bash
 
 DIRS=(
-    "$HOME/projects"
+    "projects/cpp"
+    "projects/python"
+    "projects/nix"
+    "projects/web-programming"
+    "Documents"
+    "Documents/projects"
 )
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
+EXTRA=(
+    ".config"
+)
+
+selected="$( \
+    {
+    for d in "${DIRS[@]}"; do \
+        find "$HOME/$d" -mindepth 1 -maxdepth 1 -type d 2>/dev/null; \
+    done
+    for d in "${EXTRA[@]}"; do \
+        echo "$HOME/$d"; \
+    done
+    } \
+    | sed "s|^$HOME/||" \
+    | grep -Fvx -f <(printf '%s\n' "${DIRS[@]}") \
+    | sort -R \
+    | sk --margin 20% --color="bw" 
+)"
+
+if [[ $selected ]]; then
+    selected="$HOME/$selected"
 else
-    selected="$(for d in "${DIRS[@]}"; do find "$d" -mindepth 1 -maxdepth 1 -type d 2>/dev/null; done \
-        | sed "s|^$HOME/||" \
-        | sk --margin 10% --color="bw")"
-
-    if [[ $selected ]] then
-        selected="$HOME/$selected"
-    else
-        exit 0
-    fi
+    exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-
-if ! tmux has-session "$selected_name"; then
-    tmux new-session -ds "$selected_name" -c "$selected"
-    tmux select-window -t "$selected_name"
-fi
-
-tmux switch-client -t "$selected_name"
+~/.config/tmux/scripts/tmux-swap.sh $selected
