@@ -54,10 +54,6 @@
       EDITOR = "nvim";
     };
 
-    home.shellAliases = {
-      vi = "nvim";
-    };
-
     home.file.".config/nvim/" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/modules/neovim/src";
       recursive = true;
