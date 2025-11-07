@@ -37,12 +37,18 @@
         { deviceName }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          # specialArgs = { inherit pkgs; };
+          specialArgs = {
+            inherit inputs;
+            flakePath = toString ./.;
+          };
           modules = [
-            { nixpkgs.overlays = [ hiddifyOverlay ]; }
-            { _module.args = { inherit inputs; }; }
-            ./configurations/${deviceName}/default.nix
+            # { _module.args = { inherit inputs; }; }
+            ./configurations/${deviceName}
             inputs.home-manager.nixosModules.home-manager
+            {
+              nixpkgs.overlays = [ hiddifyOverlay ];
+
+            }
           ];
         };
 
@@ -53,12 +59,7 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./home/dahl
-            (
-              { config, ... }:
-              {
-                config.configurationName = deviceName;
-              }
-            )
+            { configurationName = deviceName; }
           ];
         };
     in

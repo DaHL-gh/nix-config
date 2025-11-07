@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flakePath,
   ...
 }:
 {
@@ -61,7 +62,7 @@
     };
 
     home.file.".config/nvim/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/modules/neovim/src";
+      source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/neovim/src";
       recursive = true;
     };
   };
