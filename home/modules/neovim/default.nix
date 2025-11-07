@@ -8,6 +8,9 @@
   options.localModules.neovim.enable = lib.mkEnableOption "Neovim and all it deps";
 
   config = lib.mkIf config.localModules.neovim.enable {
+    home.packages = with pkgs; [
+      basedpyright
+    ];
 
     programs.neovim = {
       enable = true;
@@ -21,6 +24,9 @@
 
         # typst
         tinymist
+        # cpp
+        llvmPackages_20.clang-tools
+
         # lua
         lua-language-server
         # nix
