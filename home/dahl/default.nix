@@ -2,10 +2,13 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
   imports = [
+    inputs.spicetify-nix.homeManagerModules.spicetify
+    
     ./server.nix
     ./desktop-environment.nix
 
@@ -16,6 +19,7 @@
     ./../modules/hyprland
     ./../modules/neovim
     ./../modules/tmux
+    ./../modules/spicetify
   ];
 
   options = {
