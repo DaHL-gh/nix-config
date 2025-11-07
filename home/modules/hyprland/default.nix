@@ -15,23 +15,28 @@
       systemd.enable = false;
     };
 
-    home.packages = with pkgs; [
-      kitty
-      hyprsome
-      playerctl
-      wl-clipboard
-      brightnessctl
-      xdg-desktop-portal-hyprland
+    home.packages =
+      with pkgs;
+      [
+        kitty
+        hyprsome
+        playerctl
+        wl-clipboard
+        brightnessctl
+        xdg-desktop-portal-hyprland
 
-      hyprshot
+        hyprshot
 
-      networkmanagerapplet
-      blueman
+        networkmanagerapplet
+        blueman
 
-      pulseaudio
-      alsa-utils
-      pwvucontrol
-    ];
+        pulseaudio
+        alsa-utils
+        pwvucontrol
+      ]
+      ++ ([
+        inputs.caelestia-shell.packages.${pkgs.system}.with-cli
+      ]);
 
     home.file = {
       ".config/hypr/hyprland.conf".source =
