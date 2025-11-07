@@ -17,6 +17,7 @@
   outputs =
     { self, nixpkgs, ... }@inputs:
     let
+      flakePath = "/home/dahl/Documents/nix-config/";
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
@@ -38,8 +39,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs;
-            flakePath = toString ./.;
+            inherit inputs flakePath;
           };
           modules = [
             # { _module.args = { inherit inputs; }; }
