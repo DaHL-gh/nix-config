@@ -9,6 +9,9 @@
 
     caelestia-shell.url = "github:caelestia-dots/shell";
     caelestia-shell.inputs.nixpkgs.follows = "nixpkgs";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -47,6 +50,7 @@
         username: deviceName:
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = { inherit inputs; };
           modules = [
             ./home/dahl
             (

@@ -18,6 +18,11 @@
       packages = [ inputs.caelestia-shell.packages.${pkgs.system}.with-cli ];
     };
 
-    home-manager.users.dahl = import ./../home/dahl;
+    home-manager = {
+      extraSpecialArgs = { inherit inputs; };
+      users = {
+        dahl = import ./../home/dahl;
+      };
+    };
   };
 }

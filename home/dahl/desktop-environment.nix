@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 let
@@ -17,6 +18,7 @@ in
       kitty.enable = true;
       neovim.enable = true;
       tmux.enable = true;
+      spicetify.enable = true;
     };
 
     fonts.fontconfig.enable = true;
@@ -42,7 +44,6 @@ in
       mission-center
       nemo
       obsidian
-      spotify
       telegram-desktop
       qalculate-qt
       vesktop
