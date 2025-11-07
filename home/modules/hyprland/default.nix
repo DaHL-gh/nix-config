@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -11,6 +12,11 @@ in
   options.localModules.hyprland.enable = lib.mkEnableOption "Enable configuration linking and programs heavily related to Hyprland WM";
 
   config = lib.mkIf config.localModules.hyprland.enable {
+    programs.caelestia = {
+      enable = true;
+      systemd.enable = false;
+    };
+
     home.packages = with pkgs; [
       kitty
       hyprsome
