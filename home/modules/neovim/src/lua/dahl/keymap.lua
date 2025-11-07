@@ -55,7 +55,7 @@ end
 
 
 map_cmd("n", "-", "Oil", { desc = "go to file directory"})
-map_cmd("n", "<leader>o", { "update", "source" }, { desc = "update config?" })
+-- map_cmd("n", "<leader>o", { "update", "source" }, { desc = "update config?" })
 
 map_action({ "n", "v" }, "<leader>y", "\"+y", { desc = "buffer yoink" })
 map_action({ "n", "v" }, "<leader>d", "\"+d", { desc = "buffer yoink" })
