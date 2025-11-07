@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -11,23 +12,28 @@ in
   options.localModules.hyprland.enable = lib.mkEnableOption "Enable configuration linking and programs heavily related to Hyprland WM";
 
   config = lib.mkIf config.localModules.hyprland.enable {
-    home.packages = with pkgs; [
-      kitty
-      hyprsome
-      playerctl
-      wl-clipboard
-      brightnessctl
-      xdg-desktop-portal-hyprland
+    home.packages =
+      with pkgs;
+      [
+        kitty
+        hyprsome
+        playerctl
+        wl-clipboard
+        brightnessctl
+        xdg-desktop-portal-hyprland
 
-      hyprshot
+        hyprshot
 
-      networkmanagerapplet
-      blueman
+        networkmanagerapplet
+        blueman
 
-      pulseaudio
-      alsa-utils
-      pwvucontrol
-    ];
+        pulseaudio
+        alsa-utils
+        pwvucontrol
+      ]
+      ++ ([
+        inputs.caelestia-shell.packages.${pkgs.system}.with-cli
+      ]);
 
     home.file = {
       ".config/hypr/hyprland.conf".source =
