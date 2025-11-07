@@ -48,8 +48,8 @@ in
       telegram-desktop
       qalculate-qt
       vesktop
-    ];
       vlc
       vscode
+    ];
   };
 }
