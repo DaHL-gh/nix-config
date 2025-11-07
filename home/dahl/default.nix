@@ -8,6 +8,7 @@
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
+    inputs.caelestia-shell.homeManagerModules.default
     
     ./server.nix
     ./desktop-environment.nix
