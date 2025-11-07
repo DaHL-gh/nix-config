@@ -6,6 +6,7 @@
 }:
 let
   prompt = ''
+    set -U fish_greeting ""
     # ==============================
     # Color variables
     # ==============================
@@ -118,6 +119,12 @@ let
         echo -n ' > '
         set_color $color_normal
     end
+
+    if type -q tmux
+        if not set -q TMUX
+            exec tmux new-session -As workspace
+        end
+    end
   '';
 in
 {
@@ -127,7 +134,12 @@ in
     programs.fish = {
       enable = true;
       interactiveShellInit = prompt;
-      shellInit = "direnv hook fish | source\n";
+      shellInit = ''
+        direnv hook fish | source
+      '';
+      shellAliases = {
+        vi = "nvim";
+      };
     };
 
     home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
