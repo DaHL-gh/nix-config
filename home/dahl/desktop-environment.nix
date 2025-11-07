@@ -44,9 +44,12 @@ in
       mission-center
       nemo
       obsidian
+      obs-studio
       telegram-desktop
       qalculate-qt
       vesktop
     ];
+      vlc
+      vscode
   };
 }
