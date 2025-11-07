@@ -3,11 +3,9 @@
   lib,
   pkgs,
   inputs,
+  flakePath,
   ...
 }:
-let
-  hyprModuleDir = "${config.home.homeDirectory}/nix-config/home/modules/hyprland";
-in
 {
   options.localModules.hyprland.enable = lib.mkEnableOption "Enable configuration linking and programs heavily related to Hyprland WM";
 
@@ -37,11 +35,11 @@ in
 
     home.file = {
       ".config/hypr/hyprland.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/hyprland.conf";
+        config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/hyprland.conf";
       ".config/hypr/monitors.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${hyprModuleDir}/src/monitors/${config.configurationName}.conf";
+        config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/monitors/${config.configurationName}.conf";
       "Pictures/Wallpapers/" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/wallpapers";
+        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/wallpapers";
         recursive = true;
       };
     };

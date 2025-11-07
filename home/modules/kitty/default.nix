@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flakePath,
   ...
 }:
 {
@@ -9,13 +10,13 @@
 
   config = lib.mkIf config.localModules.kitty.enable {
     home.packages = with pkgs; [
-	  kitty
+      kitty
 
-	  jetbrains-mono
+      jetbrains-mono
     ];
 
     home.file.".config/kitty/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/modules/kitty/src";
+      source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/kitty/src";
       recursive = true;
     };
   };
