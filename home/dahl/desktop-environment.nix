@@ -26,17 +26,29 @@ in
     home.packages = with pkgs; [
       # Terminal utils
       bat
+      tree
       btop-rocm
       fastfetch
       gemini-cli
       nftables
+
+      #nix
       nix-index
       nix-search-cli
-      tree
 
-      wineWowPackages.waylandFull
-      winetricks
-      
+      # net
+      openssl
+      dig
+      traceroute
+
+      # kuber
+      kubernetes-helm
+      k9s
+
+      # archive
+      zip
+      unzip
+
       # Desktop apps
       gimp
       google-chrome
@@ -50,6 +62,22 @@ in
       vesktop
       vlc
       vscode
+
+      # gaming?
+      wineWowPackages.waylandFull
+      winetricks
+      lutris
+
+      # virtualization
+      qemu
+      virt-manager
+      virt-viewer
+      virtio-win
+      spice
+      spice-gtk
+      spice-protocol
+      win-virtio
+      win-spice
     ];
   };
 }
