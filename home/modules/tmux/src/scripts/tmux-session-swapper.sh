@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 DIRS=(
+    "projects"
     "projects/cpp"
     "projects/python"
     "projects/nix"
@@ -24,7 +25,7 @@ selected="$( \
     } \
     | sed "s|^$HOME/||" \
     | grep -Fvx -f <(printf '%s\n' "${DIRS[@]}") \
-    | sort -R \
+    | sort \
     | sk --margin 20% --color="bw" 
 )"
 
