@@ -23,6 +23,8 @@
         clang
         ripgrep
 
+        yaml-language-server
+
         # typst
         tinymist
         # cpp
