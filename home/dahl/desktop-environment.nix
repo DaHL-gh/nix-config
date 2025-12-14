@@ -57,6 +57,7 @@ in
       gimp
       google-chrome
       libreoffice-qt6
+      onlyoffice-desktopeditors
       mission-center
       nemo
       obsidian
