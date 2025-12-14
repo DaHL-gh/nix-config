@@ -1,10 +1,9 @@
-require("dahl.lsp.lua")
-require("dahl.lsp.nix")
-require("dahl.lsp.python")
-require("dahl.lsp.docker")
-require("dahl.lsp.docker-compose")
-require("dahl.lsp.html")
-require("dahl.lsp.css")
+local folder = debug.getinfo(1).source:sub(2):match("(.*/)")
 
-require("dahl.lsp.typst")
-require("dahl.lsp.cpp")
+for name in vim.fs.dir(folder) do
+	name = name:match("([^/]+)%.lua$")
+
+	if name ~= "init" then
+		require("dahl.lsp." .. name)
+	end
+end
