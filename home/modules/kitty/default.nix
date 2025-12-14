@@ -11,8 +11,6 @@
   config = lib.mkIf config.localModules.kitty.enable {
     home.packages = with pkgs; [
       kitty
-
-      jetbrains-mono
     ];
 
     home.file.".config/kitty/" = {

@@ -49,6 +49,10 @@ in
       zip
       unzip
 
+      # fonts
+      iosevka-bin
+      jetbrains-mono
+
       # Desktop apps
       gimp
       google-chrome
