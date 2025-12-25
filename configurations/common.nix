@@ -55,7 +55,7 @@
     };
 
     logind = {
-      lidSwitch = "ignore";
+      settings.Login.HandleLidSwitch = "ignore";
     };
 
     upower = {
@@ -125,7 +125,7 @@
     settings.default = [ "kitty.desktop" ];
   };
 
-  programs.nekoray = {
+  programs.throne = {
     enable = true;
     tunMode.enable = true;
   };
