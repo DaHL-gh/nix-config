@@ -10,11 +10,13 @@
   config = lib.mkIf config.localModules.git.enable {
     programs.git = {
       enable = true;
-      userName = "DaHL";
-      userEmail = "8tima18@gmail.com";
 
-      extraConfig = {
+      settings = {
         init.defaultBranch = "main";
+        user = {
+          name = "DaHL";
+          email = "8tima18@gmail.com";
+        };
 
         merge = {
           tool = "diffview";
@@ -40,13 +42,15 @@
           dt = "! args=$@; shift $#; nvim -c \"DiffviewOpen $args\"";
         };
       };
+    };
 
-      delta.enable = true;
-      delta.options = {
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
         side-by-side = true;
         line-numbers = true;
       };
-
     };
 
     # programs.delta ={
