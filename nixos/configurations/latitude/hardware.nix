@@ -46,6 +46,18 @@ in
       "resume=/dev/sda7"
       "resume_offset=37263360"
     ];
+
+    loader = {
+      grub = {
+        enable = true;
+        efiSupport = true;
+        devices = [ "nodev" ]; # efi only
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+    };
   };
 
   fileSystems = {
