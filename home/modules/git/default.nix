@@ -5,7 +5,7 @@
   ...
 }:
 {
-  options.localModules.git.enable = lib.mkEnableOption "Just git n else";
+  options.localModules.git.enable = lib.mkEnableOption "Just git n smthn";
 
   config = lib.mkIf config.localModules.git.enable {
     programs.git = {
@@ -14,7 +14,7 @@
       settings = {
         init.defaultBranch = "main";
         user = {
-          name = "DaHL";
+          name = "dahl";
           email = "8tima18@gmail.com";
         };
 

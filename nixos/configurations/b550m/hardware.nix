@@ -28,6 +28,18 @@ in
   environment.systemPackages = with pkgs; [ mergerfs ];
 
   boot = {
+    loader = {
+      grub = {
+        enable = true;
+        efiSupport = true;
+        devices = [ "nodev" ]; # efi only
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+    };
+
     initrd = {
       availableKernelModules = [
         "nvme"

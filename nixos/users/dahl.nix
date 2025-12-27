@@ -6,7 +6,6 @@
   ...
 }:
 {
-
   config = {
     users.users.dahl = {
       isNormalUser = true;
@@ -19,11 +18,13 @@
     };
 
     home-manager = {
+      users = {
+        dahl = import ../../home/configurations/dahl // {
+          configurationName = config.configurationName;
+        };
+      };
       extraSpecialArgs = {
         inherit inputs flakePath;
-      };
-      users = {
-        dahl = import ./../home/dahl;
       };
     };
   };
