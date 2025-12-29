@@ -1,5 +1,5 @@
 {
-  description = "DaHL NixOS configurations";
+  description = "dahl NixOS configurations";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     nixpkgs-25-05.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
@@ -34,27 +34,33 @@
         hiddify = pkgs-25-05.hiddify-app;
       };
 
+      localUtils = import ./utils.nix { lib = nixpkgs.lib; };
+
       makeSystem =
         { deviceName }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs flakePath; };
+          specialArgs = {
+            inherit inputs flakePath localUtils;
+            configurationName = deviceName;
+          };
           modules = [
             ./nixos/configurations/${deviceName}
             inputs.home-manager.nixosModules.home-manager
             { nixpkgs.overlays = [ hiddifyOverlay ]; }
-            { configurationName = deviceName; }
           ];
         };
 
       makeHome =
-        username: deviceName:
+        { username, deviceName }:
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs flakePath localUtils;
+            configurationName = deviceName;
+          };
           modules = [
-            "./home/users/${username}"
-            { configurationName = deviceName; }
+            ./home/users/${username}
           ];
         };
     in
@@ -66,11 +72,11 @@
 
       homeConfigurations = builtins.listToAttrs (
         builtins.concatMap (
-          user:
+          username:
           builtins.map
-            (device: {
-              name = "${user}@${device}";
-              value = makeHome user device;
+            (deviceName: {
+              name = "${username}@${deviceName}";
+              value = makeHome { inherit username deviceName; };
             })
             [
               "server"

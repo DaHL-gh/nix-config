@@ -2,10 +2,11 @@
   config,
   pkgs,
   lib,
+  configurationName,
   ...
 }:
 let
-  ifServer = config.configurationName == "server";
+  ifServer = configurationName == "server";
 in
 {
   config = lib.mkIf ifServer {

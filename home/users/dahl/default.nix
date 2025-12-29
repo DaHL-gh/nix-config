@@ -1,9 +1,4 @@
-{
-  lib,
-  inputs,
-  configurationName,
-  ...
-}:
+{ inputs, ... }:
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
@@ -14,16 +9,10 @@
     ../../modules
   ];
 
-  options = {
-    configurationName = lib.mkOption { type = lib.types.str; };
-  };
-
   config = {
     home.stateVersion = "25.05";
     home.username = "dahl";
     home.homeDirectory = "/home/dahl";
     targets.genericLinux.enable = true;
-
-    configurationName = configurationName;
   };
 }

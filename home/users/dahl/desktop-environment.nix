@@ -2,10 +2,11 @@
   config,
   pkgs,
   lib,
+  configurationName,
   ...
 }:
 let
-  isDesktop = (config.configurationName == "latitude" || config.configurationName == "b550m");
+  isDesktop = (configurationName == "latitude" || configurationName == "b550m");
 in
 {
   config = lib.mkIf isDesktop {

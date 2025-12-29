@@ -1,13 +1,4 @@
-{ ... }:
+{ localUtils, ... }:
 {
-  imports = [
-    ./firefox
-    ./fish
-    ./git
-    ./kitty
-    ./hyprland
-    ./neovim
-    ./tmux
-    ./spicetify
-  ];
+  imports = localUtils.allSubdirs ./.;
 }

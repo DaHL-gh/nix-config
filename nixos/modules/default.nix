@@ -1,11 +1,4 @@
-{ lib, ... }:
+{ localUtils, ... }:
 {
-  imports = [
-    ./keyd.nix
-    ./pipewire.nix
-  ];
-
-  options = {
-    configurationName = lib.mkOption { type = lib.types.str; };
-  };
+  imports = localUtils.allSubdirs ./.;
 }

@@ -3,6 +3,8 @@
   pkgs,
   inputs,
   flakePath,
+  localUtils,
+  configurationName,
   ...
 }:
 {
@@ -19,12 +21,15 @@
 
     home-manager = {
       users = {
-        dahl = import ../../home/configurations/dahl // {
-          configurationName = config.configurationName;
-        };
+        dahl = import ../../home/users/dahl;
       };
       extraSpecialArgs = {
-        inherit inputs flakePath;
+        inherit
+          inputs
+          flakePath
+          localUtils
+          configurationName
+          ;
       };
     };
   };
