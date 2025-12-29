@@ -87,12 +87,16 @@
 
     programs = {
       fish.enable = true;
+
       hyprland.enable = true;
+
       nix-ld = {
         enable = true;
         libraries = with pkgs; [ fuse ];
       };
+
       steam.enable = true;
+
       throne = {
         enable = true;
         tunMode.enable = true;

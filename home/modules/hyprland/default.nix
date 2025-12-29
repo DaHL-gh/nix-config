@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   flakePath,
+  configurationName,
   ...
 }:
 {
@@ -42,7 +43,7 @@
       ".config/hypr/hyprland.conf".source =
         config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/hyprland.conf";
       ".config/hypr/monitors.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/monitors/${config.configurationName}.conf";
+        config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/monitors/${configurationName}.conf";
       "Pictures/Wallpapers/" = {
         source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/wallpapers";
         recursive = true;
