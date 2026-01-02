@@ -7,7 +7,8 @@
         "wheel"
         "docker"
         "networkmanager"
-      ]; # Enable ‘sudo’ for the user.
+        "libvirtd"
+      ];
       shell = pkgs.fish;
     };
   };

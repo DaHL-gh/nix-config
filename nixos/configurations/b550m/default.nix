@@ -32,9 +32,16 @@
       home-manager.enable = true;
     };
     ##### NETWORKING #####
-    networking.networkmanager.enable = true;
+    networking = {
+      networkmanager.enable = true;
+      firewall.enable = false;
 
-    networking.firewall.enable = false;
+      extraHosts = ''
+        127.0.0.1 nginx.local
+        127.0.0.1 django-polls.local
+        127.0.0.1 hobbie.local
+      '';
+    };
 
     ##### BOOT #####
 
@@ -62,11 +69,22 @@
         };
       };
 
+      spice-vdagentd.enable = true;
     };
-    virtualisation.docker.enable = true;
+
+    ##### VIRTUALIZATION #####
+    virtualisation = {
+      docker.enable = true;
+      libvirtd = {
+        enable = true;
+        qemu = {
+          swtpm.enable = true;
+        };
+      };
+    };
 
     ##### HOME MANAGER #####
-    home-manager.users.dahl = import ../../home/configurations/dahl-desktop.nix;
+    home-manager.users.dahl = import ../../../home/configurations/dahl-desktop.nix;
 
     ##### PROGRAMS #####
     nixpkgs.config.allowUnfree = true;

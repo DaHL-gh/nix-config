@@ -10,6 +10,7 @@
 
   config = lib.mkIf config.localModules.neovim.enable {
     home.packages = with pkgs; [
+      typst
       basedpyright
     ];
 
@@ -27,6 +28,7 @@
 
         # typst
         tinymist
+        typst
         # cpp
         llvmPackages_20.clang-tools
 
