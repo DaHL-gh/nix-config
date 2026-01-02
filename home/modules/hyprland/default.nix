@@ -2,21 +2,15 @@
   config,
   lib,
   pkgs,
-  inputs,
   flakePath,
   configurationName,
   ...
 }:
 {
-  imports = [ inputs.caelestia-shell.homeManagerModules.default ];
-
   options.localModules.hyprland.enable = lib.mkEnableOption "Enable configuration linking and programs heavily related to Hyprland WM";
 
   config = lib.mkIf config.localModules.hyprland.enable {
-    programs.caelestia = {
-      enable = true;
-      systemd.enable = false;
-    };
+    localModules.caelestia-shell.enable = true;
 
     home.packages =
       with pkgs;
@@ -36,10 +30,7 @@
         pulseaudio
         alsa-utils
         pwvucontrol
-      ]
-      ++ ([
-        inputs.caelestia-shell.packages.${pkgs.system}.with-cli
-      ]);
+      ];
 
     home.file = {
       ".config/hypr/hyprland.conf".source =
