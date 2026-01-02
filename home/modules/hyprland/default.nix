@@ -8,6 +8,8 @@
   ...
 }:
 {
+  imports = [ inputs.caelestia-shell.homeManagerModules.default ];
+
   options.localModules.hyprland.enable = lib.mkEnableOption "Enable configuration linking and programs heavily related to Hyprland WM";
 
   config = lib.mkIf config.localModules.hyprland.enable {
