@@ -2,58 +2,27 @@
   config,
   pkgs,
   lib,
-  configurationName,
   ...
 }:
-let
-  isDesktop = (configurationName == "latitude" || configurationName == "b550m");
-in
 {
-  config = lib.mkIf isDesktop {
+  options.localModules.desktop.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.localModules.desktop.enable {
     localModules = {
       firefox.enable = true;
-      fish.enable = true;
-      git.enable = true;
       hyprland.enable = true;
       kitty.enable = true;
-      neovim.enable = true;
-      tmux.enable = true;
       spicetify.enable = true;
     };
 
     fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [
-      # Terminal utils
-      bat
-      tree
-      btop-rocm
-      fastfetch
-      gemini-cli
-      nftables
-
-      #nix
-      nix-index
-      nix-search-cli
-
-      # net
-      openssl
-      dig
-      traceroute
-
-      # kuber
-      kubernetes-helm
-      k9s
-
-      # archive
-      zip
-      unzip
-
       # fonts
       iosevka-bin
       jetbrains-mono
 
       # Desktop apps
+      bitwarden-desktop
       gimp
       google-chrome
       libreoffice-qt6

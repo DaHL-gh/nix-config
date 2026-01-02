@@ -9,6 +9,8 @@ let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
+  imports = [ inputs.spicetify-nix.homeManagerModules.spicetify ];
+
   options.localModules.spicetify.enable = lib.mkEnableOption "SPICEtify";
 
   config = lib.mkIf config.localModules.spicetify.enable {

@@ -30,6 +30,7 @@
     localModules = {
       pipewire.enable = true;
       keyd.enable = true;
+      home-manager.enable = true;
     };
     ##### NETWORKING #####
     networking.networkmanager.enable = true;
@@ -77,10 +78,7 @@
     virtualisation.docker.enable = true;
 
     ##### HOME MANAGER #####
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-    };
+    home-manager.users.dahl = import ../../../home/configurations/dahl-desktop.nix;
 
     ##### PROGRAMS #####
     nixpkgs.config.allowUnfree = true;
