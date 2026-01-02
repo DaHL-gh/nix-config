@@ -4,11 +4,11 @@
             "terminal": ["kitty"],
             "audio": ["pavucontrol"],
             "playback": ["mpv"],
-			"explorer": ["nemo"]
-		}
-	},
-	"bar": {
-		"entries": [
+            "explorer": ["nemo"]
+        }
+    },
+    "bar": {
+        "entries": [
             {
                 "id": "logo",
                 "enabled": true
@@ -42,42 +42,42 @@
                 "enabled": true
             }
         ],
-		"workspaces": {
-			"activeTrail": true,
-			"occupiedLabel": "   ",
-			"occupiedBg": true,
-			"activeLabel": "󰮯 ",
-			"label": "+"
-		},
-		"status": {
-			"showAudio": true,
-			"showKbLayout": true
-		},
-		"tray": {
-			"background": true,
-			"compact": true
-		},
-		"clock": {
-			"showIcon": false
-		},
-		"sizes": {
-			"innerWidth": 30
-		}
-	},
-	"border": {
-		"rounding": 25,
+        "workspaces": {
+            "activeTrail": true,
+            "occupiedLabel": "   ",
+            "occupiedBg": true,
+            "activeLabel": "󰮯 ",
+            "label": "   "
+        },
+        "status": {
+            "showAudio": true,
+            "showKbLayout": true
+        },
+        "tray": {
+            "background": true,
+            "compact": true
+        },
+        "clock": {
+            "showIcon": false
+        },
+        "sizes": {
+            "innerWidth": 30
+        }
+    },
+    "border": {
+        "rounding": 25,
         "thickness": 1
     },
-	"background": {
+    "background": {
         "enabled": true,
         "visualiser": {
-            "enabled": true,
+            "enabled": false,
             "autoHide": false,
             "rounding": 1,
             "spacing": 0.9
         }
     },
-	"session": {
-		"vimKeybinds": true
-	}
+    "session": {
+        "vimKeybinds": true
+    }
 }
