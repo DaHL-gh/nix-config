@@ -31,11 +31,39 @@
       pipewire.enable = true;
       keyd.enable = true;
       home-manager.enable = true;
+      agenix = {
+        enable = true;
+        secrets = {
+          wg-preshared-key = ../../../secrets/wireguard/latitude/preshared-key.age;
+          wg-private-key = ../../../secrets/wireguard/latitude/private-key.age;
+        };
+      };
     };
-    ##### NETWORKING #####
-    networking.networkmanager.enable = true;
 
-    networking.firewall.enable = false;
+    ##### NETWORKING #####
+    networking = {
+      networkmanager.enable = true;
+      firewall.enable = false;
+
+      wireguard = {
+        enable = true;
+        interfaces = {
+          wg0 = {
+            ips = [ "10.10.0.3/24" ];
+            privateKeyFile = config.age.secrets.wg-private-key.path;
+            peers = [
+              {
+                allowedIPs = [ "10.10.0.0/24" ];
+                publicKey = "F3rPvhM0EvBIeC4XhpcdXtxMieffBquExGjk3R2coxU=";
+                presharedKeyFile = config.age.secrets.wg-preshared-key.path;
+                persistentKeepalive = 25;
+                endpoint = "46.62.215.248:51820";
+              }
+            ];
+          };
+        };
+      };
+    };
 
     ##### BOOT #####
 
