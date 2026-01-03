@@ -17,12 +17,14 @@
 
     home.packages = with pkgs; [
       # Terminal utils
+      age
       bat
       tree
       btop-rocm
       fastfetch
       gemini-cli
       nftables
+      wireguard-tools
 
       #nix
       nix-index
@@ -37,8 +39,6 @@
       kubernetes-helm
       kubectl
       k9s
-
-      wireguard-tools
 
       # archive
       zip
