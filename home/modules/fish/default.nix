@@ -139,6 +139,20 @@ in
       '';
       shellAliases = {
         vi = "nvim";
+
+        gl = "git log --all --graph --pretty=format:'%C(blue)%h %C(white)%an %C(green)%ar %C(auto) %D%n%s%n'";
+        gs = "git status --short";
+        gS = "git stash";
+        gm = "git merge";
+        gi = "git init";
+        gr = "git reset";
+        gb = "git branch";
+        gba = "git branch --all";
+        gc = "git commit";
+        gca = "gc --amend --no-edit";
+        gcl = "git clone";
+        gp = "git pull";
+        gP = "git push";
       };
     };
 

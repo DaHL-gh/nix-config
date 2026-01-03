@@ -18,6 +18,39 @@
           email = "8tima18@gmail.com";
         };
 
+        core = {
+          compression = 9;
+          whitespace = "error";
+          preloadindex = true;
+        };
+
+        advice = {
+          addEmpryPathspec = false;
+          pushNonFastForward = false;
+          statusHints = false;
+        };
+
+        url = {
+          "git@github.com:" = {
+            insteadOf = [
+              "gh:"
+              "github:"
+            ];
+          };
+          "git@gitlab.com:" = {
+            insteadOf = [
+              "gl:"
+              "gitlab:"
+            ];
+          };
+        };
+
+        status = {
+          branch = true;
+          showStash = true;
+          showUntrackedFiles = "all";
+        };
+
         merge = {
           tool = "diffview";
         };
@@ -48,7 +81,6 @@
       enable = true;
       enableGitIntegration = true;
       options = {
-        side-by-side = true;
         line-numbers = true;
       };
     };
