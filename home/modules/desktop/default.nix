@@ -36,12 +36,12 @@
       vesktop
       vlc
       vscode
-      #
-      # # gaming?
-      # wineWowPackages.waylandFull
-      # winetricks
-      # lutris
-      #
+
+      # gaming?
+      wineWowPackages.waylandFull
+      winetricks
+      lutris
+
       # # virtualization
       # qemu
       # virt-manager
