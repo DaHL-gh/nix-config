@@ -153,6 +153,7 @@ in
         gcl = "git clone";
         gp = "git pull";
         gP = "git push";
+        k = "kubectl";
       };
     };
 
