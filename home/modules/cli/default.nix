@@ -31,9 +31,11 @@
       nix-search-cli
 
       # net
-      openssl
       dig
+      openssl
       traceroute
+      inetutils
+      wget
 
       # kuber
       kubernetes-helm
