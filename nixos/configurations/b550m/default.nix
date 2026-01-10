@@ -105,6 +105,7 @@
         role = "agent";
         serverAddr = "https://10.10.0.1:6443";
         tokenFile = config.age.secrets.node-token.path;
+        nodeIP = "10.10.0.4";
       };
     };
 
