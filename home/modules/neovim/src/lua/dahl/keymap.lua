@@ -54,7 +54,7 @@ local function map(mode, binding, func, args, opts)
 end
 
 
-map_cmd("n", "-", "Oil", { desc = "go to file directory"})
+map_cmd("n", "-", "Oil", { desc = "go to file directory" })
 -- map_cmd("n", "<leader>o", { "update", "source" }, { desc = "update config?" })
 
 map_action({ "n", "v" }, "<leader>y", "\"+y", { desc = "buffer yoink" })
@@ -64,7 +64,7 @@ map_action({ "n", "v" }, "<leader>d", "\"+d", { desc = "buffer yoink" })
 map_cmd("n", "<leader>L", "Lazy", { desc = "Lazy" })
 
 -- LSP
-map({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, nil, { desc = "format" })
+map({ "n", "v" }, "<leader>cf", vim.lsp.buf.format, nil, { desc = "format" })
 map("n", "<leader>cr", vim.lsp.buf.rename, nil, { desc = "rename" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, nil, { desc = "code actions" })
 map("n", "<leader>cd", vim.diagnostic.open_float, nil, { desc = "diagnostics" })
@@ -74,6 +74,7 @@ map("n", "gD", vim.lsp.buf.declaration, nil, { desc = "LSP declaration" })
 map("n", "gI", vim.lsp.buf.implementation, nil, { desc = "LSP implementation" })
 map("n", "<leader>ci", vim.lsp.buf.incoming_calls, nil, { desc = "function calls" })
 map("n", "<leader>co", vim.lsp.buf.outgoing_calls, nil, { desc = "in function calls" })
+map("n", "<leader>ct", vim.lsp.buf.type_definition, nil, { desc = "type hierarchy" })
 map("n", "<leader>ch", vim.lsp.buf.typehierarchy, nil, { desc = "type hierarchy" })
 
 -- GIT
@@ -112,26 +113,3 @@ map("n", "<leader>qd", vim.diagnostic.setqflist, nil, { desc = "qflist diagnosti
 map("n", "<leader>ld", vim.diagnostic.setloclist, nil, { desc = "loclist diagnostics" })
 map_cmd("n", "<leader>qg", "Gitsigns setqflist", { desc = "qflist git hunks" })
 map_cmd("n", "<leader>lg", "Gitsigns setloclist", { desc = "loclist git hunks" })
-
--- Molten
-map_cmd("n", "<leader>mI", "MoltenInfo", { desc = "Molten info" })
-map_cmd("n", "<leader>mi", "MoltenInit", { desc = "Molten initialize" })
-map_cmd("n", "<leader>ms", "MoltenInterrupt", { desc = "Molten interrupt(stop)" })
-map_cmd("n", "<leader>mr", "MoltenRestart", { desc = "Molten restart" })
-map_cmd("n", "<leader>mR", "MoltenRestart!", { desc = "Molten hard restart" })
-map_cmd("n", "<leader>md", "MoltenDelete", { desc = "Molten delete current cell" })
-map_cmd("n", "<leader>mD", "MoltenDeinit", { desc = "Molten deinit, kill runtime" })
-map_cmd("n", "<leader>mx", "MoltenOpenInBrowser", { desc = "Molten open output in browser" })
-map_cmd("n", "<leader>ml", "MoltenImportOutput", { desc = "Molten load outputs from notebook" })
-
-map_cmd("n", "]c", "MoltenNext", { desc = "next Molten cell" })
-map_cmd("n", "[c", "MoltenPrev", { desc = "prev Molten cell" })
-
-map_cmd("n", "<leader>eo", "MoltenEvaluateOperator", { desc = "Molten eval operator" })
-map_action("v", "<leader>e", "<Esc>:MoltenEvaluateVisual<CR>gv")
-map_cmd("n", "<leader>ev", "MoltenEvaluateVisual", { desc = "Molten eval visual" })
-map_cmd("n", "<leader>el", "MoltenEvaluateLine", { desc = "Molten eval line" })
-map_cmd("n", "<leader>ee", "MoltenReevaluateCell", { desc = "Molten reeval last" })
-
-map_cmd("n", "<leader>oh", "MoltenHideOutput", { desc = "Molten hide output" })
-map_cmd("n", "<leader>os", "noautocmd MoltenEnterOutput", { desc = "Molten show output" })
