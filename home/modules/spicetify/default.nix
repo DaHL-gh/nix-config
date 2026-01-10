@@ -32,7 +32,7 @@ in
         pointer
         # dynamicSearchBar
         thinLibrarySidebarRows
-        hideLyricsButton
+        # hideLyricsButton
       ];
 
       # theme = spicePkgs.themes.catppuccin;
