@@ -100,6 +100,10 @@
 
       spice-vdagentd.enable = true;
 
+      udev.extraRules = ''
+        ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+      '';
+
       k3s = {
         enable = true;
         role = "agent";
