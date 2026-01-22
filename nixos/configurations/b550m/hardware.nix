@@ -33,6 +33,7 @@ in
         enable = true;
         efiSupport = true;
         devices = [ "nodev" ]; # efi only
+        milk-theme.enable = true;
       };
       efi = {
         canTouchEfiVariables = true;
