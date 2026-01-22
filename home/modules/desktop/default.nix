@@ -33,9 +33,11 @@
       obs-studio
       telegram-desktop
       qalculate-qt
+      qbittorrent
       vesktop
       vlc
       vscode
+      wireshark
 
       # gaming?
       wineWowPackages.waylandFull
