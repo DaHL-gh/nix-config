@@ -133,6 +133,26 @@
         "type": "github"
       }
     },
+    "milk-grub-theme": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1750807146,
+        "narHash": "sha256-xY6cQRhz2kKCAAzeGRB89h6h0WoNkZpnEjd8nurM374=",
+        "owner": "gemakfy",
+        "repo": "MilkGrub",
+        "rev": "02ae0734741255fc63886f69073b946efd61f599",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gemakfy",
+        "repo": "MilkGrub",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1766070988,
@@ -191,6 +211,7 @@
         "agenix": "agenix",
         "caelestia-shell": "caelestia-shell",
         "home-manager": "home-manager_2",
+        "milk-grub-theme": "milk-grub-theme",
         "nixpkgs": "nixpkgs",
         "nixpkgs-25-05": "nixpkgs-25-05",
         "spicetify-nix": "spicetify-nix"
