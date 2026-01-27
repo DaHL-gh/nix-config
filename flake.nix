@@ -7,8 +7,8 @@
     home-manager.url = "github:nix-community/home-manager?ref=master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    caelestia-shell.url = "github:caelestia-dots/shell";
-    caelestia-shell.inputs.nixpkgs.follows = "nixpkgs";
+    ambxst.url = "github:Axenide/Ambxst";
+    ambxst.inputs.nixpkgs.follows = "nixpkgs";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +54,7 @@
             ./nixos/configurations/${deviceName}
             inputs.home-manager.nixosModules.home-manager
             inputs.milk-grub-theme.nixosModule
+            inputs.ambxst.nixosModules.default
             { nixpkgs.overlays = [ hiddifyOverlay ]; }
           ];
         };
