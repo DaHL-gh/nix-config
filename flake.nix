@@ -80,6 +80,7 @@
       nixosConfigurations = {
         b550m = makeSystem { deviceName = "b550m"; };
         latitude = makeSystem { deviceName = "latitude"; };
+        lenovo = makeSystem { deviceName = "lenovo"; };
       };
 
       homeConfigurations = builtins.listToAttrs (
