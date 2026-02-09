@@ -18,6 +18,10 @@
 
     milk-grub-theme.url = "github:gemakfy/MilkGrub";
     milk-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
+
+    polyMc.url = "github:PolyMC/PolyMC";
+    polyMc.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs =

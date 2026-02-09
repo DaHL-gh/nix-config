@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
@@ -43,6 +44,10 @@
       wineWowPackages.waylandFull
       winetricks
       lutris
+      inputs.polyMc.packages.${pkgs.system}.default
+
+      # kdePackages.kdenlive
+      # ffmpeg
 
       # # virtualization
       # qemu
@@ -52,7 +57,6 @@
       # spice
       # spice-gtk
       # spice-protocol
-      # win-virtio
       # win-spice
     ];
   };
