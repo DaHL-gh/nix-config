@@ -55,41 +55,40 @@ end
 
 
 map_cmd("n", "-", "Oil", { desc = "go to file directory" })
--- map_cmd("n", "<leader>o", { "update", "source" }, { desc = "update config?" })
 
-map_action({ "n", "v" }, "<leader>y", "\"+y", { desc = "buffer yoink" })
-map_action({ "n", "v" }, "<leader>d", "\"+d", { desc = "buffer yoink" })
+map_action({ "n", "v" }, "<leader>y", "\"+y", { desc = "yoink to clipboard" })
+map_action({ "n", "v" }, "<leader>d", "\"+d", { desc = "delete to clipboard" })
 
 -- Lazy
 map_cmd("n", "<leader>L", "Lazy", { desc = "Lazy" })
 
 -- LSP
-map({ "n", "v" }, "<leader>cf", vim.lsp.buf.format, nil, { desc = "format" })
-map("n", "<leader>cr", vim.lsp.buf.rename, nil, { desc = "rename" })
-map("n", "<leader>ca", vim.lsp.buf.code_action, nil, { desc = "code actions" })
-map("n", "<leader>cd", vim.diagnostic.open_float, nil, { desc = "diagnostics" })
+map({ "n", "v" }, "<leader>cf", vim.lsp.buf.format, nil, { desc = "LSP code format" })
+map("n", "<leader>cr", vim.lsp.buf.rename, nil, { desc = "LSP code rename" })
+map("n", "<leader>ca", vim.lsp.buf.code_action, nil, { desc = "LSP code actions" })
+map("n", "<leader>cd", vim.diagnostic.open_float, nil, { desc = "LSP code diagnostics" })
 map("n", "gd", vim.lsp.buf.definition, nil, { desc = "LSP definition" })
 map("n", "gr", vim.lsp.buf.references, nil, { desc = "LSP references" })
 map("n", "gD", vim.lsp.buf.declaration, nil, { desc = "LSP declaration" })
 map("n", "gI", vim.lsp.buf.implementation, nil, { desc = "LSP implementation" })
-map("n", "<leader>ci", vim.lsp.buf.incoming_calls, nil, { desc = "function calls" })
-map("n", "<leader>co", vim.lsp.buf.outgoing_calls, nil, { desc = "in function calls" })
-map("n", "<leader>ct", vim.lsp.buf.type_definition, nil, { desc = "type hierarchy" })
-map("n", "<leader>ch", vim.lsp.buf.typehierarchy, nil, { desc = "type hierarchy" })
+map("n", "<leader>ci", vim.lsp.buf.incoming_calls, nil, { desc = "LSP incoming function calls" })
+map("n", "<leader>co", vim.lsp.buf.outgoing_calls, nil, { desc = "LSP outgoing function calls" })
+map("n", "<leader>ct", vim.lsp.buf.type_definition, nil, { desc = "LSP type defenition" })
+map("n", "<leader>ch", vim.lsp.buf.typehierarchy, nil, { desc = "LSP type hierarchy" })
 
 -- GIT
-map_cmd("n", "<leader>gb", "Gitsigns blame_line", { desc = "blame line" })
-map_cmd("n", "<leader>gB", "Gitsigns blame", { desc = "blame" })
-map_cmd("n", "<leader>gd", "Gitsigns diffthis", { desc = "diff this" })
-map_cmd("n", "<leader>gr", "Gitsigns reset_hunk", { desc = "reset hunk" })
-map_cmd("n", "<leader>gR", "Gitsigns reset_buffer", { desc = "reset buffer" })
-map_cmd("n", "<leader>gi", "Gitsigns reset_buffer_index", { desc = "reset to index" })
+map_cmd("n", "<leader>gb", "Gitsigns blame_line", { desc = "GS blame line" })
+map_cmd("n", "<leader>gB", "Gitsigns blame", { desc = "GS blame file"})
+map_cmd("n", "<leader>gd", "Gitsigns diffthis", { desc = "GS diff this" })
+map_cmd("n", "<leader>gr", "Gitsigns reset_hunk", { desc = "reset hunk to staged" })
+map_cmd("n", "<leader>gR", "Gitsigns reset_buffer", { desc = "reset file to staged" })
+map_cmd("n", "<leader>gi", "Gitsigns reset_buffer_index", { desc = "unstage file" })
 map_cmd("n", "<leader>gs", "Gitsigns stage_hunk", { desc = "stage hunk" })
-map_cmd("n", "<leader>gS", "Gitsigns stage_buffer", { desc = "stage buffer" })
-map_cmd("n", "<leader>gp", "Gitsigns preview_hunk_inline", { desc = "preview hunk" })
+map_cmd("n", "<leader>gS", "Gitsigns stage_buffer", { desc = "stage file" })
+map_cmd("n", "<leader>gp", "Gitsigns preview_hunk_inline", { desc = "show hunk diff preview" })
 
-map_cmd("n", "]h", "Gitsigns next_hunk", { desc = "next hunk" })
-map_cmd("n", "[h", "Gitsigns prev_hunk", { desc = "prev hunk" })
+map_cmd("n", "]h", "Gitsigns next_hunk", { desc = "next change hunk" })
+map_cmd("n", "[h", "Gitsigns prev_hunk", { desc = "prev change hunk" })
 map_cmd({ "x", "o" }, "ih", "Gitsigns select_hunk", { desc = "inner git hunk" })
 
 -- Telescope

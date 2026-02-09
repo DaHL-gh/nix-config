@@ -36,7 +36,7 @@
         lua-language-server
         # nix
         nil
-        nixfmt-rfc-style
+        nixfmt
         #python
         basedpyright
         ruff
@@ -47,11 +47,6 @@
         vscode-langservers-extracted
         tailwindcss-language-server
       ];
-
-      extraLuaPackages =
-        ps: with ps; [
-          magick
-        ];
 
       extraPython3Packages =
         ps: with ps; [
