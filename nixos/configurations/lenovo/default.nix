@@ -59,9 +59,8 @@
         enable = true;
       };
 
-      displayManager.ly.enable = true;
+      displayManager.sddm.enable = true;
       desktopManager = {
-        cosmic.enable = true;
         plasma6.enable = true;
         gnome.enable = true;
       };
