@@ -103,7 +103,16 @@
         settings.Login.HandleLidSwitch = "ignore";
       };
     };
-    virtualisation.docker.enable = true;
+
+    virtualisation = {
+      docker.enable = true;
+      libvirtd = {
+        enable = true;
+        qemu = {
+          swtpm.enable = true;
+        };
+      };
+    };
 
     ##### HOME MANAGER #####
     home-manager.users.dahl = import ../../../home/configurations/dahl-desktop.nix;
