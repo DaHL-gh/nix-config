@@ -12,26 +12,7 @@
             "before_sleep_cmd": "loginctl lock-session",
             "after_sleep_cmd": "ambxst screen on"
         },
-        "listeners": [
-            {
-                "onResume": "ambxst brightness -r",
-                "onTimeout": "ambxst brightness 10 -s",
-                "timeout": 150
-            },
-            {
-                "onTimeout": "loginctl lock-session",
-                "timeout": 300
-            },
-            {
-                "onResume": "ambxst screen on",
-                "onTimeout": "ambxst screen off",
-                "timeout": 330
-            },
-            {
-                "onTimeout": "ambxst suspend",
-                "timeout": 1800
-            }
-        ]
+        "listeners": []
     },
     "ocr": {
         "eng": true,
