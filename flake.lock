@@ -31,11 +31,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1770628003,
-        "narHash": "sha256-f/kCjT0OaSLytDWGuhIGfsU07X5yAweYVl8DtsjyOeY=",
+        "lastModified": 1769047659,
+        "narHash": "sha256-khB7WvvQB+FFiP7mljFRqNAba92iVEJP76PRGotc0kw=",
         "owner": "Axenide",
         "repo": "Ambxst",
-        "rev": "f4297a82c5b37be2b7fb5ee4fb5d7ee814f9f1fc",
+        "rev": "849b55c46335905de4c2516f45e2fa3344bfcbce",
         "type": "github"
       },
       "original": {
