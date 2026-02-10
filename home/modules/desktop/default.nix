@@ -49,15 +49,15 @@
       # kdePackages.kdenlive
       # ffmpeg
 
-      # # virtualization
-      # qemu
-      # virt-manager
-      # virt-viewer
-      # virtio-win
-      # spice
-      # spice-gtk
-      # spice-protocol
-      # win-spice
+      # virtualization
+      qemu
+      virt-manager
+      virt-viewer
+      virtio-win
+      spice
+      spice-gtk
+      spice-protocol
+      win-spice
     ];
   };
 }
