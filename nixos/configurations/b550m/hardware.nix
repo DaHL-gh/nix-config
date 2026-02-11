@@ -52,14 +52,24 @@ in
       ];
       kernelModules = [ ];
     };
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [
+      "kvm-amd"
+      # "vfio_pci"
+      # "vfio"
+      # "vfio_iommu_typ1"
+      # "vfio_virqfd"
+    ];
     extraModulePackages = [ ];
 
     resumeDevice = "/dev/nvme0n1p7";
     kernelParams = [
       "resume=/dev/sda7"
       "resume_offset=24481792"
+      # "amd_iommu=on"
+      # "iommu=pt"
+      # "vfio-pci.ids=1002:73ff,1002:ab28"
     ];
+    # blacklistedKernelModules = [ "amdgpu" ];
   };
 
   swapDevices = [
