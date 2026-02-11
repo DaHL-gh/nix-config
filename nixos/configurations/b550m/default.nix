@@ -30,7 +30,10 @@
       pipewire.enable = true;
       keyd.enable = true;
       home-manager.enable = true;
-
+      rocm = {
+        enable = true;
+        hsaOverrideGfxVersion = "10.3.0";
+      };
       agenix = {
         enable = true;
         secrets = {
