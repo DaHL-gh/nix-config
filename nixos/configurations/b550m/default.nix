@@ -90,8 +90,13 @@
       rtkit.enable = true;
     };
 
+    # qt = {
+    #   enable = true;
+    #   platformTheme = "qt5ct";
+    # };
+
     services = {
-      displayManager.ly.enable = true;
+      displayManager.sddm.enable = true;
       desktopManager.plasma6.enable = true;
 
       openssh = {
@@ -113,13 +118,13 @@
         capSysAdmin = true;
       };
 
-      k3s = {
-        enable = true;
-        role = "agent";
-        serverAddr = "https://10.10.0.1:6443";
-        tokenFile = config.age.secrets.node-token.path;
-        nodeIP = "10.10.0.4";
-      };
+      # k3s = {
+      #   enable = true;
+      #   role = "agent";
+      #   serverAddr = "https://10.10.0.1:6443";
+      #   tokenFile = config.age.secrets.node-token.path;
+      #   nodeIP = "10.10.0.4";
+      # };
     };
 
     ##### VIRTUALIZATION #####
