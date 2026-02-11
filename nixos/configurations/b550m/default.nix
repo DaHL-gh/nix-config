@@ -107,6 +107,12 @@
         ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
       '';
 
+      sunshine = {
+        enable = true;
+        autoStart = true;
+        capSysAdmin = true;
+      };
+
       k3s = {
         enable = true;
         role = "agent";
