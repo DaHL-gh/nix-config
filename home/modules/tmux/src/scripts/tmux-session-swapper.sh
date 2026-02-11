@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
 DIRS=(
-    "projects"
-    "projects/cpp"
-    "projects/python"
-    "projects/nix"
-    "projects/web-programming"
-    "Documents"
     "Documents/projects"
+    "Document/projects/pytorch"
 )
 
 EXTRA=(
     ".config"
+    "Documents/nix-config"
+    "Document/Obsidian"
 )
 
 selected="$( \
