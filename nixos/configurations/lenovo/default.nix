@@ -31,7 +31,7 @@
       pipewire.enable = true;
       keyd.enable = true;
       home-manager.enable = true;
-
+      nix-ld.enable = true;
       agenix = {
         enable = true;
         secrets = {
@@ -122,14 +122,7 @@
 
     programs = {
       fish.enable = true;
-
       hyprland.enable = true;
-
-      nix-ld = {
-        enable = true;
-        libraries = with pkgs; [ fuse ];
-      };
-
       steam.enable = true;
 
       throne = {

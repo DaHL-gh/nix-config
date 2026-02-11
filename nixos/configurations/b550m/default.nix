@@ -34,6 +34,7 @@
         enable = true;
         hsaOverrideGfxVersion = "10.3.0";
       };
+      nix-ld.enable = true;
       agenix = {
         enable = true;
         secrets = {
@@ -147,10 +148,6 @@
     programs = {
       fish.enable = true;
       hyprland.enable = true;
-      nix-ld = {
-        enable = true;
-        libraries = with pkgs; [ fuse ];
-      };
       steam.enable = true;
 
       throne = {
