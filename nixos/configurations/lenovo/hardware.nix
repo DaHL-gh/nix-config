@@ -59,6 +59,19 @@
     ];
   };
 
+  fileSystems."/mnt/windows" = {
+    device = "/dev/disk/by-uuid/9EFC0CCBFC0CA01F";
+    fsType = "ntfs";
+    options = [
+      "defaults"
+      "nofail"
+      "dmask=027"
+      "fmask=027"
+      "uid=1000"
+      "gid=1000"
+    ];
+  };
+
   networking.useDHCP = lib.mkDefault true;
 
   swapDevices = [ ];
