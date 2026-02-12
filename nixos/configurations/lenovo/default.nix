@@ -72,7 +72,12 @@
       enable = true;
       powerOnBoot = true;
       settings = {
-        General.Experimental = true;
+        General = {
+          Experimental = true;
+          FastConnectable = true;
+          ControllerMode = "bredr";
+          Disable = "Headset,Handsfree,Gateway";
+        };
       };
     };
 
@@ -86,11 +91,13 @@
         enable = true;
       };
 
-      displayManager.sddm.enable = true;
-      desktopManager = {
-        plasma6.enable = true;
-        gnome.enable = true;
+      fwupd.enable = true;
+
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
       };
+      desktopManager = { };
 
       openssh = {
         enable = true;
