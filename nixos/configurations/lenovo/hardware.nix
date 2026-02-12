@@ -37,7 +37,12 @@
     ];
     initrd.kernelModules = [ ];
     kernelModules = [ "kvm-amd" ];
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [ ];
+      #options rtw89_8852bu ant_sel=2
+    extraModprobeConfig = ''
+      options rtw89_core disable_ps_mode=y
+    '';
   };
 
   fileSystems."/" = {
@@ -59,5 +64,8 @@
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware = {
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    enableAllFirmware = true;
+  };
 }
