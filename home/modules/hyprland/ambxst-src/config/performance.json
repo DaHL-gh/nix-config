@@ -1,5 +1,5 @@
 {
-    "blurTransition": false,
+    "blurTransition": true,
     "windowPreview": true,
     "wavyLine": false
 }
