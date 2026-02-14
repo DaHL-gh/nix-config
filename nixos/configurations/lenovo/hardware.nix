@@ -43,6 +43,12 @@
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y
     '';
+
+    resumeDevice = "/dev/nvme0n1p2";
+    kernelParams = [
+      "resume=/dev/nvme0n1p2"
+      "resume_offset=126418944"
+    ];
   };
 
   fileSystems."/" = {
@@ -74,7 +80,12 @@
 
   networking.useDHCP = lib.mkDefault true;
 
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 20480;
+    }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
