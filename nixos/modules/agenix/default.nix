@@ -24,6 +24,6 @@ in
   config = lib.mkIf cfg.enable {
     age.secrets = lib.mapAttrs (name: path: { file = path; }) cfg.secrets;
 
-    environment.systemPackages = [ inputs.agenix.packages.${pkgs.system}.default ];
+    environment.systemPackages = [ inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 }
