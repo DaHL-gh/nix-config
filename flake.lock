@@ -23,24 +23,49 @@
         "type": "github"
       }
     },
-    "ambxst": {
+    "caelestia": {
       "inputs": {
+        "caelestia-cli": "caelestia-cli",
         "nixpkgs": [
           "nixpkgs"
         ],
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1769047659,
-        "narHash": "sha256-khB7WvvQB+FFiP7mljFRqNAba92iVEJP76PRGotc0kw=",
-        "owner": "Axenide",
-        "repo": "Ambxst",
-        "rev": "849b55c46335905de4c2516f45e2fa3344bfcbce",
+        "lastModified": 1771120934,
+        "narHash": "sha256-CnE8v42+SU7uLjTit453knxuwsMxZixEPU4s/6JANjs=",
+        "owner": "caelestia-dots",
+        "repo": "shell",
+        "rev": "3a7309294cd4575e60aeb5e153d346313b16f7d9",
         "type": "github"
       },
       "original": {
-        "owner": "Axenide",
-        "repo": "Ambxst",
+        "owner": "caelestia-dots",
+        "repo": "shell",
+        "type": "github"
+      }
+    },
+    "caelestia-cli": {
+      "inputs": {
+        "caelestia-shell": [
+          "caelestia"
+        ],
+        "nixpkgs": [
+          "caelestia",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771075454,
+        "narHash": "sha256-5GlUpibCTqcXq/kCwkLHQGfjuBk2r+ZlWY0MjZo0xtE=",
+        "owner": "caelestia-dots",
+        "repo": "cli",
+        "rev": "d890f7c3af4e7a900338bdf6400c2cf76de89a19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "caelestia-dots",
+        "repo": "cli",
         "type": "github"
       }
     },
@@ -218,16 +243,16 @@
     "quickshell": {
       "inputs": {
         "nixpkgs": [
-          "ambxst",
+          "caelestia",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1766725085,
-        "narHash": "sha256-O2aMFdDUYJazFrlwL7aSIHbUSEm3ADVZjmf41uBJfHs=",
+        "lastModified": 1770693276,
+        "narHash": "sha256-ngXnN5YXu+f45+QGYNN/VEBMQmcBCYGRCqwaK8cxY1s=",
         "ref": "refs/heads/master",
-        "rev": "41828c4180fb921df7992a5405f5ff05d2ac2fff",
-        "revCount": 715,
+        "rev": "dacfa9de829ac7cb173825f593236bf2c21f637e",
+        "revCount": 735,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
@@ -239,7 +264,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "ambxst": "ambxst",
+        "caelestia": "caelestia",
         "home-manager": "home-manager_2",
         "milk-grub-theme": "milk-grub-theme",
         "nixpkgs": "nixpkgs",

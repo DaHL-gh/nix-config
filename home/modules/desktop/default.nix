@@ -44,7 +44,7 @@
       wineWowPackages.waylandFull
       winetricks
       lutris
-      inputs.polyMc.packages.${pkgs.system}.default
+      inputs.caelestia.packages.${pkgs.default}.with-cli
 
       # kdePackages.kdenlive
       # ffmpeg

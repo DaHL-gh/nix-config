@@ -33,10 +33,6 @@
         config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/hyprland.conf";
       ".config/hypr/monitors.conf".source =
         config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/monitors/${configurationName}.conf";
-      ".config/Ambxst" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/ambxst-src/";
-        recursive = true;
-      };
       "Pictures/Wallpapers/" = {
         source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/wallpapers";
         recursive = true;
