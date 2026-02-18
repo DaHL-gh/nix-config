@@ -41,7 +41,7 @@
       wireshark
 
       # gaming?
-      wineWowPackages.waylandFull
+      wineWow64Packages.waylandFull
       winetricks
       lutris
       inputs.caelestia.packages.${pkgs.stdenv.hostPlatform.system}.with-cli
