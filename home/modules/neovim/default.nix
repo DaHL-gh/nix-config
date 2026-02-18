@@ -10,50 +10,38 @@
 
   config = lib.mkIf config.localModules.neovim.enable {
     home.packages = with pkgs; [
-      typst
+      clang
+      ripgrep
+
+      # cpp
+      llvmPackages_20.clang-tools
+      # docker
+      docker-language-server
+      docker-compose-language-service
+      # html + css + javascript
+      vscode-langservers-extracted
+      tailwindcss-language-server
+      # lua
+      lua-language-server
+      # nix
+      nil
+      nixfmt
+      # python
       basedpyright
+      ruff
+      # qml
+      kdePackages.qtdeclarative
+      # typst
+      tinymist
+      typst
+      # yaml
+      yaml-language-server
     ];
 
     programs.neovim = {
       enable = true;
 
-      extraPackages = with pkgs; [
-        imagemagick
-        python313Packages.jupytext
-
-        clang
-        ripgrep
-
-        yaml-language-server
-
-        # typst
-        tinymist
-        typst
-        # cpp
-        llvmPackages_20.clang-tools
-
-        # lua
-        lua-language-server
-        # nix
-        nil
-        nixfmt
-        #python
-        basedpyright
-        ruff
-        #docker
-        docker-language-server
-        docker-compose-language-service
-        #web
-        vscode-langservers-extracted
-        tailwindcss-language-server
-      ];
-
-      extraPython3Packages =
-        ps: with ps; [
-          pynvim
-          jupyter-client
-          nbformat
-        ];
+      extraPackages = with pkgs; [ ];
     };
 
     home.sessionVariables = {
