@@ -45,6 +45,9 @@
       winetricks
       lutris
 
+      powertop
+      nwg-look
+      kdePackages.dolphin
       # kdePackages.kdenlive
       # ffmpeg
 
