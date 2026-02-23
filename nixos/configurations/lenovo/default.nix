@@ -107,8 +107,40 @@
       };
 
       logind = {
-        settings.Login.HandleLidSwitch = "ignore";
+        settings.Login = {
+          HandleLidSwitch = "suspend";
+          HandlePowerKey = "suspend";
+        };
       };
+
+      tlp = {
+        enable = true;
+        settings = {
+          # Процессор и платформа
+          CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+          PLATFORM_PROFILE_ON_BAT = "low-power";
+
+          # Экономия энергии на шине PCIe (Критично!)
+          # PCIE_ASPM_ON_BAT = "powersave";
+
+          # Графика AMD: уровень 3 — золотая середина
+          AMDGPU_ABM_LEVEL_ON_BAT = 3;
+
+          # Диски
+          DISK_IOSCHED = "none"; # Для NVMe планировщик не нужен
+
+          # Радиомодули (отключаем Bluetooth, если не нужен в пути)
+          DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
+
+          # Бережем батарею (Lenovo Conservation Mode)
+          # Если часто работаешь от сети, поставь 1. Это ограничит заряд на 60-80%.
+          # У тебя сейчас 0 (заряжает до 100%).
+          START_CHARGE_THRESH_BAT0 = 80;
+          STOP_CHARGE_THRESH_BAT0 = 90;
+        };
+      };
+      tlp.pd.enable = true;
+      power-profiles-daemon.enable = false;
     };
 
     virtualisation = {

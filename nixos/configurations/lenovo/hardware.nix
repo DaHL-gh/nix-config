@@ -48,6 +48,7 @@
     kernelParams = [
       "resume=/dev/nvme0n1p2"
       "resume_offset=126418944"
+      "pcie_aspm=off"
     ];
   };
 
