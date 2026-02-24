@@ -13,19 +13,11 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-
   boot = {
     loader = {
-      grub = {
-        enable = true;
-        efiSupport = true;
-        devices = [ "nodev" ];
-        milk-theme.enable = true;
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot/efi";
     };
     initrd.availableKernelModules = [
       "nvme"
@@ -34,35 +26,41 @@
       "usbhid"
       "sd_mod"
       "rtsx_pci_sdmmc"
+      "aesni_intel"
     ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-amd" ];
+    initrd.kernelModules = [ "dm-snapshot" ];
+    initrd.luks.devices."cryptroot" = {
+      device = "/dev/disk/by-label/nixos-encrypted";
+      bypassWorkqueues = true;
+      allowDiscards = true;
+    };
+    kernelModules = [
+      "kvm-amd"
+      "cryptd"
+    ];
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [ ];
-      #options rtw89_8852bu ant_sel=2
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y
     '';
 
-    resumeDevice = "/dev/nvme0n1p2";
     kernelParams = [
-      "resume=/dev/nvme0n1p2"
-      "resume_offset=126418944"
       "pcie_aspm=off"
     ];
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6a8d94fa-c931-45d0-9d22-ea7b6f8642c0";
+    device = "/dev/lvmroot/root";
     fsType = "ext4";
   };
 
   fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/E80B-968E";
+    device = "/dev/disk/by-uuid/46B3-B5C5";
     fsType = "vfat";
     options = [
       "fmask=0022"
       "dmask=0022"
+      "nofail"
     ];
   };
 
@@ -81,12 +79,7 @@
 
   networking.useDHCP = lib.mkDefault true;
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 20480;
-    }
-  ];
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
