@@ -18,24 +18,43 @@
 
     fonts.fontconfig.enable = true;
 
+    gtk = {
+      enable = true;
+      cursorTheme.name = "Nordic-cursors";
+      cursorTheme.size = 12;
+      iconTheme.name = "Nordzy";
+      theme.name = "Nordic";
+    };
+
     home.packages = with pkgs; [
       # fonts
       iosevka-bin
       jetbrains-mono
+      ipafont
+      kochi-substitute
+
+      nordic
+      nordzy-icon-theme
+      nwg-look
+      powertop
 
       # Desktop apps
+      anki
       bitwarden-desktop
       gimp
       google-chrome
+      kdePackages.dolphin
+      kdePackages.filelight
+      kdePackages.kdenlive
       libreoffice-qt6
-      onlyoffice-desktopeditors
       mission-center
       nemo
-      obsidian
       obs-studio
-      telegram-desktop
+      obsidian
+      onlyoffice-desktopeditors
       qalculate-qt
       qbittorrent
+      telegram-desktop
       vesktop
       vlc
       vscode
@@ -45,13 +64,6 @@
       wineWow64Packages.waylandFull
       winetricks
       lutris
-
-      powertop
-      nwg-look
-      kdePackages.dolphin
-      kdePackages.filelight
-      # kdePackages.kdenlive
-      # ffmpeg
 
       # virtualization
       qemu
