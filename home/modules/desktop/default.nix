@@ -49,6 +49,7 @@
       powertop
       nwg-look
       kdePackages.dolphin
+      kdePackages.filelight
       # kdePackages.kdenlive
       # ffmpeg
 
