@@ -13,7 +13,10 @@
     home.packages = [ inputs.caelestia.packages.${pkgs.stdenv.hostPlatform.system}.with-cli ];
 
     home.file = {
-      ".config/caelestia/shell.json".source = "${flakePath}/home/modules/caelestia/src/shell.json";
+      ".config/caelestia/" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/caelestia/src";
+        recursive = true;
+      };
     };
   };
 }
