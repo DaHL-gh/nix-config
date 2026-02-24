@@ -98,6 +98,7 @@
   },
   "background": {
     "enabled": true,
+    "wallpaperEnabled": true,
     "desktopClock": {
       "enabled": false,
       "scale": 1,
@@ -157,14 +158,14 @@
       "iconSubs": []
     },
     "status": {
-      "showAudio": true,
-      "showMicrophone": true,
-      "showKbLayout": true,
-      "showNetwork": true,
-      "showWifi": true,
-      "showBluetooth": true,
-      "showBattery": true,
-      "showLockStatus": true
+      "showAudio": false,
+      "showMicrophone": false,
+      "showKbLayout": false,
+      "showNetwork": false,
+      "showWifi": false,
+      "showBluetooth": false,
+      "showBattery": false,
+      "showLockStatus": false
     },
     "clock": {
       "showIcon": true
@@ -223,8 +224,15 @@
   "dashboard": {
     "enabled": true,
     "showOnHover": true,
-    "mediaUpdateInterval": 500,
     "dragThreshold": 50,
+    "performance": {
+      "showBattery": true,
+      "showGpu": true,
+      "showCpu": true,
+      "showMemory": true,
+      "showStorage": true,
+      "showNetwork": true
+    },
     "sizes": {
       "tabIndicatorHeight": 3,
       "tabIndicatorSpacing": 5,
@@ -257,6 +265,7 @@
     "enableDangerousActions": false,
     "dragThreshold": 50,
     "vimKeybinds": false,
+    "favouriteApps": [],
     "hiddenApps": [],
     "useFuzzy": {
       "apps": false,
@@ -459,6 +468,12 @@
     "enabled": true,
     "dragThreshold": 30,
     "vimKeybinds": false,
+    "icons": {
+      "logout": "logout",
+      "shutdown": "power_settings_new",
+      "hibernate": "downloading",
+      "reboot": "cached"
+    },
     "commands": {
       "logout": [
         "loginctl",
@@ -533,6 +548,7 @@
   "services": {
     "weatherLocation": "",
     "useFahrenheit": true,
+    "useFahrenheitPerformance": true,
     "useTwelveHourClock": true,
     "gpuType": "",
     "visualiserBars": 45,
