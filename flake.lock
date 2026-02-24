@@ -217,6 +217,26 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771872869,
+        "narHash": "sha256-evn+p0+T9yNtjdRr5UnYwXnhlHgFB8ilzhGQoYvgXhs=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "90e44d6edd604a0877310b01ff20006abcf67e77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
     "polyMc": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -269,6 +289,7 @@
         "milk-grub-theme": "milk-grub-theme",
         "nixpkgs": "nixpkgs",
         "nixpkgs-25-05": "nixpkgs-25-05",
+        "noctalia": "noctalia",
         "polyMc": "polyMc",
         "spicetify-nix": "spicetify-nix"
       }
