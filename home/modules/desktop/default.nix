@@ -9,6 +9,7 @@
   options.localModules.desktop.enable = lib.mkEnableOption "";
   config = lib.mkIf config.localModules.desktop.enable {
     localModules = {
+      noctalia-shell.enable = true;
       firefox.enable = true;
       hyprland.enable = true;
       kitty.enable = true;
