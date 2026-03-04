@@ -11,7 +11,15 @@
     targets.genericLinux.enable = true;
 
     localModules = {
-      cliUtils.enable = true;
+      fish.enable = true;
+      git.enable = true;
+      neovim.enable = true;
+      tmux.enable = true;
+      programCategories = [
+        "cli"
+        "networking"
+        "kubernetes"
+      ];
     };
   };
 }

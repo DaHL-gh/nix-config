@@ -77,7 +77,6 @@
     };
 
     ##### BOOT #####
-
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -98,7 +97,7 @@
 
     services = {
       displayManager.sddm.enable = true;
-      desktopManager.plasma6.enable = true;
+      displayManager.sddm.wayland.enable = true;
 
       openssh = {
         enable = true;
@@ -128,6 +127,12 @@
       # };
     };
 
+    qt = {
+      enable = true;
+      platformTheme = "qt5ct";
+      style = "kvantum";
+    };
+
     ##### VIRTUALIZATION #####
     virtualisation = {
       docker.enable = true;
@@ -137,10 +142,57 @@
           swtpm.enable = true;
         };
       };
+      podman = {
+        enable = true;
+        extraPackages = with pkgs; [ podman-compose ];
+      };
     };
 
     ##### HOME MANAGER #####
-    home-manager.users.dahl = import ../../../home/configurations/dahl-desktop.nix;
+    home-manager.users.dahl = {
+      imports = [
+        ../../../home/modules
+      ];
+
+      config = {
+        home.stateVersion = "25.05";
+        targets.genericLinux.enable = true;
+
+        localModules = {
+          noctalia-shell.enable = true;
+          firefox.enable = true;
+          hyprland.enable = true;
+          kitty.enable = true;
+          spicetify.enable = true;
+          fish.enable = true;
+          git.enable = true;
+          neovim.enable = true;
+          tmux.enable = true;
+          programCategories = [
+            "cli"
+            "networking"
+            "nix"
+            "kubernetes"
+            "desktop"
+            "desktop-essentials"
+            "creation"
+            "games"
+            "virtualization"
+            "unsorted"
+          ];
+        };
+
+        fonts.fontconfig.enable = true;
+
+        gtk = {
+          enable = true;
+          cursorTheme.name = "Nordic-cursors";
+          cursorTheme.size = 12;
+          iconTheme.name = "Nordzy";
+          theme.name = "Nordic";
+        };
+      };
+    };
 
     ##### PROGRAMS #####
     nixpkgs.config.allowUnfree = true;
