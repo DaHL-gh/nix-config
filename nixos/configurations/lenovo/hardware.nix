@@ -15,10 +15,13 @@
   ];
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot/efi";
+      efi.efiSysMountPoint = "/boot";
     };
+    lanzaboote.enable = true;
+    lanzaboote.pkiBundle = "/var/lib/sbctl";
+
     initrd.availableKernelModules = [
       "nvme"
       "xhci_pci"
@@ -43,7 +46,6 @@
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y
     '';
-
     kernelParams = [
       "pcie_aspm=off"
     ];
@@ -54,7 +56,7 @@
     fsType = "ext4";
   };
 
-  fileSystems."/boot/efi" = {
+  fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/46B3-B5C5";
     fsType = "vfat";
     options = [

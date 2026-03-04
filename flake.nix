@@ -15,6 +15,8 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote.url = "github:nix-community/lanzaboote?ref=v1.0.0";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -60,6 +62,7 @@
           modules = [
             ./nixos/configurations/${deviceName}
             inputs.home-manager.nixosModules.home-manager
+            inputs.lanzaboote.nixosModules.lanzaboote
             inputs.milk-grub-theme.nixosModule
             { nixpkgs.overlays = [ hiddifyOverlay ]; }
           ];
