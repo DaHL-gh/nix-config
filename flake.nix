@@ -4,29 +4,29 @@
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     nixpkgs-25-05.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
 
-    home-manager.url = "github:nix-community/home-manager?ref=master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
 
     caelestia.url = "github:caelestia-dots/shell";
     caelestia.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
-    noctalia.inputs.nixpkgs.follows = "nixpkgs";
-
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.url = "github:nix-community/lanzaboote?ref=v1.0.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager?ref=master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     milk-grub-theme.url = "github:gemakfy/MilkGrub";
     milk-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
 
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
+
     polyMc.url = "github:PolyMC/PolyMC";
     polyMc.inputs.nixpkgs.follows = "nixpkgs";
 
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
