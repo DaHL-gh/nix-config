@@ -19,10 +19,14 @@
     networking.hostName = config.deviceName;
 
     system.stateVersion = "24.11";
-    nix.settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    nix.settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      use-xdg-base-directories = true;
+    };
 
     time.timeZone = "Asia/Yekaterinburg";
 
@@ -168,6 +172,7 @@
           git.enable = true;
           neovim.enable = true;
           tmux.enable = true;
+          xdg.enable = true;
           programCategories = [
             "cli"
             "networking"
@@ -206,11 +211,6 @@
         enable = true;
         tunMode.enable = true;
       };
-    };
-
-    xdg.terminal-exec = {
-      enable = true;
-      settings.default = [ "kitty.desktop" ];
     };
 
     environment.systemPackages = with pkgs; [ ];
