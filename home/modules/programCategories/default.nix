@@ -47,6 +47,7 @@ let
     desktop-essentials = with pkgs; [
       kdePackages.dolphin
       kdePackages.filelight
+      localsend
       mission-center
       nemo
       qalculate-qt
