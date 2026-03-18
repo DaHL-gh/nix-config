@@ -17,10 +17,10 @@ let
       file
       powertop
       tree
-
-      gemini-cli
       unzip
       zip
+
+      gemini-cli
     ];
 
     networking = with pkgs; [
@@ -60,7 +60,10 @@ let
       anki
       bitwarden-desktop
       google-chrome
+      libreoffice-qt6
+      moonlight-qt
       obsidian
+      onlyoffice-desktopeditors
       telegram-desktop
       vesktop
       vlc
@@ -71,8 +74,6 @@ let
       gimp
       obs-studio
       kdePackages.kdenlive
-      libreoffice-qt6
-      onlyoffice-desktopeditors
     ];
 
     games = with pkgs; [
@@ -94,7 +95,6 @@ let
     ];
 
     unsorted = with pkgs; [
-
       # fonts
       iosevka-bin
       ipafont
