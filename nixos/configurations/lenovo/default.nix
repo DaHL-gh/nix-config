@@ -97,9 +97,12 @@
 
       fwupd.enable = true;
 
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
+      displayManager = {
+        ly.enable = true;
+        sddm = {
+          enable = false;
+          wayland.enable = true;
+        };
       };
       desktopManager = { };
 
@@ -145,6 +148,11 @@
       };
       tlp.pd.enable = true;
       power-profiles-daemon.enable = false;
+
+      immich = {
+        enable = true;
+        host = "0.0.0.0";
+      };
     };
 
     virtualisation = {
@@ -206,6 +214,7 @@
     ##### PROGRAMS #####
     nixpkgs.config.allowUnfree = true;
 
+    documentation.man.generateCaches = false; # disable fish cache generation
     programs = {
       fish.enable = true;
       hyprland.enable = true;
