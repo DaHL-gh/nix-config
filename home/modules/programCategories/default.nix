@@ -17,6 +17,11 @@ let
       file
       powertop
       tree
+
+      gvfs
+      cloc
+      opencode
+      gemini-cli
       unzip
       zip
 
@@ -45,14 +50,14 @@ let
     ];
 
     desktop-essentials = with pkgs; [
-      kdePackages.dolphin
+      imv
       kdePackages.filelight
       localsend
       mission-center
-      nemo
       qalculate-qt
       qbittorrent
       sioyek
+      thunar
       wireshark
     ];
 
