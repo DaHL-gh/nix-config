@@ -8,7 +8,7 @@ let
   imageViewer = "imv.desktop";
   pdfViewer = "sioyek.desktop";
   videoPlayer = "vlc.desktop";
-  fileManager = "org.kde.dolphin.desktop";
+  fileManager = "thunar.desktop";
   browser = "firefox.desktop";
   mailClient = "HEY.desktop";
   editor = "nvim.desktop";

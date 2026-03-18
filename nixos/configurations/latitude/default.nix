@@ -90,6 +90,9 @@
         enable = true;
       };
 
+      gvfs.enable = true;
+      tumbler.enable = true;
+
       displayManager.ly.enable = true;
       desktopManager = {
         cosmic.enable = true;

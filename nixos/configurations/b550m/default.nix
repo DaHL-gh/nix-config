@@ -103,11 +103,20 @@
       displayManager.sddm.enable = true;
       displayManager.sddm.wayland.enable = true;
 
+      gvfs.enable = true;
+      tumbler.enable = true;
+
       openssh = {
         enable = true;
         settings = {
           GatewayPorts = "yes";
         };
+      };
+
+      ollama = {
+        enable = true;
+        package = pkgs.ollama-rocm;
+        rocmOverrideGfx = "10.3.0";
       };
 
       spice-vdagentd.enable = true;
@@ -149,6 +158,10 @@
       podman = {
         enable = true;
         extraPackages = with pkgs; [ podman-compose ];
+      };
+      waydroid = {
+        enable = true;
+        package = pkgs.waydroid-nftables;
       };
     };
 
