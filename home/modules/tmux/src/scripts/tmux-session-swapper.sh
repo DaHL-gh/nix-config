@@ -2,7 +2,7 @@
 
 DIRS=(
     "Documents/projects"
-    "Document/projects/pytorch"
+    # "Documents/projects/pytorch"
 )
 
 EXTRA=(

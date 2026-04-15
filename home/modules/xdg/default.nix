@@ -9,7 +9,7 @@ let
   pdfViewer = "sioyek.desktop";
   videoPlayer = "vlc.desktop";
   fileManager = "thunar.desktop";
-  browser = "firefox.desktop";
+  browser = "helium.desktop";
   mailClient = "HEY.desktop";
   editor = "nvim.desktop";
 in
