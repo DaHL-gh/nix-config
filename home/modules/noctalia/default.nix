@@ -10,7 +10,10 @@
   options.localModules.noctalia-shell.enable = lib.mkEnableOption "";
 
   config = lib.mkIf config.localModules.noctalia-shell.enable {
-    home.packages = [ inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+    home.packages = [
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      pkgs.quickshell
+    ];
 
     home.file = {
       ".config/noctalia/" = {

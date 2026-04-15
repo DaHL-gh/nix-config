@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -58,7 +59,17 @@ let
       qbittorrent
       sioyek
       thunar
+      thunar-archive-plugin
+      file-roller
+      zip
+      unzip
+      gnutar
+      gzip
+      bzip2
+      xz
       wireshark
+
+      inputs.helium.packages.${system}.default
     ];
 
     desktop = with pkgs; [
@@ -79,6 +90,7 @@ let
       gimp
       obs-studio
       kdePackages.kdenlive
+      blender
     ];
 
     games = with pkgs; [
@@ -105,6 +117,7 @@ let
       ipafont
       jetbrains-mono
       kochi-substitute
+      material-icons
 
       nordic
       nordzy-icon-theme

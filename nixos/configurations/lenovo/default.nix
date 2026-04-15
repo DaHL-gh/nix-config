@@ -139,13 +139,7 @@
           DISK_IOSCHED = "none"; # Для NVMe планировщик не нужен
 
           # Радиомодули (отключаем Bluetooth, если не нужен в пути)
-          DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
-
-          # Бережем батарею (Lenovo Conservation Mode)
-          # Если часто работаешь от сети, поставь 1. Это ограничит заряд на 60-80%.
-          # У тебя сейчас 0 (заряжает до 100%).
-          START_CHARGE_THRESH_BAT0 = 80;
-          STOP_CHARGE_THRESH_BAT0 = 90;
+          # DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
         };
       };
       tlp.pd.enable = true;
@@ -190,6 +184,7 @@
           xdg.enable = true;
           programCategories = [
             "cli"
+            "creation"
             "networking"
             "nix"
             "kubernetes"
