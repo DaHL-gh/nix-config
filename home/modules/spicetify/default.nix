@@ -22,7 +22,8 @@ in
         shuffle
         playNext
         playingSource
-        beautifulLyrics
+        spicyLyrics
+        betterGenres
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
@@ -35,7 +36,7 @@ in
         # hideLyricsButton
       ];
 
-      # theme = spicePkgs.themes.catppuccin;
+      theme = spicePkgs.themes.defaultDynamic;
       # colorScheme = "mocha";
     };
   };

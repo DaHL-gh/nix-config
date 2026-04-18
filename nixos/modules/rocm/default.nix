@@ -28,6 +28,7 @@ in
       rocmPackages.hipblas
       rocmPackages.miopen
       rocmPackages.rccl
+      rocmPackages.rocminfo
 
       nvtopPackages.amd
       amdgpu_top
@@ -36,6 +37,7 @@ in
     environment.variables = {
       ROCM_PATH = "${pkgs.rocmPackages.rocm-runtime}";
       HSA_OVERRIDE_GFX_VERSION = cfg.hsaOverrideGfxVersion;
+      HSC_TARGET = "gfx1030";
     };
   };
 }
