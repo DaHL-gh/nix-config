@@ -40,8 +40,7 @@
 
     programs.neovim = {
       enable = true;
-
-      extraPackages = with pkgs; [ ];
+      sideloadInitLua = true;
     };
 
     home.sessionVariables = {
