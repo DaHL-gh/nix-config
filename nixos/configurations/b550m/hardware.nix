@@ -62,7 +62,7 @@ in
     ];
     extraModulePackages = [ ];
 
-    resumeDevice = "/dev/nvme0n1p7";
+    resumeDevice = "/dev/nvme0n1p4";
     kernelParams = [
       "resume=/dev/sda7"
       "resume_offset=24481792"
@@ -101,12 +101,6 @@ in
       device = "/dev/disk/by-uuid/08CAC260CAC249A0";
       fsType = "ntfs";
       options = ntfs_mounting_params;
-    };
-
-    "/mnt/arch" = {
-      device = "/dev/disk/by-uuid/e1344cb1-760a-4886-af76-fc281e3a726e";
-      fsType = "ext4";
-      options = ext4_mounting_params;
     };
 
     "/mnt/ssd" = {
