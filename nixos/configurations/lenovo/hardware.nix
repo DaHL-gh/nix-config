@@ -41,7 +41,7 @@
       "kvm-amd"
       "cryptd"
     ];
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = [ ];
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y

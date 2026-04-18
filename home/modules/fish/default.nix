@@ -131,6 +131,7 @@ in
   options.localModules.fish.enable = lib.mkEnableOption "Just fish";
 
   config = lib.mkIf config.localModules.fish.enable {
+    programs.man.generateCaches = false;
     programs.fish = {
       enable = true;
       interactiveShellInit = prompt;
