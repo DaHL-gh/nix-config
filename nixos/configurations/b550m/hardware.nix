@@ -52,7 +52,7 @@ in
       ];
       kernelModules = [ ];
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelModules = [
       "kvm-amd"
       # "vfio_pci"

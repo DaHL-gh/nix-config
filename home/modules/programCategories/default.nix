@@ -42,6 +42,7 @@ let
     nix = with pkgs; [
       nix-index
       nix-search-cli
+      nix-output-monitor
     ];
 
     kubernetes = with pkgs; [
@@ -87,6 +88,7 @@ let
     ];
 
     creation = with pkgs; [
+      blender
       gimp
       obs-studio
       kdePackages.kdenlive

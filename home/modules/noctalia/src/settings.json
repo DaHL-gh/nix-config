@@ -9,7 +9,7 @@
         "density": "default",
         "enableClipPreview": true,
         "enableClipboardChips": true,
-        "enableClipboardHistory": false,
+        "enableClipboardHistory": true,
         "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": true,
@@ -575,7 +575,7 @@
             },
             {
                 "action": "hibernate",
-                "command": "",
+                "command": "systemctl suspend-then-hibernate",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "3"
@@ -625,7 +625,7 @@
         "batteryWarningThreshold": 20,
         "cpuCriticalThreshold": 90,
         "cpuWarningThreshold": 80,
-        "criticalColor": "",
+        "criticalColor": "#bf616a",
         "diskAvailCriticalThreshold": 10,
         "diskAvailWarningThreshold": 20,
         "diskCriticalThreshold": 90,
@@ -641,7 +641,7 @@
         "tempCriticalThreshold": 90,
         "tempWarningThreshold": 80,
         "useCustomColors": false,
-        "warningColor": ""
+        "warningColor": "#5e81ac"
     },
     "templates": {
         "activeTemplates": [
