@@ -31,6 +31,11 @@
 
     time.timeZone = "Asia/Yekaterinburg";
 
+    systemd.services = {
+      NetworkManager-wait-online.wantedBy = lib.mkForce [ ];
+      docker.wantedBy = lib.mkForce [ ];
+    };
+
     localModules = {
       pipewire.enable = true;
       keyd.enable = true;
@@ -97,14 +102,10 @@
 
       fwupd.enable = true;
       gvfs.enable = true;
-      tumbler.enable = true;
+      tumbler.enable = true; # превью файлов для thunar
 
       displayManager = {
         ly.enable = true;
-        sddm = {
-          enable = false;
-          wayland.enable = true;
-        };
       };
       desktopManager = { };
 
@@ -118,7 +119,7 @@
       logind = {
         settings.Login = {
           HandleLidSwitch = "suspend";
-          HandlePowerKey = "suspend";
+          HandlePowerKey = "suspend-then-hibernate";
         };
       };
 
@@ -211,7 +212,7 @@
     ##### PROGRAMS #####
     nixpkgs.config.allowUnfree = true;
 
-    documentation.man.generateCaches = false; # disable fish cache generation
+    documentation.man.cache.enable = false; # disable fish cache generation
     programs = {
       fish.enable = true;
       hyprland.enable = true;

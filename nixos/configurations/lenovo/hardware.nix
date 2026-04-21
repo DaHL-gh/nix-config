@@ -33,7 +33,7 @@
     ];
     initrd.kernelModules = [ "dm-snapshot" ];
     initrd.luks.devices."cryptroot" = {
-      device = "/dev/disk/by-label/nixos-encrypted";
+      device = "/dev/nvme0n1p2";
       bypassWorkqueues = true;
       allowDiscards = true;
     };
@@ -48,11 +48,15 @@
     '';
     kernelParams = [
       "pcie_aspm=off"
+      "8250.nr_uarts=0" # disable legacy COM ports (-load time)
     ];
+    resumeDevice = "/dev/nixos/swap";
   };
 
+  swapDevices = [ { device = "/dev/nixos/swap"; } ];
+
   fileSystems."/" = {
-    device = "/dev/lvmroot/root";
+    device = "/dev/nixos/root";
     fsType = "ext4";
   };
 
@@ -66,22 +70,20 @@
     ];
   };
 
-  fileSystems."/mnt/windows" = {
-    device = "/dev/disk/by-uuid/9EFC0CCBFC0CA01F";
-    fsType = "ntfs";
-    options = [
-      "defaults"
-      "nofail"
-      "dmask=027"
-      "fmask=027"
-      "uid=1000"
-      "gid=1000"
-    ];
-  };
+  # fileSystems."/mnt/windows" = {
+  #   device = "/dev/disk/by-uuid/9EFC0CCBFC0CA01F";
+  #   fsType = "ntfs";
+  #   options = [
+  #     "defaults"
+  #     "nofail"
+  #     "dmask=027"
+  #     "fmask=027"
+  #     "uid=1000"
+  #     "gid=1000"
+  #   ];
+  # };
 
   networking.useDHCP = lib.mkDefault true;
-
-  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
