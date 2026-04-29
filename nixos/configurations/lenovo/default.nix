@@ -109,6 +109,12 @@
       };
       desktopManager = { };
 
+      ollama = {
+        enable = true;
+        package = pkgs.ollama-rocm;
+        rocmOverrideGfx = "10.4.0";
+      };
+
       openssh = {
         enable = true;
         settings = {

@@ -26,6 +26,10 @@
         "flakes"
       ];
       use-xdg-base-directories = true;
+      trusted-users = [
+        "root"
+        "dahl"
+      ];
     };
 
     time.timeZone = "Asia/Yekaterinburg";
@@ -81,12 +85,16 @@
     };
 
     ##### BOOT #####
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-      settings = {
-        General.Experimental = true;
+    hardware = {
+      bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+        settings = {
+          General.Experimental = true;
+        };
       };
+
+      alsa.enablePersistence = true;
     };
 
     ##### SERVICES #####

@@ -19,7 +19,6 @@ let
     "gid=1000"
   ];
 
-  ext4_mounting_params = basic_mounting_params;
   ntfs_mounting_params = basic_mounting_params ++ fs_mask ++ user_mask;
 in
 {
@@ -92,13 +91,7 @@ in
     };
 
     "/mnt/windows" = {
-      device = "/dev/disk/by-uuid/C022D7B122D7AAA4";
-      fsType = "ntfs";
-      options = ntfs_mounting_params;
-    };
-
-    "/mnt/nvme" = {
-      device = "/dev/disk/by-uuid/08CAC260CAC249A0";
+      device = "/dev/disk/by-uuid/78A0B51EA0B4E3B2";
       fsType = "ntfs";
       options = ntfs_mounting_params;
     };
