@@ -5,23 +5,6 @@
   modulesPath,
   ...
 }:
-let
-  basic_mounting_params = [
-    "defaults"
-    "nofail"
-  ];
-  fs_mask = [
-    "dmask=027"
-    "fmask=027"
-  ];
-  user_mask = [
-    "uid=1000"
-    "gid=1000"
-  ];
-
-  ext4_mounting_params = basic_mounting_params;
-  ntfs_mounting_params = basic_mounting_params ++ fs_mask ++ user_mask;
-in
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -42,10 +25,10 @@ in
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [ ];
 
-    resumeDevice = "/dev/sda7";
+    # resumeDevice = "/dev/sda7";
     kernelParams = [
-      "resume=/dev/sda7"
-      "resume_offset=37263360"
+      # "resume=/dev/sda7"
+      # "resume_offset=37263360"
     ];
 
     loader = {
@@ -57,32 +40,92 @@ in
       };
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        efiSysMountPoint = "/boot";
       };
     };
   };
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/sda7";
-      fsType = "ext4";
-    };
+  # fileSystems = {
+  #   "/" = {
+  #     device = "/dev/sda7";
+  #     fsType = "ext4";
+  #   };
+  #
+  #   "/boot/efi" = {
+  #     device = "/dev/sda1";
+  #     fsType = "vfat";
+  #   };
+  #
+  #   "/mnt/arch" = {
+  #     device = "/dev/sda5";
+  #     fsType = "ext4";
+  #     options = ext4_mounting_params;
+  #   };
+  #
+  #   "/mnt/windows" = {
+  #     device = "/dev/sda3";
+  #     fsType = "ntfs";
+  #     options = ntfs_mounting_params;
+  #   };
+  # };
 
-    "/boot/efi" = {
-      device = "/dev/sda1";
-      fsType = "vfat";
+  disko.devices = {
+    disk = {
+      main = {
+        device = "/dev/sda";
+        type = "disk";
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "300M";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
+              };
+            };
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "nixos";
+                # Разрешаем TRIM, если это SSD
+                extraOpenArgs = [ "--allow-discards" ];
+                content = {
+                  type = "lvm_pv";
+                  vg = "pool";
+                };
+              };
+            };
+          };
+        };
+      };
     };
-
-    "/mnt/arch" = {
-      device = "/dev/sda5";
-      fsType = "ext4";
-      options = ext4_mounting_params;
-    };
-
-    "/mnt/windows" = {
-      device = "/dev/sda3";
-      fsType = "ntfs";
-      options = ntfs_mounting_params;
+    lvm_vg = {
+      pool = {
+        type = "lvm_vg";
+        lvs = {
+          swap = {
+            size = "10G";
+            content = {
+              type = "swap";
+              discardPolicy = "both";
+              resumeDevice = true;
+            };
+          };
+          root = {
+            size = "100%FREE";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+            };
+          };
+        };
+      };
     };
   };
 

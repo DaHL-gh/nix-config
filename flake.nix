@@ -10,6 +10,9 @@
     caelestia.url = "github:caelestia-dots/shell";
     caelestia.inputs.nixpkgs.follows = "nixpkgs";
 
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     lanzaboote.url = "github:nix-community/lanzaboote?ref=v1.0.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -67,6 +70,7 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.lanzaboote.nixosModules.lanzaboote
             inputs.milk-grub-theme.nixosModule
+            inputs.disko.nixosModules.disko
             { nixpkgs.overlays = [ hiddifyOverlay ]; }
           ];
         };

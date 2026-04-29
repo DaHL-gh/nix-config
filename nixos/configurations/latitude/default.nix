@@ -32,7 +32,7 @@
     time.timeZone = "Asia/Yekaterinburg";
 
     localModules = {
-      pipewire.enable = true;
+      # pipewire.enable = true;
       keyd.enable = true;
       home-manager.enable = true;
       nix-ld.enable = true;
@@ -72,33 +72,33 @@
 
     ##### BOOT #####
 
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-      settings = {
-        General.Experimental = true;
-      };
-    };
+    # hardware.bluetooth = {
+    #   enable = true;
+    #   powerOnBoot = true;
+    #   settings = {
+    #     General.Experimental = true;
+    #   };
+    # };
 
     ##### SERVICES #####
-    security = {
-      rtkit.enable = true;
-    };
+    # security = {
+    #   rtkit.enable = true;
+    # };
 
     services = {
       upower = {
         enable = true;
       };
 
-      gvfs.enable = true;
-      tumbler.enable = true;
+      # gvfs.enable = true;
+      # tumbler.enable = true;
 
       displayManager.ly.enable = true;
-      desktopManager = {
-        cosmic.enable = true;
-        plasma6.enable = true;
-        gnome.enable = true;
-      };
+      # desktopManager = {
+      #   cosmic.enable = true;
+      #   plasma6.enable = true;
+      #   gnome.enable = true;
+      # };
 
       openssh = {
         enable = true;
@@ -124,38 +124,38 @@
         targets.genericLinux.enable = true;
 
         localModules = {
-          noctalia-shell.enable = true;
-          firefox.enable = true;
-          hyprland.enable = true;
-          kitty.enable = true;
-          spicetify.enable = true;
+          # noctalia-shell.enable = true;
+          # firefox.enable = true;
+          # hyprland.enable = true;
+          # kitty.enable = true;
+          # spicetify.enable = true;
           fish.enable = true;
           git.enable = true;
           neovim.enable = true;
           tmux.enable = true;
-          xdg.enable = true;
+          # xdg.enable = true;
           programCategories = [
             "cli"
             "networking"
             "nix"
             "kubernetes"
-            "desktop"
-            "desktop-essentials"
-            "games"
-            "virtualization"
-            "unsorted"
+            # "desktop"
+            # "desktop-essentials"
+            # "games"
+            # "virtualization"
+            # "unsorted"
           ];
         };
 
         fonts.fontconfig.enable = true;
 
-        gtk = {
-          enable = true;
-          cursorTheme.name = "Nordic-cursors";
-          cursorTheme.size = 12;
-          iconTheme.name = "Nordzy";
-          theme.name = "Nordic";
-        };
+        # gtk = {
+        #   enable = true;
+        #   cursorTheme.name = "Nordic-cursors";
+        #   cursorTheme.size = 12;
+        #   iconTheme.name = "Nordzy";
+        #   theme.name = "Nordic";
+        # };
       };
     };
 
@@ -164,13 +164,13 @@
 
     programs = {
       fish.enable = true;
-      hyprland.enable = true;
-      steam.enable = true;
+      # hyprland.enable = true;
+      # steam.enable = true;
 
-      throne = {
-        enable = true;
-        tunMode.enable = true;
-      };
+      # throne = {
+      #   enable = true;
+      #   tunMode.enable = true;
+      # };
     };
 
     environment.systemPackages = with pkgs; [ ];
