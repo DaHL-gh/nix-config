@@ -44,13 +44,15 @@
     kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = [ ];
     extraModprobeConfig = ''
-      options rtw89_core disable_ps_mode=y
     '';
+      # options rtw89_core disable_ps_mode=y
+      # options rtw89_pci disable_aspm=y
     kernelParams = [
-      "pcie_aspm=off"
       "8250.nr_uarts=0" # disable legacy COM ports (-load time)
     ];
+      # "pcie_aspm=off"
     resumeDevice = "/dev/nixos/swap";
+    # blacklistedKernelModules = [ "ideapad_acpi" ];
   };
 
   swapDevices = [ { device = "/dev/nixos/swap"; } ];

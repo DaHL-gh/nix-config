@@ -40,6 +40,10 @@
       pipewire.enable = true;
       keyd.enable = true;
       home-manager.enable = true;
+      rocm = {
+        enable = true;
+        hsaOverrideGfxVersion = "11.0.0";
+      };
       nix-ld.enable = true;
     };
 
@@ -86,7 +90,7 @@
       ollama = {
         enable = true;
         package = pkgs.ollama-rocm;
-        rocmOverrideGfx = "10.4.0";
+        rocmOverrideGfx = "11.0.0";
       };
 
       openssh = {
@@ -95,6 +99,7 @@
           GatewayPorts = "yes";
         };
       };
+
 
       logind = {
         settings.Login = {

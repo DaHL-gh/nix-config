@@ -90,9 +90,11 @@ let
     creation = with pkgs; [
       blender
       gimp
-      obs-studio
+      godot
+      inkscape
       kdePackages.kdenlive
-      blender
+      krita
+      obs-studio
     ];
 
     games = with pkgs; [
