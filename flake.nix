@@ -56,6 +56,11 @@
       };
 
       localUtils = import ./utils.nix { lib = nixpkgs.lib; };
+      openldapOverlay = _: prev: {
+        openldap = prev.openldap.overrideAttrs {
+          doCheck = !prev.stdenv.hostPlatform.isi686;
+        };
+      };
 
       makeSystem =
         { deviceName }:
@@ -71,7 +76,7 @@
             inputs.lanzaboote.nixosModules.lanzaboote
             inputs.milk-grub-theme.nixosModule
             inputs.disko.nixosModules.disko
-            { nixpkgs.overlays = [ hiddifyOverlay ]; }
+            { nixpkgs.overlays = [ hiddifyOverlay openldapOverlay]; }
           ];
         };
 

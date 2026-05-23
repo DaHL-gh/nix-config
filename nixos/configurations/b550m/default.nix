@@ -47,8 +47,6 @@
         enable = true;
         secrets = {
           node-token = ../../../secrets/k3s/node-token.age;
-          wg-preshared-key = ../../../secrets/wireguard/b550m/preshared-key.age;
-          wg-private-key = ../../../secrets/wireguard/b550m/private-key.age;
         };
       };
     };
@@ -58,30 +56,7 @@
       networkmanager.enable = true;
       firewall.enable = false;
 
-      wireguard = {
-        enable = true;
-        interfaces = {
-          wg0 = {
-            ips = [ "10.10.0.4/24" ];
-            privateKeyFile = config.age.secrets.wg-private-key.path;
-            peers = [
-              {
-                allowedIPs = [ "10.10.0.0/24" ];
-                publicKey = "F3rPvhM0EvBIeC4XhpcdXtxMieffBquExGjk3R2coxU=";
-                presharedKeyFile = config.age.secrets.wg-preshared-key.path;
-                persistentKeepalive = 25;
-                endpoint = "46.62.215.248:51820";
-              }
-            ];
-          };
-        };
-      };
-
-      extraHosts = ''
-        127.0.0.1 nginx.local
-        127.0.0.1 django-polls.local
-        127.0.0.1 hobbie.local
-      '';
+      extraHosts = "";
     };
 
     ##### BOOT #####
@@ -108,8 +83,7 @@
     # };
 
     services = {
-      displayManager.sddm.enable = true;
-      displayManager.sddm.wayland.enable = true;
+      displayManager.ly.enable = true;
 
       gvfs.enable = true;
       tumbler.enable = true;
@@ -139,13 +113,9 @@
         capSysAdmin = true;
       };
 
-      # k3s = {
-      #   enable = true;
-      #   role = "agent";
-      #   serverAddr = "https://10.10.0.1:6443";
-      #   tokenFile = config.age.secrets.node-token.path;
-      #   nodeIP = "10.10.0.4";
-      # };
+      tailscale = {
+        enable = true;
+      };
     };
 
     qt = {
