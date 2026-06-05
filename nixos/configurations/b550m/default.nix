@@ -113,9 +113,8 @@
         capSysAdmin = true;
       };
 
-      tailscale = {
-        enable = true;
-      };
+      tailscale.enable = true;
+      resolved.enable = true;
     };
 
     qt = {

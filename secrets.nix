@@ -5,12 +5,4 @@ let
 in
 {
   "secrets/k3s/node-token.age".publicKeys = [ b550m ];
-  "secrets/wireguard/b550m/preshared-key.age".publicKeys = [ b550m ];
-  "secrets/wireguard/b550m/private-key.age".publicKeys = [ b550m ];
-
-  "secrets/wireguard/latitude/preshared-key.age".publicKeys = [ latitude ];
-  "secrets/wireguard/latitude/private-key.age".publicKeys = [ latitude ];
-
-  "secrets/wireguard/lenovo/preshared-key.age".publicKeys = [ lenovo ];
-  "secrets/wireguard/lenovo/private-key.age".publicKeys = [ lenovo ];
 }
