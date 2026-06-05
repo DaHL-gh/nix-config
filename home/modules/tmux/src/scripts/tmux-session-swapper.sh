@@ -8,7 +8,8 @@ DIRS=(
 EXTRA=(
     ".config"
     "Documents/nix-config"
-    "Document/Obsidian"
+    "Documents/Obsidian"
+    "Documents/spell-cast"
 )
 
 selected="$( \
@@ -32,4 +33,18 @@ else
     exit 0
 fi
 
-~/.config/tmux/scripts/tmux-swap.sh $selected
+tmux_swap() {
+    local selected="$1"
+
+    local selected_name
+    selected_name=$(basename "$selected" | tr . _)
+
+    if ! tmux has-session -t "$selected_name" 2>/dev/null; then
+        tmux new-session -ds "$selected_name" -c "$selected"
+        tmux select-window -t "$selected_name"
+    fi
+
+    tmux switch-client -t "$selected_name"
+}
+
+tmux_swap $selected
