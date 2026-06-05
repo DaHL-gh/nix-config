@@ -19,6 +19,10 @@
       xdg-desktop-portal-hyprland
 
       hyprshot
+      jq
+      grim
+      slurp
+      satty
 
       networkmanagerapplet
       blueman
