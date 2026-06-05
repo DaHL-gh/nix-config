@@ -183,7 +183,7 @@
           enable = true;
           cursorTheme.name = "Nordic-cursors";
           cursorTheme.size = 12;
-          iconTheme.name = "Nordzy";
+          iconTheme.name = "Nordzy-yellow-dark";
           theme.name = "Nordic";
         };
       };
@@ -196,6 +196,7 @@
       fish.enable = true;
       hyprland.enable = true;
       steam.enable = true;
+      xfconf.enable = true;
 
       throne = {
         enable = true;
