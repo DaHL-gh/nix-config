@@ -27,6 +27,8 @@ let
       zip
 
       gemini-cli
+      opencode
+      pi-coding-agent
     ];
 
     networking = with pkgs; [
