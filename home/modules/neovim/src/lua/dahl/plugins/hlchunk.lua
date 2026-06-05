@@ -7,15 +7,16 @@ return {
 		},
 		chunk = {
 			enable = true,
+			straight = true,
 			chars = {
-				horizontal_line = "─",
+				-- horizontal_line = "─",
 				vertical_line = "│",
-				left_top = "┌",
-				left_bottom = "└",
-				right_arrow = "─",
+				-- left_top = "┌",
+				-- left_bottom = "└",
+				-- right_arrow = "─",
 			},
 			delay = 0,
-			style = "#777777"
+			style = "#ab5dc3"
 		},
 		line_num = {
 			enable = false,

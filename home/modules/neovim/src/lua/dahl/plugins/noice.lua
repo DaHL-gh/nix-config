@@ -1,11 +1,14 @@
 return {
 	"folke/noice.nvim",
+	dependencies = {
+		"rcarriga/nvim-notify",
+	},
 	opts = {
 		cmdline = {
-			enabled = false
+			enabled = true
 		},
 		messages = {
-			enabled = false
+			enabled = true
 		}
 	}
 }
