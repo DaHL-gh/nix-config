@@ -39,6 +39,9 @@ in
         efiSysMountPoint = "/boot/efi";
       };
     };
+    supportedFilesystems = {
+      exfat = true;
+    };
 
     initrd = {
       availableKernelModules = [

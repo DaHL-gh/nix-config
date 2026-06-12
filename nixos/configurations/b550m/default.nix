@@ -27,7 +27,6 @@
       ];
       use-xdg-base-directories = true;
       trusted-users = [
-        "root"
         "dahl"
       ];
     };
@@ -178,6 +177,11 @@
         };
 
         fonts.fontconfig.enable = true;
+
+        programs = {
+          nix-index.enable = true;
+          nix-index.enableFishIntegration = true;
+        };
 
         gtk = {
           enable = true;

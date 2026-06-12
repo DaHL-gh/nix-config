@@ -54,6 +54,9 @@
     resumeDevice = "/dev/nixos/swap";
     # blacklistedKernelModules = [ "ideapad_acpi" ];
   };
+  supportedFilesystems = {
+    exfat = true;
+  };
 
   swapDevices = [ { device = "/dev/nixos/swap"; } ];
 

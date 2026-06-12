@@ -186,6 +186,12 @@
           ];
         };
 
+        programs = {
+          nix-index.enable = true;
+          nix-index.enableFishIntegration = true;
+        };
+
+
         fonts.fontconfig.enable = true;
 
         gtk = {
