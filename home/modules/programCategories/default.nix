@@ -14,15 +14,13 @@ let
       age
       bat
       btop-rocm
+      cloc
       fastfetch
       file
+      iotop
       powertop
+      smartmontools
       tree
-
-      gvfs
-      cloc
-      opencode
-      gemini-cli
       unzip
       zip
 
@@ -56,6 +54,7 @@ let
     desktop-essentials = with pkgs; [
       imv
       kdePackages.filelight
+      kdePackages.ark
       localsend
       mission-center
       qalculate-qt
