@@ -2,7 +2,6 @@
   description = "dahl NixOS configurations";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-    nixpkgs-25-05.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +32,9 @@
 
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
     helium.inputs.nixpkgs.follows = "nixpkgs";
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    determinate.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -44,15 +46,6 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ hiddifyOverlay ];
-      };
-      pkgs-25-05 = import inputs.nixpkgs-25-05 {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      hiddifyOverlay = final: prev: {
-        hiddify = pkgs-25-05.hiddify-app;
       };
 
       localUtils = import ./utils.nix { lib = nixpkgs.lib; };
@@ -76,7 +69,8 @@
             inputs.lanzaboote.nixosModules.lanzaboote
             inputs.milk-grub-theme.nixosModule
             inputs.disko.nixosModules.disko
-            { nixpkgs.overlays = [ hiddifyOverlay openldapOverlay]; }
+            inputs.determinate.nixosModules.default
+            { nixpkgs.overlays = [ openldapOverlay ]; }
           ];
         };
 
@@ -89,7 +83,7 @@
             configurationName = deviceName;
           };
           modules = [
-            ./home/users/${username}
+            ./home/configurations/dahl-cli.nix
           ];
         };
     in
@@ -101,19 +95,24 @@
       };
 
       homeConfigurations = builtins.listToAttrs (
-        builtins.concatMap (
-          username:
-          builtins.map
-            (deviceName: {
+        map
+          (
+            { username, deviceName }:
+            {
               name = "${username}@${deviceName}";
               value = makeHome { inherit username deviceName; };
-            })
-            [
-              "server"
-              "b550m"
-              "latitude"
-            ]
-        ) [ "dahl" ]
+            }
+          )
+          (
+            nixpkgs.lib.cartesianProduct {
+              username = [ "dahl" ];
+              deviceName = [
+                "server"
+                "b550m"
+                "latitude"
+              ];
+            }
+          )
       );
     };
 }
