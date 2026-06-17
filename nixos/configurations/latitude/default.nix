@@ -96,14 +96,8 @@
           # xdg.enable = true;
           programCategories = [
             "cli"
+            "programming"
             "networking"
-            "nix"
-            "kubernetes"
-            # "desktop"
-            # "desktop-essentials"
-            # "games"
-            # "virtualization"
-            # "unsorted"
           ];
         };
 

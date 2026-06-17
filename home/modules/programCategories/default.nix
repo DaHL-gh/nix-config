@@ -7,23 +7,52 @@
 }:
 
 let
-  cfg = config.localModules.programCategories;
+  selectedCategories = config.localModules.programCategories;
 
   categoryPackages = {
     cli = with pkgs; [
-      age
       bat
-      btop-rocm
       cloc
       fastfetch
       file
+      jq
+      tree
+
+      #archiving
+      bzip2
+      gnutar
+      gzip
+      unzip
+      xz
+      zip
+
+      #monitoring
+      btop-rocm
       iotop
       powertop
       smartmontools
-      tree
-      unzip
-      zip
 
+      #security
+      age
+      sops
+    ];
+
+    programming = with pkgs; [
+      #devops
+      terraform
+      ansible
+
+      #nix
+      nix-index
+      nix-search-cli
+      nix-output-monitor
+
+      #kubernetes
+      k9s
+      kubectl
+      kubernetes-helm
+
+      #ai
       gemini-cli
       opencode
       pi-coding-agent
@@ -37,54 +66,40 @@ let
       traceroute
       wget
       wireguard-tools
-    ];
 
-    nix = with pkgs; [
-      nix-index
-      nix-search-cli
-      nix-output-monitor
-    ];
-
-    kubernetes = with pkgs; [
-      k9s
-      kubectl
-      kubernetes-helm
+      bandwhich
+      iperf3
+      mtr
+      nmap
+      tcpdump
+      termshark
     ];
 
     desktop-essentials = with pkgs; [
+      file-roller
       imv
+      inputs.helium.packages.${system}.default
       kdePackages.filelight
-      kdePackages.ark
       localsend
       mission-center
       qalculate-qt
-      qbittorrent
       sioyek
       thunar
-      thunar-archive-plugin
-      file-roller
-      zip
-      unzip
-      gnutar
-      gzip
-      bzip2
-      xz
+      vlc
       wireshark
-
-      inputs.helium.packages.${system}.default
     ];
 
     desktop = with pkgs; [
       anki
       bitwarden-desktop
+      discord
       google-chrome
       libreoffice-qt6
       moonlight-qt
       obsidian
-      onlyoffice-desktopeditors
+      qbittorrent
       telegram-desktop
       vesktop
-      vlc
       vscode
     ];
 
@@ -116,7 +131,7 @@ let
       win-spice
     ];
 
-    unsorted = with pkgs; [
+    mandatory = with pkgs; [
       # fonts
       iosevka-bin
       ipafont
@@ -137,7 +152,7 @@ in
     description = "List of enabled program categories";
   };
 
-  config = lib.mkIf (cfg != [ ]) {
-    home.packages = lib.mkMerge (map (name: categoryPackages.${name}) cfg);
+  config = lib.mkIf (selectedCategories != [ ]) {
+    home.packages = lib.mkMerge (map (name: categoryPackages.${name}) (selectedCategories + [ "mandatory" ]));
   };
 }

@@ -174,15 +174,13 @@
           xdg.enable = true;
           programCategories = [
             "cli"
-            "creation"
+            "programming"
             "networking"
-            "nix"
-            "kubernetes"
-            "desktop"
             "desktop-essentials"
+            "desktop"
+            "creation"
             "games"
             "virtualization"
-            "unsorted"
           ];
         };
 
