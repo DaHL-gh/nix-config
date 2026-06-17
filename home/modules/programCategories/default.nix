@@ -153,6 +153,8 @@ in
   };
 
   config = lib.mkIf (selectedCategories != [ ]) {
-    home.packages = lib.mkMerge (map (name: categoryPackages.${name}) (selectedCategories + [ "mandatory" ]));
+    home.packages = lib.mkMerge (
+      map (name: categoryPackages.${name}) (selectedCategories ++ [ "mandatory" ])
+    );
   };
 }

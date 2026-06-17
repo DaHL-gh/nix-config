@@ -94,5 +94,9 @@
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     enableAllFirmware = true;
+
+    amdgpu = {
+      initrd.enable = true;
+    };
   };
 }
