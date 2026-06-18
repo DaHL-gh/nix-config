@@ -21,6 +21,9 @@
     };
     lanzaboote.enable = true;
     lanzaboote.pkiBundle = "/var/lib/sbctl";
+    supportedFilesystems = {
+      exfat = true;
+    };
 
     initrd.availableKernelModules = [
       "nvme"
@@ -49,13 +52,10 @@
       # options rtw89_pci disable_aspm=y
     kernelParams = [
       "8250.nr_uarts=0" # disable legacy COM ports (-load time)
+      "pcie_aspm=off"
     ];
-      # "pcie_aspm=off"
     resumeDevice = "/dev/nixos/swap";
-    # blacklistedKernelModules = [ "ideapad_acpi" ];
-  };
-  supportedFilesystems = {
-    exfat = true;
+    blacklistedKernelModules = [ "ideapad_laptop" ];
   };
 
   swapDevices = [ { device = "/dev/nixos/swap"; } ];
