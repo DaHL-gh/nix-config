@@ -38,6 +38,10 @@ let
     ];
 
     programming = with pkgs; [
+      # guess it
+      android-tools
+      android-studio
+
       #devops
       terraform
       ansible
@@ -91,13 +95,13 @@ let
 
     desktop = with pkgs; [
       anki
-      bitwarden-desktop
       discord
       google-chrome
       libreoffice-qt6
       moonlight-qt
       obsidian
       qbittorrent
+      super-productivity
       telegram-desktop
       vesktop
       vscode

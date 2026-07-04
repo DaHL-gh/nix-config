@@ -100,7 +100,6 @@
         };
       };
 
-
       logind = {
         settings.Login = {
           HandleLidSwitch = "suspend";
@@ -111,6 +110,7 @@
       tailscale = {
         enable = true;
       };
+      resolved.enable = true;
 
       tlp = {
         enable = true;
@@ -189,7 +189,6 @@
           nix-index.enableFishIntegration = true;
         };
 
-
         fonts.fontconfig.enable = true;
 
         gtk = {
@@ -203,13 +202,19 @@
     };
 
     ##### PROGRAMS #####
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
+    };
 
     documentation.man.cache.enable = false; # disable fish cache generation
     programs = {
       fish.enable = true;
       hyprland.enable = true;
       steam.enable = true;
+      xfconf.enable = true;
 
       throne = {
         enable = true;

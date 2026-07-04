@@ -12,7 +12,7 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    lanzaboote.url = "github:nix-community/lanzaboote?ref=v1.0.0";
+    lanzaboote.url = "github:nix-community/lanzaboote?ref=master";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager?ref=master";
@@ -21,7 +21,7 @@
     milk-grub-theme.url = "github:gemakfy/MilkGrub";
     milk-grub-theme.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.url = "github:noctalia-dev/noctalia-shell/v4.7.7";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
     polyMc.url = "github:PolyMC/PolyMC";
@@ -32,9 +32,6 @@
 
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
     helium.inputs.nixpkgs.follows = "nixpkgs";
-
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    determinate.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -43,10 +40,7 @@
       flakePath = "/home/dahl/Documents/nix-config/";
       system = "x86_64-linux";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      pkgs = import nixpkgs {inherit system;};
 
       localUtils = import ./utils.nix { lib = nixpkgs.lib; };
       openldapOverlay = _: prev: {
@@ -69,7 +63,6 @@
             inputs.lanzaboote.nixosModules.lanzaboote
             inputs.milk-grub-theme.nixosModule
             inputs.disko.nixosModules.disko
-            inputs.determinate.nixosModules.default
             { nixpkgs.overlays = [ openldapOverlay ]; }
           ];
         };
