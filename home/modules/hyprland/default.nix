@@ -31,12 +31,14 @@
       alsa-utils
       pwvucontrol
     ];
+    
+    services.hypridle.enable = true;
 
     home.file = {
-      ".config/hypr/hyprland.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/hyprland.conf";
-      ".config/hypr/monitors.conf".source =
-        config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src/monitors/${configurationName}.conf";
+      ".config/hypr/" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src";
+        recursive = true;
+      };
       "Pictures/Wallpapers/" = {
         source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/wallpapers";
         recursive = true;
