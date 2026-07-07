@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
       clang
       ripgrep
+      tree-sitter
 
       # cpp
       llvmPackages_20.clang-tools
