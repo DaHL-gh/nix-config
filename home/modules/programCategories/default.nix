@@ -16,6 +16,7 @@ let
       fastfetch
       file
       jq
+      lsof
       tree
 
       #archiving
@@ -41,6 +42,9 @@ let
       # guess it
       android-tools
       android-studio
+
+      python3
+      nodejs
 
       #devops
       terraform

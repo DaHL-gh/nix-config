@@ -18,9 +18,11 @@
       # docker
       docker-language-server
       docker-compose-language-service
-      # html + css + javascript
+      # html + css + js + ts
       vscode-langservers-extracted
       tailwindcss-language-server
+      typescript
+      typescript-language-server
       # lua
       lua-language-server
       # nix
