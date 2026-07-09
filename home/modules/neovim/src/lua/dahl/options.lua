@@ -10,6 +10,14 @@ vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.signcolumn = "yes"
 
+vim.filetype.add({
+	pattern = {
+		["Dockerfile\\.?.*"] = "Dockerfile",
+		["compose.*%.ya?ml"] = "yaml.docker-compose",
+		["docker-compose.*%.ya?ml"] = "yaml.docker-compose",
+	},
+})
+
 
 vim.opt.fillchars:append { diff = "╱" }
 
