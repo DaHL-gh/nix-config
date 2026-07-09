@@ -212,7 +212,10 @@
     documentation.man.cache.enable = false; # disable fish cache generation
     programs = {
       fish.enable = true;
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        withUWSM = true;
+      };
       steam.enable = true;
       xfconf.enable = true;
 
