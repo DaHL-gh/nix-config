@@ -12,6 +12,7 @@
   config = lib.mkIf config.localModules.hyprland.enable {
     home.packages = with pkgs; [
       kitty
+      ghostty
       hyprsome
       playerctl
       wl-clipboard

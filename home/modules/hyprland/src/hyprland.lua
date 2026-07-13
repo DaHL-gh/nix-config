@@ -5,7 +5,7 @@ end
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
-local terminal = "kitty"
+local terminal = "ghostty"
 local menu     = "noctalia-shell ipc call launcher toggle"
 
 hl.monitor({
@@ -14,6 +14,7 @@ hl.monitor({
     scale    = 1.5,
     bitdepth = 10,
 })
+
 -------------------
 ---- AUTOSTART ----
 -------------------
