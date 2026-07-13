@@ -56,8 +56,8 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 2, bezier = "defa
 hl.animation({ leaf = "border", enabled = true, speed = 1, bezier = "default" })
 hl.animation({ leaf = "borderangle", enabled = false, speed = 30, bezier = "default", style = "loop" })
 
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 2, bezier = "default", style = "slide" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 2, bezier = "default", style = "slide" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 2, bezier = "default", style = "slidevert" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 2, bezier = "default", style = "slidevert" })
 hl.animation({ leaf = "specialWorkspaceIn", enabled = true, speed = 3, bezier = "default", style = "slidefadevert" })
 hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 3, bezier = "default", style = "slidefadevert" })
 

@@ -76,6 +76,7 @@ in
 
           # text
           "text/plain" = editor;
+          "text/markdown" = editor;
           "text/english" = editor;
           "text/x-makefile" = editor;
           "text/x-c++hdr" = editor;
