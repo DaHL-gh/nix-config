@@ -6,6 +6,7 @@ DEFAULT_SESSION="workspace"
 DIRS=(
     "Documents/"
     "Documents/projects"
+    "Documents/projects/maio"
     # "Documents/projects/pytorch"
 )
 

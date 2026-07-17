@@ -8,7 +8,7 @@
 {
   options.localModules.ghostty.enable = lib.mkEnableOption "";
 
-  config = lib.mkIf config.localModules.kitty.enable {
+  config = lib.mkIf config.localModules.ghostty.enable {
     home.packages = with pkgs; [
       ghostty
     ];

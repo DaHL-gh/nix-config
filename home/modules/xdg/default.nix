@@ -5,13 +5,14 @@
   ...
 }:
 let
-  imageViewer = "imv.desktop";
-  pdfViewer = "sioyek.desktop";
-  videoPlayer = "vlc.desktop";
-  fileManager = "thunar.desktop";
   browser = "helium.desktop";
-  mailClient = "HEY.desktop";
   editor = "nvim.desktop";
+  fileManager = "thunar.desktop";
+  imageViewer = "imv.desktop";
+  mailClient = "HEY.desktop";
+  pdfViewer = "sioyek.desktop";
+  terminal = "com.mitchellh.ghostty.desktop";
+  videoPlayer = "vlc.desktop";
 in
 {
   options.localModules.xdg.enable = lib.mkEnableOption "";
@@ -22,7 +23,7 @@ in
 
       terminal-exec = {
         enable = true;
-        settings.default = [ "kitty.desktop" ];
+        settings.default = [ terminal ];
       };
 
       mimeApps = {
