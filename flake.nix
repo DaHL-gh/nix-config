@@ -32,6 +32,9 @@
 
     helium.url = "github:schembriaiden/helium-browser-nix-flake";
     helium.inputs.nixpkgs.follows = "nixpkgs";
+
+    happ.url = "github:dahl-gh/happ-nix";
+    happ.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -63,6 +66,7 @@
             inputs.lanzaboote.nixosModules.lanzaboote
             inputs.milk-grub-theme.nixosModule
             inputs.disko.nixosModules.disko
+            inputs.happ.nixosModules.default
             { nixpkgs.overlays = [ openldapOverlay ]; }
           ];
         };

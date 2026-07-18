@@ -206,7 +206,7 @@
     nixpkgs.config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        "electron-39.8.10"
+        "electron-40.10.5"
       ];
     };
 
@@ -219,6 +219,12 @@
       };
       steam.enable = true;
       xfconf.enable = true;
+      happ = {
+        enable = true;
+        tunMode = {
+          enable = true;
+        };
+      };
 
       throne = {
         enable = true;
