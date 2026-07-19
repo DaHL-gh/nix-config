@@ -225,6 +225,7 @@
           enable = true;
         };
       };
+      corectrl.enable = true;
 
       throne = {
         enable = true;

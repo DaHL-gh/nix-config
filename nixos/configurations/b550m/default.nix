@@ -152,14 +152,15 @@
         targets.genericLinux.enable = true;
 
         localModules = {
-          noctalia-shell.enable = true;
           firefox.enable = true;
+          fish.enable = true;
+          ghostty.enable = true;
+          git.enable = true;
           hyprland.enable = true;
           kitty.enable = true;
-          spicetify.enable = true;
-          fish.enable = true;
-          git.enable = true;
           neovim.enable = true;
+          noctalia-shell.enable = true;
+          spicetify.enable = true;
           tmux.enable = true;
           xdg.enable = true;
           programCategories = [
@@ -192,7 +193,12 @@
     };
 
     ##### PROGRAMS #####
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-40.10.5"
+      ];
+    };
 
     programs = {
       fish.enable = true;
@@ -201,6 +207,10 @@
       xfconf.enable = true;
 
       throne = {
+        enable = true;
+        tunMode.enable = true;
+      };
+      happ = {
         enable = true;
         tunMode.enable = true;
       };
