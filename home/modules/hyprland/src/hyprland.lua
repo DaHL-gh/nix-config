@@ -2,7 +2,6 @@ function cat(args)
     return table.concat(args, " + ")
 end
 
-
 ---- ARGS ----
 local terminal = "ghostty"
 local menu     = "noctalia-shell ipc call launcher toggle"
@@ -23,11 +22,13 @@ local configs = {
     },
 
     ["kitayoza"] = {
-        output   = "eDP-1",
-        mode     = "2880x1800@120",
-        scale    = 1.5,
-        bitdepth = 10,
-    }
+        {
+            output   = "eDP-1",
+            mode     = "2880x1800@120",
+            scale    = 1.5,
+            bitdepth = 10,
+        },
+    },
 }
 
 for _, cfg in ipairs(configs[hostname] or {}) do
@@ -260,7 +261,6 @@ local function get_current_workspace_id()
 end
 
 hl.bind(cat({ mainMod, "b" }), function()
-
     local ws = get_current_workspace_id()
 
     local current = workspace_layouts[ws]
@@ -275,11 +275,8 @@ hl.bind(cat({ mainMod, "b" }), function()
 
 
     apply_layout(ws)
-
 end)
 
 hl.on("workspace.active", function(ws)
-
     apply_layout(ws.id)
-
 end)
