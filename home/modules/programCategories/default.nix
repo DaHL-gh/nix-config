@@ -125,7 +125,6 @@ let
       wineWow64Packages.waylandFull
       winetricks
       lutris
-      bottles
     ];
 
     virtualization = with pkgs; [

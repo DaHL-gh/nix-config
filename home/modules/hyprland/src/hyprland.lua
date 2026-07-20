@@ -2,38 +2,53 @@ function cat(args)
     return table.concat(args, " + ")
 end
 
----------------------
----- MY PROGRAMS ----
----------------------
+
+---- ARGS ----
 local terminal = "ghostty"
 local menu     = "noctalia-shell ipc call launcher toggle"
 
-hl.monitor({
-    output   = "eDP-1",
-    mode     = "2880x1800@120",
-    scale    = 1.5,
-    bitdepth = 10,
-})
+local hostname = io.popen("hostname"):read("*l")
 
--------------------
+
+---- MONITORS ----
+local configs = {
+    ["nix-machine"] = {
+        {
+            output = "desc:Microstep G274QPX CC2HA03901674",
+            mode = "2560x1440@240",
+            position = "0x0",
+            scale = 1,
+            bitdepth = 10,
+        },
+    },
+
+    ["kitayoza"] = {
+        output   = "eDP-1",
+        mode     = "2880x1800@120",
+        scale    = 1.5,
+        bitdepth = 10,
+    }
+}
+
+for _, cfg in ipairs(configs[hostname] or {}) do
+    hl.monitor(cfg)
+end
+
+
 ---- AUTOSTART ----
--------------------
 hl.on("hyprland.start", function()
     hl.exec_cmd("noctalia-shell")
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("blueman-applet")
 end)
 
--------------------------------
+
 ---- ENVIRONMENT VARIABLES ----
--------------------------------
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
------------------------
----- ANIMATIONS -------
------------------------
 
+---- ANIMATIONS -------
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
 hl.curve("default", { type = "bezier", points = { { 0.35, 0.15 }, { 0.25, 1 } } })
 hl.curve("easeIn", { type = "bezier", points = { { 0.3, 0.82 }, { 0.42, 1 } } })
@@ -61,9 +76,8 @@ hl.animation({ leaf = "workspacesOut", enabled = true, speed = 2, bezier = "defa
 hl.animation({ leaf = "specialWorkspaceIn", enabled = true, speed = 3, bezier = "default", style = "slidefadevert" })
 hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 3, bezier = "default", style = "slidefadevert" })
 
------------------------
----- LOOK AND FEEL ----
------------------------
+
+---- CONFIG ----
 hl.config({
     general = {
         gaps_in = 5,
@@ -117,9 +131,8 @@ hl.config({
     },
 })
 
----------------------
+
 ---- KEYBINDINGS ----
----------------------
 local mainMod = "SUPER"
 
 -- Apps
@@ -186,9 +199,8 @@ hl.bind("PRINT",
         satty_args))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty ' .. satty_args))
 
---------------------------------
+
 ---- WINDOWS AND WORKSPACES ----
---------------------------------
 -- fix slurp visible selection boundary
 hl.layer_rule({
     match = { namespace = "selection" },
@@ -203,36 +215,71 @@ hl.window_rule({
     immediate = true,
 })
 
-local function split_layout()
+---- WORKSPACE LAYOUTS ----
+local workspace_layouts = {
+    default = "single",
+}
+
+local layout_configs = {
+    single = {
+        fullscreen_on_one_column = true,
+        focus_fit_method = 0,
+        col_size = 0.9,
+    },
+
+    split = {
+        fullscreen_on_one_column = false,
+        focus_fit_method = 1,
+        col_size = 0.5,
+    },
+}
+
+local function apply_layout(ws_id)
+    local mode = workspace_layouts[ws_id]
+        or workspace_layouts.default
+
+    local cfg = layout_configs[mode]
+
+    hl.dispatch(
+        hl.dsp.layout(
+            "colresize all " .. cfg.col_size
+        )
+    )
+
     hl.config({
         scrolling = {
-            fullscreen_on_one_column = false,
-            focus_fit_method = 1,
+            fullscreen_on_one_column = cfg.fullscreen_on_one_column,
+            focus_fit_method = cfg.focus_fit_method,
+            column_width = cfg.col_size
         },
     })
-
-    hl.dispatch(hl.dsp.layout("colresize all 0.5"))
 end
 
-local function single_layout()
-    hl.config({
-        scrolling = {
-            fullscreen_on_one_column = true,
-            focus_fit_method = 0,
-        },
-    })
-
-    hl.dispatch(hl.dsp.layout("colresize all 0.9"))
+local function get_current_workspace_id()
+    return hl.get_active_workspace().id
 end
-
-local layout_state = "focus"
 
 hl.bind(cat({ mainMod, "b" }), function()
-    layout_state = layout_state == "single" and "split" or "single"
-    if layout_state == "single" then
-        single_layout()
+
+    local ws = get_current_workspace_id()
+
+    local current = workspace_layouts[ws]
+        or workspace_layouts.default
+
+
+    if current == "single" then
+        workspace_layouts[ws] = "split"
+    else
+        workspace_layouts[ws] = "single"
     end
-    if layout_state == "split" then
-        split_layout()
-    end
+
+
+    apply_layout(ws)
+
+end)
+
+hl.on("workspace.active", function(ws)
+
+    apply_layout(ws.id)
+
 end)

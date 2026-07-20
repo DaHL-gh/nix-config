@@ -84,8 +84,9 @@
     services = {
       displayManager.ly.enable = true;
 
+      fwupd.enable = true;
       gvfs.enable = true;
-      tumbler.enable = true;
+      tumbler.enable = true; # превью файлов для thunar
 
       openssh = {
         enable = true;
@@ -200,9 +201,13 @@
       ];
     };
 
+    documentation.man.cache.enable = false; # disable fish cache generation
     programs = {
       fish.enable = true;
-      hyprland.enable = true;
+      hyprland = {
+        enable = true;
+        withUWSM = true;
+      };
       steam.enable = true;
       xfconf.enable = true;
 
@@ -214,8 +219,10 @@
         enable = true;
         tunMode.enable = true;
       };
+      corectrl.enable = true;
     };
 
     environment.systemPackages = with pkgs; [ ];
   };
 }
+
