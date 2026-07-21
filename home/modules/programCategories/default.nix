@@ -91,6 +91,7 @@ let
       localsend
       mission-center
       qalculate-qt
+      rhythmbox
       sioyek
       thunar
       vlc
