@@ -3,7 +3,7 @@ function cat(args)
 end
 
 ---- ARGS ----
-local mainMod = "SUPER"
+local mainMod  = "SUPER"
 local terminal = "ghostty"
 local menu     = "noctalia-shell ipc call launcher toggle"
 
@@ -128,9 +128,15 @@ hl.config({
             left = horizontal_gap,
             right = horizontal_gap,
         },
-        border_size = 1,
+        border_size = 2,
         allow_tearing = true,
         layout = "scrolling",
+        col = {
+            active_border = {
+                colors = { "#3584e4", "#19467c" },
+                angle = 50
+            },
+        },
     },
 
     decoration = {
@@ -143,7 +149,7 @@ hl.config({
             enabled = true,
             range = 10,
             render_power = 3,
-            color = 0xee1a1a1a,
+            color = "#1a1a1a",
         },
         blur = {
             enabled = true,
@@ -265,13 +271,24 @@ hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { locked
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { locked = true })
 
 -- Screenshots
-local satty_args =
-'--filename - --floating-hack --resize 1000x600 --early-exit --copy-command "wl-copy" --output-filename ~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png'
-hl.bind("PRINT",
-    hl.dsp.exec_cmd('grim -o "$(hyprctl monitors -j | jq -r \'.[] | select(.focused==true) | .name\')" - | satty ' ..
-        satty_args))
-hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty ' .. satty_args))
+local focused_monitor =
+'$(hyprctl monitors -j | jq -r \'.[] | select(.focused==true) | .name\')'
 
+local shot_monitor = 'grim -o "' .. focused_monitor .. '" -'
+local shot_region = 'grim -g "$(slurp)" -'
+
+local copy = 'wl-copy --type image/png'
+
+local satty =
+    'satty --filename - --floating-hack --resize 1000x600 --early-exit ' ..
+    '--copy-command "wl-copy" ' ..
+    '--output-filename ~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png'
+
+hl.bind("PRINT", hl.dsp.exec_cmd(shot_monitor .. " | " .. copy))
+hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd(shot_region .. " | " .. copy))
+
+hl.bind("CTRL + PRINT", hl.dsp.exec_cmd(shot_monitor .. " | " .. satty))
+hl.bind("CTRL + SHIFT + PRINT", hl.dsp.exec_cmd(shot_region .. " | " .. satty))
 
 ---- WINDOWS AND WORKSPACES ----
 -- fix slurp visible selection boundary
@@ -287,3 +304,10 @@ hl.window_rule({
     },
     immediate = true,
 })
+
+hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 6, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1]", gaps_out = 6, gaps_in = 0 })
+-- hl.window_rule({ match = { float = false, workspace = "w[tv1]" }, border_size = 0 })
+-- hl.window_rule({ match = { float = false, workspace = "w[tv1]" }, rounding = 0 })
+-- hl.window_rule({ match = { float = false, workspace = "f[1]" }, border_size = 0 })
+-- hl.window_rule({ match = { float = false, workspace = "f[1]" }, rounding = 0 })
