@@ -172,6 +172,11 @@ hl.config({
         force_no_accel = true,
         touchpad = { natural_scroll = false },
     },
+
+    gestures = {
+        workspace_swipe_invert = false,
+        workspace_swipe_cancel_ratio = 0.1,
+    }
 })
 
 
@@ -225,6 +230,28 @@ for i = 1, 9 do
     hl.bind(cat({ mainMod, "SHIFT", i }), hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
+-- guestures
+hl.gesture({
+    fingers = 3,
+    direction = "vertical",
+    action = "workspace"
+})
+
+hl.gesture({
+    fingers = 3,
+    direction = "right",
+    action = function()
+        hl.dispatch(hl.dsp.layout("move +col"))
+    end
+})
+
+hl.gesture({
+    fingers = 3,
+    direction = "left",
+    action = function()
+        hl.dispatch(hl.dsp.layout("move -col"))
+    end
+})
 
 -- Multimedia
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"),
