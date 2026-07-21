@@ -3,6 +3,7 @@ function cat(args)
 end
 
 ---- ARGS ----
+local mainMod = "SUPER"
 local terminal = "ghostty"
 local menu     = "noctalia-shell ipc call launcher toggle"
 
@@ -122,6 +123,8 @@ hl.config({
     general = {
         gaps_in = 5,
         gaps_out = {
+            top = 6,
+            bottom = 6,
             left = horizontal_gap,
             right = horizontal_gap,
         },
@@ -181,8 +184,6 @@ hl.config({
 
 
 ---- KEYBINDINGS ----
-local mainMod = "SUPER"
-
 -- Apps
 hl.bind(cat({ mainMod, "Return" }), hl.dsp.exec_cmd(terminal))
 hl.bind(cat({ mainMod, "Q" }), hl.dsp.window.close())
