@@ -171,6 +171,7 @@
           neovim.enable = true;
           noctalia-shell.enable = true;
           spicetify.enable = true;
+          theme.enable = true;
           tmux.enable = true;
           xdg.enable = true;
           programCategories = [
@@ -192,13 +193,6 @@
 
         fonts.fontconfig.enable = true;
 
-        gtk = {
-          enable = true;
-          cursorTheme.name = "Nordic-cursors";
-          cursorTheme.size = 12;
-          iconTheme.name = "Nordzy-yellow-dark";
-          theme.name = "Nordic";
-        };
       };
     };
 

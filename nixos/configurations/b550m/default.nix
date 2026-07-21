@@ -76,11 +76,6 @@
       rtkit.enable = true;
     };
 
-    # qt = {
-    #   enable = true;
-    #   platformTheme = "qt5ct";
-    # };
-
     services = {
       displayManager.ly.enable = true;
 
@@ -115,12 +110,6 @@
 
       tailscale.enable = true;
       resolved.enable = true;
-    };
-
-    qt = {
-      enable = true;
-      platformTheme = "qt5ct";
-      style = "kvantum";
     };
 
     ##### VIRTUALIZATION #####
@@ -162,6 +151,8 @@
           neovim.enable = true;
           noctalia-shell.enable = true;
           spicetify.enable = true;
+          theme.enable = true;
+          theme.name = "orchis";
           tmux.enable = true;
           xdg.enable = true;
           programCategories = [
@@ -183,13 +174,6 @@
           nix-index.enableFishIntegration = true;
         };
 
-        gtk = {
-          enable = true;
-          cursorTheme.name = "Nordic-cursors";
-          cursorTheme.size = 12;
-          iconTheme.name = "Nordzy-yellow-dark";
-          theme.name = "Nordic";
-        };
       };
     };
 
