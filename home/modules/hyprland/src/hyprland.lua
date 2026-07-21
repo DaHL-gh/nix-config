@@ -78,11 +78,53 @@ hl.animation({ leaf = "specialWorkspaceIn", enabled = true, speed = 3, bezier = 
 hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 3, bezier = "default", style = "slidefadevert" })
 
 
+---- WINDOW SIZE TOGGLE ----
+local window_sizes = { 1, 0.5, 0.33 }
+local window_size_state = {}
+
+hl.bind(cat({ mainMod, "B" }), function()
+    local win = hl.get_active_window()
+    if not win then
+        return
+    end
+
+    local addr = win.address
+    if not addr then
+        return
+    end
+
+    local idx = ((window_size_state[addr] or 1) % #window_sizes) + 1
+    window_size_state[addr] = idx
+
+    hl.dispatch(
+        hl.dsp.layout(
+            "colresize " .. window_sizes[idx]
+        )
+    )
+end)
+
+
+---- WORKSPACE PADDING ----
+local function compute_horizontal_gap()
+    local cfg = configs[hostname]
+    if not cfg or #cfg == 0 then return 0 end
+    local mon = cfg[1]
+    local mode = mon.mode or "1920x1080@60"
+    local scale = mon.scale or 1
+    local w = tonumber(mode:match("^(%d+)")) or 1920
+    return math.floor(w / scale * 0.04)
+end
+local horizontal_gap = compute_horizontal_gap()
+
+
 ---- CONFIG ----
 hl.config({
     general = {
         gaps_in = 5,
-        gaps_out = 6,
+        gaps_out = {
+            left = horizontal_gap,
+            right = horizontal_gap,
+        },
         border_size = 1,
         allow_tearing = true,
         layout = "scrolling",
@@ -112,8 +154,8 @@ hl.config({
 
     scrolling = {
         fullscreen_on_one_column = true,
-        column_width = 0.9,
-        focus_fit_method = 0,
+        column_width = 1,
+        focus_fit_method = 1,
     },
 
     dwindle = { preserve_split = true, smart_split = false },
@@ -161,19 +203,21 @@ hl.bind(cat({ mainMod, "k" }), hl.dsp.focus({ direction = "up" }))
 hl.bind(cat({ mainMod, "j" }), hl.dsp.focus({ direction = "down" }))
 
 -- Move Window
-hl.bind(cat({ mainMod, "SHIFT + h" }), hl.dsp.window.move({ direction = "left" }))
-hl.bind(cat({ mainMod, "SHIFT + l" }), hl.dsp.window.move({ direction = "right" }))
-hl.bind(cat({ mainMod, "SHIFT + k" }), hl.dsp.window.move({ direction = "up" }))
-hl.bind(cat({ mainMod, "SHIFT + j" }), hl.dsp.window.move({ direction = "down" }))
+hl.bind(cat({ mainMod, "SHIFT", "h" }), hl.dsp.window.move({ direction = "left" }))
+hl.bind(cat({ mainMod, "SHIFT", "l" }), hl.dsp.window.move({ direction = "right" }))
+hl.bind(cat({ mainMod, "SHIFT", "k" }), hl.dsp.window.move({ direction = "up" }))
+hl.bind(cat({ mainMod, "SHIFT", "j" }), hl.dsp.window.move({ direction = "down" }))
 
 -- Resize
-hl.bind(cat({ mainMod, "ALT + h" }), hl.dsp.window.resize({ x = -50, y = 0, relative = true }))
-hl.bind(cat({ mainMod, "ALT + l" }), hl.dsp.window.resize({ x = 50, y = 0, relative = true }))
-hl.bind(cat({ mainMod, "ALT + j" }), hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
-hl.bind(cat({ mainMod, "ALT + k" }), hl.dsp.window.resize({ x = 0, y = -50, relative = true }))
+-- hl.bind(cat({ mainMod, "ALT", "h" }), hl.dsp.window.resize({ x = -50, y = 0, relative = true }))
+-- hl.bind(cat({ mainMod, "ALT", "l" }), hl.dsp.window.resize({ x = 50, y = 0, relative = true }))
+hl.bind(cat({ mainMod, "ALT", "l" }), hl.dsp.layout("colresize +0.1"))
+hl.bind(cat({ mainMod, "ALT", "h" }), hl.dsp.layout("colresize -0.1"))
+hl.bind(cat({ mainMod, "ALT", "j" }), hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
+hl.bind(cat({ mainMod, "ALT", "k" }), hl.dsp.window.resize({ x = 0, y = -50, relative = true }))
 
 -- Workspaces
-hl.bind(cat({ mainMod, "SHIFT + S" }), hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(cat({ mainMod, "SHIFT", "S" }), hl.dsp.window.move({ workspace = "special:magic" }))
 hl.bind(cat({ mainMod, "S" }), hl.dsp.workspace.toggle_special("magic"))
 
 for i = 1, 9 do
@@ -215,68 +259,3 @@ hl.window_rule({
     },
     immediate = true,
 })
-
----- WORKSPACE LAYOUTS ----
-local workspace_layouts = {
-    default = "single",
-}
-
-local layout_configs = {
-    single = {
-        fullscreen_on_one_column = true,
-        focus_fit_method = 0,
-        col_size = 0.9,
-    },
-
-    split = {
-        fullscreen_on_one_column = false,
-        focus_fit_method = 1,
-        col_size = 0.5,
-    },
-}
-
-local function apply_layout(ws_id)
-    local mode = workspace_layouts[ws_id]
-        or workspace_layouts.default
-
-    local cfg = layout_configs[mode]
-
-    hl.dispatch(
-        hl.dsp.layout(
-            "colresize all " .. cfg.col_size
-        )
-    )
-
-    hl.config({
-        scrolling = {
-            fullscreen_on_one_column = cfg.fullscreen_on_one_column,
-            focus_fit_method = cfg.focus_fit_method,
-            column_width = cfg.col_size
-        },
-    })
-end
-
-local function get_current_workspace_id()
-    return hl.get_active_workspace().id
-end
-
-hl.bind(cat({ mainMod, "b" }), function()
-    local ws = get_current_workspace_id()
-
-    local current = workspace_layouts[ws]
-        or workspace_layouts.default
-
-
-    if current == "single" then
-        workspace_layouts[ws] = "split"
-    else
-        workspace_layouts[ws] = "single"
-    end
-
-
-    apply_layout(ws)
-end)
-
-hl.on("workspace.active", function(ws)
-    apply_layout(ws.id)
-end)
