@@ -119,6 +119,7 @@ let
       kdePackages.kdenlive
       krita
       obs-studio
+      affinity-v3
     ];
 
     games = with pkgs; [

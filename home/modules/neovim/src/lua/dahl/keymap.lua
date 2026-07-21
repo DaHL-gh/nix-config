@@ -55,6 +55,7 @@ end
 
 
 map_cmd("n", "-", "Oil", { desc = "go to file directory" })
+map_action("n", "<C-a>", "ggVG", { desc = "select all"})
 
 map_action({ "n", "v" }, "<leader>y", "\"+y", { desc = "yoink to clipboard" })
 map_action({ "n", "v" }, "<leader>d", "\"+d", { desc = "delete to clipboard" })

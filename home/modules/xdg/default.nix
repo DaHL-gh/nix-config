@@ -13,6 +13,7 @@ let
   pdfViewer = "sioyek.desktop";
   terminal = "com.mitchellh.ghostty.desktop";
   videoPlayer = "vlc.desktop";
+  audioPlayer = "org.gnome.Rhythmbox3.desktop";
 in
 {
   options.localModules.xdg.enable = lib.mkEnableOption "";
@@ -74,6 +75,9 @@ in
           "video/x-ogm+ogg" = videoPlayer;
           "video/x-theora+ogg" = videoPlayer;
           "application/ogg" = videoPlayer;
+
+          # audio
+          "audio/vnd.wave" = audioPlayer;
 
           # text
           "text/plain" = editor;

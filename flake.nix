@@ -35,6 +35,9 @@
 
     happ.url = "github:dahl-gh/happ-nix";
     happ.inputs.nixpkgs.follows = "nixpkgs";
+
+    affinity-nix.url = "github:mrshmllow/affinity-nix";
+    affinity-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -43,14 +46,19 @@
       flakePath = "/home/dahl/Documents/nix-config/";
       system = "x86_64-linux";
 
-      pkgs = import nixpkgs {inherit system;};
-
       localUtils = import ./utils.nix { lib = nixpkgs.lib; };
       openldapOverlay = _: prev: {
         openldap = prev.openldap.overrideAttrs {
           doCheck = !prev.stdenv.hostPlatform.isi686;
         };
       };
+
+      overlays = [
+        openldapOverlay
+        inputs.affinity-nix.overlays.default
+      ];
+
+      pkgs = import nixpkgs { inherit system overlays; };
 
       makeSystem =
         { deviceName }:
@@ -67,7 +75,9 @@
             inputs.milk-grub-theme.nixosModule
             inputs.disko.nixosModules.disko
             inputs.happ.nixosModules.default
-            { nixpkgs.overlays = [ openldapOverlay ]; }
+            {
+              nixpkgs.overlays = overlays;
+            }
           ];
         };
 
