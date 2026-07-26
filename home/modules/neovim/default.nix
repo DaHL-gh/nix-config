@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  flakePath,
   ...
 }:
 {
@@ -52,9 +51,12 @@
       EDITOR = "nvim";
     };
 
-    home.file.".config/nvim/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/neovim/src";
-      recursive = true;
-    };
+    mutableNix.links = [
+      {
+        root = "dahl-dotfiles"; # name of mutable root
+        from = "neovim/"; # path in mutable root
+        to = "${config.home.homeDirectory}/.config/nvim"; # path where to create symlink
+      }
+    ];
   };
 }

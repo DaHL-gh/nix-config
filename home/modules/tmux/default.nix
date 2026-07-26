@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  flakePath,
   ...
 }:
 {
@@ -14,8 +13,12 @@
       skim
     ];
 
-    home.file.".config/tmux/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/tmux/src/";
-    };
+    mutableNix.links = [
+      {
+        root = "dahl-dotfiles";
+        from = "tmux/";
+        to = "${config.home.homeDirectory}/.config/tmux";
+      }
+    ];
   };
 }

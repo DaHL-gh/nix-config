@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -102,6 +103,19 @@
         };
 
         fonts.fontconfig.enable = true;
+
+        mutableNix = {
+          # for first time try ln or fail
+          # then try to make git ff or other soft update of files
+          # for the last make ln management with manifest diff integration
+          enable = true;
+          roots = {
+            dahl-dotfiles = {
+              source = inputs.mutable-dotfiles; # git+file or path flake input, the initial source of files
+              target = config.users.users.dahl.home + "/Documents/mutable-dotfiles"; # path where to store mutable root
+            };
+          };
+        };
 
         # gtk = {
         #   enable = true;

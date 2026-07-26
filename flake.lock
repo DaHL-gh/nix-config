@@ -469,6 +469,19 @@
         "type": "github"
       }
     },
+    "mutable-dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785089627,
+        "narHash": "sha256-JPCwkiqIR2rx6sgQYSDyhelSf9UsEVkaX5t56UqXMec=",
+        "path": "/home/dahl/Documents/mutable-source",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/dahl/Documents/mutable-source",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1782918843,
@@ -719,6 +732,7 @@
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
         "milk-grub-theme": "milk-grub-theme",
+        "mutable-dotfiles": "mutable-dotfiles",
         "nixpkgs": "nixpkgs_3",
         "noctalia": "noctalia",
         "polyMc": "polyMc",

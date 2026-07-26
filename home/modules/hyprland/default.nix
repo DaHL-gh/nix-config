@@ -2,8 +2,6 @@
   config,
   lib,
   pkgs,
-  flakePath,
-  configurationName,
   ...
 }:
 {
@@ -35,15 +33,17 @@
     
     services.hypridle.enable = true;
 
-    home.file = {
-      ".config/hypr/" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/hyprland/src";
-        recursive = true;
-      };
-      "Pictures/Wallpapers/" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/wallpapers";
-        recursive = true;
-      };
-    };
+    mutableNix.links = [
+      {
+        root = "dahl-dotfiles";
+        from = "hyprland/";
+        to = "${config.home.homeDirectory}/.config/hypr";
+      }
+      {
+        root = "dahl-dotfiles";
+        from = "wallpapers/";
+        to = "${config.home.homeDirectory}/Pictures/Wallpapers";
+      }
+    ];
   };
 }

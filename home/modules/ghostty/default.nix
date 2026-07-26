@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  flakePath,
   ...
 }:
 {
@@ -13,9 +12,12 @@
       ghostty
     ];
 
-    home.file.".config/ghostty/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/ghostty/src";
-      recursive = true;
-    };
+    mutableNix.links = [
+      {
+        root = "dahl-dotfiles";
+        from = "ghostty/";
+        to = "${config.home.homeDirectory}/.config/ghostty";
+      }
+    ];
   };
 }

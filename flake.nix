@@ -38,12 +38,17 @@
 
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     affinity-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    # mutable-nix.url = "git+file:///home/dahl/Documents/mutable-nix?ref=main";
+    # mutable-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    mutable-dotfiles.url = "path:/home/dahl/Documents/mutable-source";
+    mutable-dotfiles.flake = false;
   };
 
   outputs =
     { self, nixpkgs, ... }@inputs:
     let
-      flakePath = "/home/dahl/Documents/nix-config/";
       system = "x86_64-linux";
 
       localUtils = import ./utils.nix { lib = nixpkgs.lib; };
@@ -65,7 +70,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs flakePath localUtils;
+            inherit inputs localUtils;
             configurationName = deviceName;
           };
           modules = [
@@ -86,7 +91,7 @@
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            inherit inputs flakePath localUtils;
+            inherit inputs localUtils;
             configurationName = deviceName;
           };
           modules = [

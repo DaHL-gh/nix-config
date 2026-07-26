@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  flakePath,
   ...
 }:
 {
@@ -13,9 +12,12 @@
       kitty
     ];
 
-    home.file.".config/kitty/" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/kitty/src";
-      recursive = true;
-    };
+    mutableNix.links = [
+      {
+        root = "dahl-dotfiles";
+        from = "kitty/";
+        to = "${config.home.homeDirectory}/.config/kitty";
+      }
+    ];
   };
 }
