@@ -42,6 +42,7 @@
         enable = true;
         hsaOverrideGfxVersion = "10.3.0";
       };
+      i18n.enable = true;
       nix-ld.enable = true;
       agenix = {
         enable = true;
