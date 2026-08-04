@@ -101,6 +101,9 @@
         lenovo = makeSystem { deviceName = "lenovo"; };
       };
 
+      nixosModules = (import ./nixos/modules) { inherit localUtils; };
+      homeManagerModules = (import ./home/modules) { inherit localUtils; };
+
       homeConfigurations = builtins.listToAttrs (
         map
           (
