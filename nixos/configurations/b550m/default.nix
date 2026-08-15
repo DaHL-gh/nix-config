@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -133,11 +132,6 @@
       };
     };
 
-    # system.activationScripts.mutableNix = ''
-    #   rm /home/dahl/etc2
-    #   ln -s /etc/ /home/dahl/etc2
-    # '';
-
     ##### HOME MANAGER #####
     home-manager.users.dahl = {
       imports = [
@@ -147,11 +141,6 @@
       config = {
         home.stateVersion = "25.05";
         targets.genericLinux.enable = true;
-
-        # home.activation.mutableNix = ''
-        #   rm /home/dahl/dotfiles
-        #   ln -s ${inputs.mutable-dotfiles}/fish ${config.users.users.dahl.home}/dotfiles2
-        # '';
 
         localModules = {
           firefox.enable = true;
@@ -180,19 +169,6 @@
         };
 
         fonts.fontconfig.enable = true;
-
-        mutableNix = {
-          # for first time try ln or fail
-          # then try to make git ff or other soft update of files
-          # for the last make ln management with manifest diff integration
-          enable = true;
-          roots = {
-            dahl-dotfiles = {
-              source = inputs.mutable-dotfiles; # git+file or path flake input, the initial source of files
-              target = config.users.users.dahl.home + "/Documents/mutable-dotfiles"; # path where to store mutable root
-            };
-          };
-        };
 
         programs = {
           nix-index.enable = true;

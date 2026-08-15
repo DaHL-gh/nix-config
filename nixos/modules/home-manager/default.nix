@@ -1,5 +1,6 @@
 {
   inputs,
+  flakePath,
   localUtils,
   configurationName,
   lib,
@@ -19,6 +20,7 @@
       extraSpecialArgs = {
         inherit
           inputs
+          flakePath
           localUtils
           configurationName
           ;

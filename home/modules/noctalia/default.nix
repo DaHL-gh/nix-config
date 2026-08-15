@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flakePath,
   inputs,
   ...
 }:
@@ -14,12 +15,11 @@
       pkgs.quickshell
     ];
 
-    mutableNix.links = [
-      {
-        root = "dahl-dotfiles";
-        from = "noctalia/";
-        to = "${config.home.homeDirectory}/.config/noctalia";
-      }
-    ];
+    home.file = {
+      ".config/noctalia/" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/modules/noctalia/src";
+        recursive = true;
+      };
+    };
   };
 }
