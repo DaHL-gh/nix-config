@@ -33,7 +33,7 @@ let
       powertop
       smartmontools
 
-      #security
+      #encryption
       age
       sops
     ];
@@ -100,6 +100,7 @@ let
 
     desktop = with pkgs; [
       anki
+      audacity
       discord
       google-chrome
       libreoffice-qt6
@@ -120,13 +121,14 @@ let
       kdePackages.kdenlive
       krita
       obs-studio
-      affinity-v3
+      # affinity-v3
     ];
 
     games = with pkgs; [
       wineWow64Packages.waylandFull
       winetricks
       lutris
+      hydralauncher
     ];
 
     virtualization = with pkgs; [
