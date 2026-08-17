@@ -9,6 +9,7 @@ cursor-style = bar
 cursor-style-blink = true
 shell-integration-features = no-cursor
 
+background = 222222
 background-opacity = 0.7
 
 confirm-close-surface = false
