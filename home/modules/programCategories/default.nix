@@ -101,6 +101,7 @@ let
     desktop = with pkgs; [
       anki
       audacity
+      bitwarden-desktop
       discord
       google-chrome
       libreoffice-qt6

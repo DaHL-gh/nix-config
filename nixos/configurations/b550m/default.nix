@@ -173,6 +173,11 @@
         programs = {
           nix-index.enable = true;
           nix-index.enableFishIntegration = true;
+          rbw = {
+            enable = true;
+            settings.email = "8tima18@gmail.com";
+            settings.pinentry = pkgs.pinentry-curses;
+          };
         };
 
       };
