@@ -40,6 +40,7 @@
       pipewire.enable = true;
       keyd.enable = true;
       home-manager.enable = true;
+      i18n.enable = true;
       rocm = {
         enable = true;
         hsaOverrideGfxVersion = "11.0.0";
@@ -97,6 +98,8 @@
         enable = true;
         settings = {
           GatewayPorts = "yes";
+          PasswordAuthentication = false;
+          PermitRootLogin = "no";
         };
       };
 

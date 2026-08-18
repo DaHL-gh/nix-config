@@ -88,6 +88,8 @@
         enable = true;
         settings = {
           GatewayPorts = "yes";
+          PasswordAuthentication = false;
+          PermitRootLogin = "no";
         };
       };
 
