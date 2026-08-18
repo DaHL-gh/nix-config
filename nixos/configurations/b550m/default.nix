@@ -143,6 +143,8 @@
         targets.genericLinux.enable = true;
 
         localModules = {
+          anki.enable = true;
+          bitwarden.enable = true;
           firefox.enable = true;
           fish.enable = true;
           ghostty.enable = true;
@@ -173,13 +175,7 @@
         programs = {
           nix-index.enable = true;
           nix-index.enableFishIntegration = true;
-          rbw = {
-            enable = true;
-            settings.email = "8tima18@gmail.com";
-            settings.pinentry = pkgs.pinentry-curses;
-          };
         };
-
       };
     };
 

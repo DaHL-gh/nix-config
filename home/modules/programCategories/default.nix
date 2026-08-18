@@ -61,7 +61,6 @@ let
       kubernetes-helm
 
       #ai
-      gemini-cli
       opencode
       pi-coding-agent
     ];
@@ -99,9 +98,7 @@ let
     ];
 
     desktop = with pkgs; [
-      anki
       audacity
-      bitwarden-desktop
       discord
       google-chrome
       libreoffice-qt6

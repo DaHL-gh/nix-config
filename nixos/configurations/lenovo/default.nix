@@ -162,6 +162,8 @@
         targets.genericLinux.enable = true;
 
         localModules = {
+          anki.enable = true;
+          bitwarden.enable = true;
           firefox.enable = true;
           fish.enable = true;
           ghostty.enable = true;
@@ -172,6 +174,7 @@
           noctalia-shell.enable = true;
           spicetify.enable = true;
           theme.enable = true;
+          theme.name = "orchis";
           tmux.enable = true;
           xdg.enable = true;
           programCategories = [
@@ -189,11 +192,6 @@
         programs = {
           nix-index.enable = true;
           nix-index.enableFishIntegration = true;
-          rbw = {
-            enable = true;
-            settings.email = "8tima18@gmail.com";
-            settings.pinentry = pkgs.pinentry-curses;
-          };
         };
 
         fonts.fontconfig.enable = true;
