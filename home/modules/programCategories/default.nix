@@ -29,6 +29,8 @@ let
 
       #monitoring
       btop-rocm
+      conntrack-tools
+      sysstat
       iotop
       powertop
       smartmontools

@@ -219,6 +219,7 @@ hl.bind(cat({ mainMod, "SHIFT", "h" }), hl.dsp.window.move({ direction = "left" 
 hl.bind(cat({ mainMod, "SHIFT", "l" }), hl.dsp.window.move({ direction = "right" }))
 hl.bind(cat({ mainMod, "SHIFT", "k" }), hl.dsp.window.move({ direction = "up" }))
 hl.bind(cat({ mainMod, "SHIFT", "j" }), hl.dsp.window.move({ direction = "down" }))
+hl.bind("F11", hl.dsp.window.fullscreen("fullscreen", "toggle"))
 
 -- Resize
 -- hl.bind(cat({ mainMod, "ALT", "h" }), hl.dsp.window.resize({ x = -50, y = 0, relative = true }))
