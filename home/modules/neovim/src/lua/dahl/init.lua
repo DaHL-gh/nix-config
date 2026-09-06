@@ -26,7 +26,7 @@ end
 vim.opt.fillchars:append({
 	eob = ' ',
 })
-make_transparent()
+-- make_transparent()
 vim.api.nvim_create_autocmd('ColorScheme', {
 	callback = make_transparent,
 })
