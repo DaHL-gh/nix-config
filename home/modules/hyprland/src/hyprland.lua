@@ -19,6 +19,7 @@ local configs = {
             position = "0x0",
             scale = 1,
             bitdepth = 10,
+            transform = 0,
         },
     },
 
@@ -228,6 +229,7 @@ hl.bind(cat({ mainMod, "ALT", "l" }), hl.dsp.layout("colresize +0.1"))
 hl.bind(cat({ mainMod, "ALT", "h" }), hl.dsp.layout("colresize -0.1"))
 hl.bind(cat({ mainMod, "ALT", "j" }), hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
 hl.bind(cat({ mainMod, "ALT", "k" }), hl.dsp.window.resize({ x = 0, y = -50, relative = true }))
+hl.bind("F11", hl.dsp.window.fullscreen("fullscreen", "toggle"))
 
 -- Workspaces
 hl.bind(cat({ mainMod, "SHIFT", "S" }), hl.dsp.window.move({ workspace = "special:magic" }))
